@@ -484,7 +484,72 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
 }
 
 
+/* =====================================================
+   📱 MOBILE NAV BELOW FLOATING LOGO
+   ===================================================== */
+
+/* Default: hide hamburger on desktop */
+.hamburger {
+  display: none;
+}
+
+/* --- Mobile view --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 70px; /* adjust if needed */
+    left: 10px;
+    z-index: 2000; /* keep above banner/logo */
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 110px; /* just below logo and hamburger */
+    left: 10px;
+    right: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 1500;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+  }
+
+  .main-nav {
+    position: relative;
+  }
+}
+
+/* Desktop mode: show normal nav */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+  .nav-list {
+    display: flex !important;
+    position: static;
+    background: none;
+  }
+}
+
 /* end of stylesheet */
+
 
 
 
