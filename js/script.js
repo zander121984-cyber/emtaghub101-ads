@@ -1,9 +1,17 @@
-// js/script.js
 // EMTAGHub101 — Homepage interactivity and content population
 
 // --- Article Data ---
 const articles = [
-
+  {
+    id: 'osh-002',
+    title: "👉 Explore Rule 1010: Other Safety Rules | Explanation and Practical Examples (OSHS Philippines)",
+    excerpt: "Discover how Rule 1010 — Other Safety Rules — strengthens workplace safety through real-world applications and examples.",
+    image: "images/article/osh/emtaghub101-osh-inspection-kitchen.jpg",
+    category: "OSH General Awareness",
+    url: "article/osh/general.awareness/other.safety.rule/index.html",
+    published: "2025-11-11",
+    trending: true
+  },
   {
     id: 'osh-001',
     title: "Understanding the OSHS General Provisions",
@@ -13,13 +21,16 @@ const articles = [
     url: "article/osh/general.awareness/general.provision/index.html",
     published: "2025-11-11",
     trending: true
-  },
-  
+  }
 ];
 
 // --- Helpers ---
 const q = sel => document.querySelector(sel);
 const qa = sel => Array.from(document.querySelectorAll(sel));
+
+// Automatically detect GitHub Pages base path (e.g., /emtaghub101/)
+const pathParts = window.location.pathname.split("/");
+const basePath = pathParts.length > 1 ? `/${pathParts[1]}/` : "/";
 
 // Format date helper
 function formatDate(iso) {
@@ -42,11 +53,10 @@ function populateContent() {
     const label = q(`#frame${i + 1}Label`);
     const link = q(`#frame${i + 1}Link`);
     if (a && img && label && link) {
-      img.src = a.image || "images/default.jpg";
+      img.src = `${basePath}${a.image || "images/default.jpg"}`;
       img.alt = a.title;
-      // show title and date under it
       label.innerHTML = `${a.title} <br><small style="font-weight:600; font-size:12px; opacity:0.9;">${formatDate(a.published)}</small>`;
-      link.href = a.url || "#";
+      link.href = `${basePath}${a.url}`;
     }
   }
 
@@ -59,83 +69,25 @@ function populateContent() {
       card.className = "card";
       card.innerHTML = `
         <div class="card-body">
-          <h4><a href="${a.url}">${a.title}</a></h4>
+          <h4><a href="${basePath}${a.url}">${a.title}</a></h4>
           <p>${a.excerpt}</p>
         </div>`;
       featured.appendChild(card);
     });
   }
 
-  // 🔹 Trending Announcement (Blinking) — place latest/trending article in ticker
+  // 🔹 Trending Announcement
   const ticker = q("#announcementTicker");
   if (ticker) {
     ticker.innerHTML = "";
     const trending = articles.find(a => a.trending) || sorted[0];
     if (trending) {
       const anchor = document.createElement("a");
-      anchor.href = trending.url || "#";
-      anchor.className = "ticker-glow"; // uses the CSS glowing animation
+      anchor.href = `${basePath}${trending.url}`;
+      anchor.className = "ticker-glow";
       anchor.textContent = `🔥 FEATURED: ${trending.title} — ${formatDate(trending.published)}`;
-
       ticker.appendChild(anchor);
     }
   }
 }
 
-// --- Nav Behavior ---
-function setupNavBehavior() {
-  qa(".nav-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      qa(".nav-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-    });
-  });
-}
-
-// --- Initialize ---
-document.addEventListener("DOMContentLoaded", () => {
-  populateContent();
-  setupNavBehavior();
-  const yearEl = q("#year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-});
-
-// ======================================================
-// 🔍 SEARCH FEATURE — Displays results below input
-// ======================================================
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput");
-  const resultBox = document.getElementById("searchResults");
-
-  if (searchInput && resultBox) {
-    searchInput.addEventListener("input", function () {
-      const term = this.value.toLowerCase().trim();
-      resultBox.innerHTML = "";
-
-      if (!term) return;
-
-      const matches = articles.filter(a =>
-        a.title.toLowerCase().includes(term) ||
-        a.excerpt.toLowerCase().includes(term)
-      );
-
-      if (matches.length === 0) {
-        resultBox.innerHTML = `<p class="no-results">No results found.</p>`;
-        return;
-      }
-
-      matches.forEach(a => {
-        const item = document.createElement("div");
-        item.className = "search-item";
-        item.innerHTML = `
-          <a href="${a.url}">
-            <h4>${a.title}</h4>
-            <p>${a.excerpt}</p>
-          </a>`;
-        resultBox.appendChild(item);
-      });
-
-      resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    });
-  }
-});
