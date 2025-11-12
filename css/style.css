@@ -45,15 +45,19 @@ img { display: block; max-width: 100%; height: auto; } /* images don't overflow 
   z-index: 50;
 }
 
+/* ✅ FINAL FIX — Floating Logo True Mobile Resize */
 @media (max-width: 768px) {
   .floating-logo {
-    width: 60px !important;     /* Force smaller logo */
+    position: absolute !important;
+    top: 8px !important;
+    left: 8px !important;
+    width: 45px !important;       /* 💡 Much smaller on phones */
     height: auto !important;
-    top: 6px !important;
-    left: 6px !important;
-    padding: 2px !important;
-    background: rgba(255, 255, 255, 0.5) !important;
-    border-radius: 6px !important;
+    max-width: 20vw !important;
+    z-index: 9999 !important;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 3px;
   }
 }
 
@@ -429,6 +433,7 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
 }
 
 /* end of stylesheet */
+
 
 
 
