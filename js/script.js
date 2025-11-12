@@ -10,7 +10,7 @@ const articles = [
     excerpt: "Learn the key rules that form the foundation of workplace safety and health standards.",
     image: "images/article/osh/emtaghub101-occupational-safety-health.jpg",
     category: "OSH General Awareness",
-    url: "article/osh/general.awareness/general.provision/index.html",
+    url: "/article/osh/general.awareness/general.provision/index.html",
     published: "2025-11-11",
     trending: true
   },
@@ -139,3 +139,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
