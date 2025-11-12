@@ -34,29 +34,26 @@ img { display: block; max-width: 100%; height: auto; } /* images don't overflow 
   display: block;      /* render as block-level element */
   object-fit: cover;   /* crop image nicely if it needs resizing */
 }
-/* === Floating Logo — Base === */
+/* === FINAL OVERRIDE: Floating Logo Responsive Fix === */
 .floating-logo {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  width: 10vw;          /* responsive scaling */
-  max-width: 150px;     /* limit size on large screens */
+  width: 120px;
   height: auto;
-  z-index: 30;
-  background: rgba(255, 255, 255, 0.6);
-  padding: 0.25rem;
-  border-radius: 0.5rem;
+  max-width: 25vw;
+  z-index: 50;
 }
 
-/* === Floating Logo — Mobile Adjustment === */
 @media (max-width: 768px) {
   .floating-logo {
-    width: 80px;         /* fixed smaller size on mobile */
-    max-width: 80px;     /* ensure it doesn’t exceed this width */
-    top: 6px;            /* closer to top */
-    left: 6px;           /* closer to left edge */
-    padding: 2px;        /* reduce padding */
-    background: rgba(255, 255, 255, 0.5);
+    width: 60px !important;     /* Force smaller logo */
+    height: auto !important;
+    top: 6px !important;
+    left: 6px !important;
+    padding: 2px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 6px !important;
   }
 }
 
@@ -432,5 +429,6 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
 }
 
 /* end of stylesheet */
+
 
 
