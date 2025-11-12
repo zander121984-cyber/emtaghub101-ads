@@ -563,7 +563,7 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
     display: flex;
     flex-direction: row;
     gap: 10px;
-    align-items: center; /* fixed alignment */
+    align-items: left; /* fixed alignment */
   }
 
   .nav-btn, .sub-btn {
