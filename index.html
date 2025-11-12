@@ -280,15 +280,25 @@ document.querySelectorAll('.nav-btn, .sub-btn').forEach(button => {
 </script>
 	  
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navList = document.querySelector(".nav-list");
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector(".main-nav");
+  const overlay = document.createElement("div");
+  overlay.classList.add("nav-overlay");
+  document.body.appendChild(overlay);
 
-    hamburger.addEventListener("click", () => {
-      navList.classList.toggle("active");
-    });
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("active");
+    overlay.classList.toggle("show");
   });
+
+  overlay.addEventListener("click", () => {
+    nav.classList.remove("active");
+    overlay.classList.remove("show");
+  });
+});
 </script>
+
 
 
 </body>
