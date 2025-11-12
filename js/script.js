@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const item = document.createElement("div");
         item.className = "search-item";
         item.innerHTML = `
-          <a href="${a.url}">
+          <a href="/emtaghub101/${a.url}">
             <h4>${a.title}</h4>
             <p>${a.excerpt}</p>
           </a>`;
@@ -139,4 +139,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
