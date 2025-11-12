@@ -280,25 +280,40 @@ document.querySelectorAll('.nav-btn, .sub-btn').forEach(button => {
 </script>
 	  
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const hamburger = document.querySelector(".hamburger");
-  const nav = document.querySelector(".main-nav");
-  const overlay = document.createElement("div");
-  overlay.classList.add("nav-overlay");
-  document.body.appendChild(overlay);
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.querySelector(".hamburger");
+      const nav = document.querySelector(".main-nav");
+      const overlay = document.querySelector(".nav-overlay");
 
-  hamburger.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    overlay.classList.toggle("show");
-  });
+      // Toggle menu and overlay on hamburger click
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active");  // Show/hide navigation
+        overlay.classList.toggle("show");  // Show/hide overlay
+      });
 
-  overlay.addEventListener("click", () => {
-    nav.classList.remove("active");
-    overlay.classList.remove("show");
-  });
-});
-</script>
+      // Close the menu and overlay when clicking on the overlay
+      overlay.addEventListener("click", () => {
+        nav.classList.remove("active");
+        overlay.classList.remove("show");
+      });
 
+      // Handle clicking on navigation buttons (submenus)
+      document.querySelectorAll('.nav-btn, .sub-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const parent = this.parentElement;
+
+          // Close other open menus at the same level
+          const siblings = parent.parentElement.querySelectorAll('.has-sub.open');
+          siblings.forEach(sib => {
+            if (sib !== parent) sib.classList.remove('open');
+          });
+
+          parent.classList.toggle('open');
+        });
+      });
+    });
+  </script>
 
 
 </body>
