@@ -598,3 +598,26 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
   }
 }
 
+/* === FINAL FIX: make mobile slide-in nav clickable === */
+@media (max-width: 500px) {
+  .banner-wrapper,
+  .header-banner {
+    pointer-events: none !important; /* 🧱 disable click blocking from banner */
+  }
+
+  .main-nav,
+  .nav-overlay,
+  .hamburger {
+    pointer-events: auto !important; /* 🖱 allow menu + overlay clicks */
+    z-index: 10050 !important;       /* ensure on top */
+  }
+
+  .nav-overlay {
+    z-index: 10040 !important; /* just below the menu */
+  }
+
+  .hamburger {
+    z-index: 10060 !important; /* above all */
+  }
+}
+
