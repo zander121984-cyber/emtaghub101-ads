@@ -50,7 +50,7 @@ img { display: block; max-width: 100%; height: auto; } /* images don't overflow 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
   .floating-logo {
-    width: 25vw;   /* larger relative width on small screens for visibility */
+    width: 10vw;   /* larger relative width on small screens for visibility */
     top: 0.5rem;   /* slightly smaller top offset on mobile */
     left: 0.5rem;  /* slightly smaller left offset on mobile */
   }
@@ -428,3 +428,4 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
 }
 
 /* end of stylesheet */
+
