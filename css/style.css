@@ -441,14 +441,14 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
   .hamburger {
     display: block;
     position: absolute;
-    top: 10px; /* inside or near top of header */
+    top: 60px; /* inside or near top of header */
     left: 10px;
     z-index: 10060;
     background: #004080;
     color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 26px;
+    font-size: 20px;
     padding: 6px 10px;
     cursor: pointer;
     transition: background 0.3s;
@@ -543,3 +543,4 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
     pointer-events: auto !important;
   }
 }
+
