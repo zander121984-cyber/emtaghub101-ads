@@ -440,7 +440,7 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .hamburger {
     display: block;
     position: absolute;
@@ -528,4 +528,5 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
     box-shadow: none;
   }
 }
+
 
