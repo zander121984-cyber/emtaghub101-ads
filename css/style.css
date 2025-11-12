@@ -463,7 +463,7 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
     position: fixed;
     top: var(--header-height, 120px); /* 👈 appears right below header */
     left: -260px; /* hidden by default */
-    width: 250px;
+    width: 350px;
     height: calc(100% - var(--header-height, 120px));
     background: #0f1724;
     color: #fff;
@@ -543,3 +543,4 @@ article.card blockquote { font-style: italic; border-left: 4px solid #666; paddi
     pointer-events: auto !important;
   }
 }
+
