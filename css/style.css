@@ -20,6 +20,9 @@ body {
   color: var(--dark); 
   line-height: 1.5; 
   padding: 0 20px; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
 }
 
 /* ========================= HEADER (Desktop & Mobile) ========================= */
@@ -46,10 +49,9 @@ body {
 }
 
 /* --- DEFAULT STATE: HIDDEN --- */
-/* Mobile drawer must be hidden by default on ALL screen sizes unless explicitly shown. */
 .nav-links {
   list-style: none; 
-  display: none; /* Crucial: Start hidden to prevent layout issues */
+  display: none; 
   gap: 20px; 
 }
 
@@ -63,21 +65,18 @@ body {
   color: #ffcc00; 
 }
 
-/* === Desktop Navigation Visibility (Only for screens > 768px) === */
+/* === Desktop Navigation Visibility === */
 @media (min-width: 769px) {
     .nav-links {
-        display: flex; /* Show desktop links only on large screens */
-        /* Reset mobile properties */
+        display: flex; 
         position: static; 
         height: auto;
         width: auto;
-        transform: none;
-        box-shadow: none;
         padding: 0;
     }
 }
 
-/* === Desktop Dropdown Navigation === */
+/* Dropdown Menu for Desktop */
 .dropdown {
   position: relative; 
 }
@@ -131,7 +130,6 @@ body {
   flex-direction: column; 
   gap: 5px; 
   cursor: pointer; 
-  z-index: 103; 
 }
 
 .hamburger span {
@@ -141,198 +139,56 @@ body {
   border-radius: 3px; 
 }
 
-/* ========================= ANNOUNCEMENT/CONTENT/SEARCH (No changes) ========================= */
-.announcement {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background: #e9f3ff; 
-  border-left: 5px solid var(--primary); 
-  border-radius: 8px; 
-  padding: 10px 15px; 
-  margin: 20px 0; 
-  flex-wrap: wrap; 
-  gap: 10px; 
+/* ========================= FOOTER ========================= */
+.footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-top: 20px; /* Optional, for spacing from content above */
 }
 
-.announcement-text {
-  flex: 1; 
-  min-width: 200px; 
+/* Footer Text Styles */
+.footer p {
+  margin: 10px 0;
 }
 
-.announcement-text h2 {
-  font-size: 1rem; 
-  font-weight: 600; 
-  color: var(--dark); 
-  display: flex; 
-  align-items: center; 
-  gap: 6px; 
-  margin: 0; 
+.footer a {
+  color: var(--primary);
+  text-decoration: none;
 }
 
-.latest-blink {
-  color: var(--primary); 
-  cursor: pointer; 
-  font-weight: bold; 
-  animation: blinkText 1.2s infinite; 
-}
-
-@keyframes blinkText {
-  0%, 50%, 100% { opacity: 1; } 
-  25%, 75% { opacity: 0.3; } 
-}
-
-.latest-blink:hover {
-  color: #ff6600; 
-  text-decoration: underline; 
-}
-
-.search-box {
-  position: relative; 
-  width: 100%; 
-  max-width: 300px; 
-}
-
-#searchInput {
-  width: 100%; 
-  padding: 8px 12px; 
-  border: 1px solid #ccc; 
-  border-radius: 6px; 
-  outline: none; 
-  transition: all 0.3s ease; 
-}
-
-#searchInput:focus {
-  border-color: var(--primary); 
-  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3); 
-}
-
-#searchResults {
-  display: none; 
-  position: absolute; 
-  top: 105%; 
-  left: 0; 
-  width: 100%; 
-  background: white; 
-  border: 1px solid #ddd; 
-  border-radius: 6px; 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-  max-height: 200px; 
-  overflow-y: auto; 
-  z-index: 20; 
-}
-
-.search-item {
-  padding: 8px 12px; 
-  cursor: pointer; 
-}
-
-.search-item:hover {
-  background: #e9f3ff; 
-}
-
-.no-result {
-  padding: 8px 12px; 
-  color: var(--muted); 
-}
-
-.content {
-  display: flex; 
-  gap: 20px; 
-  align-items: flex-start; 
-  flex-wrap: wrap; 
-}
-
-.articles {
-  flex: 3; 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
-}
-
-.article-card {
-  background: white; 
-  border-radius: 10px; 
-  overflow: hidden; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  cursor: pointer; 
-  text-decoration: none; 
-  color: inherit; 
-  transition: transform 0.2s ease, box-shadow 0.2s ease; 
-}
-
-.article-card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
-}
-
-.article-card img {
-  width: 100%; 
-  height: 160px; 
-  object-fit: cover; 
-}
-
-.article-card-content {
-  padding: 15px; 
-}
-
-.article-card-content h3 {
-  color: var(--primary); 
-  font-size: 1.1rem; 
-}
-
-.article-card-content p {
-  color: var(--muted); 
-  margin-top: 8px; 
-  font-size: 0.95rem; 
-}
-
-.article-card-content small {
-  display: block; 
-  margin-top: 8px; 
-  color: #777; 
-}
-
-.youtube-section {
-  flex: 1; 
-  background: white; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  padding: 15px; 
-  min-width: 280px; 
+.footer a:hover {
+  text-decoration: underline;
 }
 
 /* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
-  /* Hides body padding on mobile */
   body {
     padding: 0; 
     overflow-x: hidden; 
   }
   
-  /* Makes the hamburger icon visible on mobile. */
   .hamburger {
     display: flex; 
   }
 
   /* --- DRAWER MENU STYLES --- */
   .nav-links {
-    display: flex; /* Override global display: none to enable flex for column layout */
+    display: flex; 
     flex-direction: column; 
-    
-    /* Fixed position for full-screen overlay */
     position: fixed; 
     top: 0; 
     right: 0; 
     height: 100%; 
     width: 280px; 
-    max-width: 80%; 
-    
     background-color: var(--primary); 
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
     padding: 60px 20px 20px; 
-    
-    /* START HIDDEN: Slide 100% of its width to the right */
     transform: translateX(100%); 
     transition: transform 0.3s ease-in-out; 
     z-index: 105; 
@@ -340,7 +196,6 @@ body {
     overflow-y: auto; 
   }
 
-  /* State when 'active' class is added (menu opened) */
   .nav-links.active {
     transform: translateX(0); /* Slides into view */
   }
@@ -350,11 +205,6 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .nav-links li:last-child {
-    border-bottom: none;
-  }
-
-  /* Styling for the main link text inside the drawer */
   .nav-links a {
     color: #fff; 
     text-decoration: none;
@@ -365,7 +215,6 @@ body {
     text-align: left; 
   }
 
-  /* Mobile Dropdown Styling for the Drawer */
   .dropdown {
     width: 100%; 
     padding: 0; 
@@ -375,18 +224,9 @@ body {
     position: static; 
     width: 100%; 
     background: rgba(0, 0, 0, 0.1); 
-    box-shadow: none; 
-    border-radius: 0; 
     display: none; 
-    padding: 5px 0 5px 15px; 
-    
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
   }
-    
-  /* Show the submenu when the parent <li> has the 'active' class from JS. */
+  
   .dropdown.active .dropdown-menu {
     display: block; 
   }
@@ -396,14 +236,13 @@ body {
     text-align: left; 
     padding: 5px 0; 
   }
-    
-  /* Hover effect for submenu links in mobile menu. */
+  
   .dropdown-menu li a:hover {
     background: transparent; 
     color: #ffcc00; 
   }
 
-  /* --- General Content Alignment --- */
+  /* --- Content Styles --- */
   .announcement {
     flex-direction: column; 
     align-items: flex-start; 
@@ -436,4 +275,3 @@ body {
     z-index: 102; 
   }
 }
-
