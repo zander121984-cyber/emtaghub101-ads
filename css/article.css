@@ -7,12 +7,12 @@
 
 /* Define CSS variables for easy color management throughout the stylesheet. */
 :root {
-  --primary: #004080; /* Primary Blue */
-  --dark: #0f1724;    /* Dark Text */
-  --muted: #6b7280;   /* Muted Text */
-  --light: #f8f9fa;   /* Light Background */
-  --article-bg: #ffffff; /* White background for the article card */
-  --accent: #ffcc00; /* Hover/Accent yellow */
+  --primary: #004080;
+  --dark: #0f1724;
+  --muted: #6b7280;
+  --light: #f8f9fa;
+  --article-bg: #ffffff; /* Added for article background */
+  --accent: #ffcc00; /* Added for article accents */
 }
 
 /* Base styles for the document body */
@@ -23,10 +23,10 @@ body {
   line-height: 1.5;
   padding: 0 20px;
   transition: padding 0.3s ease;
-  /* Flexbox to keep footer at the bottom of the viewport if content is short */
+  /* Ensures footer stays at the bottom on short pages */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; 
 }
 
 /* Class added by JS to prevent background scrolling on mobile when menu is open */
@@ -38,14 +38,14 @@ body.menu-open {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertical centering */
+  align-items: center;
   background-color: var(--primary);
   padding: 15px 20px;
   color: white;
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 53px; /* Fixed height */
+  height: 53px;
 }
 
 .logo {
@@ -57,9 +57,11 @@ body.menu-open {
   position: relative;
 }
 
+/* --- DEFAULT STATE: HIDDEN --- */
+/* Mobile drawer must be hidden by default on ALL screen sizes unless explicitly shown. */
 .nav-links {
   list-style: none;
-  display: none; /* Hidden by default (mobile-first) */
+  display: none; 
   gap: 20px;
 }
 
@@ -70,13 +72,14 @@ body.menu-open {
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: #ffcc00;
 }
 
 /* === Desktop Navigation Visibility (Only for screens > 768px) === */
 @media (min-width: 769px) {
     .nav-links {
-        display: flex; /* Show desktop links */
+        display: flex; /* Show desktop links only on large screens */
+        /* Reset mobile properties */
         position: static;
         height: auto;
         width: auto;
@@ -84,9 +87,6 @@ body.menu-open {
         box-shadow: none;
         padding: 0;
     }
-    .hamburger {
-        display: none; /* Hide hamburger on desktop */
-    }
 }
 
 /* === Desktop Dropdown Navigation === */
@@ -137,7 +137,7 @@ body.menu-open {
   color: #fff;
 }
 
-/* Hamburger Icon */
+/* Hamburger Icon (Hidden on desktop, requires transition) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -155,19 +155,80 @@ body.menu-open {
   transition: all 0.3s ease-in-out;
 }
 
-/* ========================= ARTICLE CONTENT (NEW DESIGN) ========================= */
+/* ========================= ANNOUNCEMENT/CONTENT/SEARCH (Removed/Combined) ========================= */
+
+/* Since you are using this specifically for articles, the general homepage content selectors 
+   like .announcement, .articles, .youtube-section, etc., are usually not needed. 
+   I am removing the styles for them as they conflict with the single-article layout.
+   Keeping only the search box, in case you still need it on the article page, but 
+   it would require a matching HTML structure outside of the main article content. 
+*/
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto; /* Center the search box if it's used */
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3);
+}
+
+#searchResults {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.search-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background: #e9f3ff;
+}
+
+.no-result {
+  padding: 8px 12px;
+  color: var(--muted);
+}
+
+
+/* ========================= SINGLE ARTICLE LAYOUT (article-container) ========================= */
 
 .article-container {
     background: var(--article-bg);
-    max-width: 850px;
+    max-width: 850px; /* Optimal width for reading */
     margin: 30px auto;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid var(--primary);
-    flex-grow: 1;
+    border-top: 5px solid var(--primary); /* Accent border */
+    flex-grow: 1; /* Allows article to fill space between header and footer */
 }
 
+/* Article Header/Title Styles */
 .article-container h1 {
     font-size: 2.2rem;
     color: var(--dark);
@@ -175,6 +236,7 @@ body.menu-open {
     margin-bottom: 10px;
 }
 
+/* Article Metadata (Author/Date) */
 .article-meta {
     color: var(--muted);
     font-size: 0.95rem;
@@ -183,6 +245,7 @@ body.menu-open {
     border-bottom: 1px solid #eee;
 }
 
+/* Article Images */
 .article-container img {
     width: 100%;
     max-height: 400px;
@@ -192,6 +255,7 @@ body.menu-open {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Headings within the Article */
 .article-container h3 {
     color: var(--primary);
     font-size: 1.5rem;
@@ -201,20 +265,23 @@ body.menu-open {
     padding-left: 10px;
 }
 
+/* Paragraphs */
 .article-container p {
     margin-bottom: 20px;
     text-align: justify;
     font-size: 1.05rem;
 }
 
+/* Lists */
 .article-container ul, .article-container ol {
-    margin: 15px 0 25px 20px;
+    margin: 15px 0 25px 40px; /* Increased left margin for lists */
 }
 
 .article-container li {
     margin-bottom: 8px;
 }
 
+/* Blockquotes/Citations */
 .article-container blockquote {
     border-left: 5px solid var(--primary);
     background: var(--light);
@@ -225,39 +292,43 @@ body.menu-open {
     border-radius: 4px;
 }
 
-.article-container pre {
-    background: var(--dark);
-    color: var(--light);
-    padding: 15px;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin: 20px 0;
-    font-family: monospace;
-}
-
 /* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
+  /* Hides body padding on mobile */
   body {
     padding: 0;
     overflow-x: hidden;
   }
   
+  /* Makes the hamburger icon visible and position fixed for alignment with the drawer */
   .hamburger {
     display: flex;
-    position: fixed;
+    position: fixed; /* Pin to the viewport */
     top: 15px;
     right: 20px;
-    z-index: 110;
+    z-index: 110; /* Ensures it's above the nav-links */
   }
 
   /* --- HAMBURGER TO CLOSE (X) TRANSFORMATION --- */
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* Hide the middle span when active */
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Rotate and position the top span */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  /* Rotate and position the bottom span */
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
   /* --- DRAWER MENU STYLES --- */
   .nav-links {
-    display: flex;
+    display: flex; 
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -267,7 +338,7 @@ body.menu-open {
     max-width: 80%;
     background-color: var(--primary);
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
-    padding: 70px 20px 20px;
+    padding: 70px 20px 20px; 
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 105;
@@ -275,15 +346,21 @@ body.menu-open {
     overflow-y: auto;
   }
 
-  .nav-links.active { transform: translateX(0); }
+  /* State when 'active' class is added (menu opened) */
+  .nav-links.active {
+    transform: translateX(0); /* Slides into view */
+  }
 
   .nav-links li {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .nav-links li:last-child { border-bottom: none; }
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
 
+  /* Styling for the main link text inside the drawer */
   .nav-links a {
     color: #fff;
     text-decoration: none;
@@ -294,7 +371,11 @@ body.menu-open {
     text-align: left;
   }
 
-  .dropdown { width: 100%; padding: 0; }
+  /* Mobile Dropdown Styling for the Drawer */
+  .dropdown {
+    width: 100%;
+    padding: 0;
+  }
   
   .dropdown-menu {
     position: static;
@@ -310,20 +391,33 @@ body.menu-open {
     pointer-events: auto;
   }
     
-  .dropdown.active .dropdown-menu { display: block; }
+  /* Show the submenu when the parent <li> has the 'active' class from JS. */
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
 
-  .dropdown-menu li a { color: white; text-align: left; padding: 5px 0; }
+  .dropdown-menu li a {
+    color: white;
+    text-align: left;
+    padding: 5px 0;
+  }
     
-  .dropdown-menu li a:hover { background: transparent; color: var(--accent); }
+  /* Hover effect for submenu links in mobile menu. */
+  .dropdown-menu li a:hover {
+    background: transparent;
+    color: #ffcc00;
+  }
 
-  .article-container {
-      margin: 15px 10px;
-      padding: 20px;
-   }
+  /* --- Article Alignment on Mobile --- */
+  .article-container {
+    margin: 15px 10px;
+    padding: 20px;
+  }
 }
 
 /* ========================= FOOTER ========================= */
 .footer {
+  /* Ensures footer sticks to the bottom */
   margin-top: auto; 
   background-color: #f1f1f1;
   padding: 20px;
@@ -336,6 +430,7 @@ body.menu-open {
   left: 0;
 }
 
+/* Footer Text Styles */
 .footer p {
   margin: 10px 0;
 }
