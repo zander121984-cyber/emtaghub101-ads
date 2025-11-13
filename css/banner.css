@@ -43,7 +43,7 @@
 @media (max-width: 768px) {
     .banner-area {
         /* ORIGINAL MOBILE SETTINGS KEPT */
-        padding: 9px 15px 19px 16px; 
+        padding: 19px 15px 19px 16px; 
         text-align: center; /* Keep text centered on mobile */
     }
     .banner-area h1 {
@@ -61,6 +61,7 @@
         margin-right: 0;
     }
 }
+
 
 
 
