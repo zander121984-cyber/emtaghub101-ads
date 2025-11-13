@@ -3,9 +3,10 @@
     background-color: #1A2338; /* Deep Navy Blue from Logo */
     color: white;
     
-    /* Desktop padding: Pushes content away from the left (100px) and top (20px) */
+    /* Desktop padding: Pushes content away from the left (120px) and top (20px) */
     /* Format: [Top] [Right] [Bottom] [Left] */
-    padding: 20px 20px 15px 100px; 
+    /* 🛠️ ADJUSTMENT: Increased LEFT padding from 100px to 120px */
+    padding: 20px 20px 15px 120px; 
     
     /* Align all banner text content to the left on desktop */
     text-align: left; 
@@ -20,7 +21,7 @@
     margin-bottom: 3px;
     margin-top: 5px; 
     
-    /* ⭐ DESKTOP FIX: Add a generous right margin to push text away from navigation */
+    /* DESKTOP FIX: Keeps text away from navigation */
     margin-right: 250px; 
     /* Set max-width to ensure text wrapping is clean */
     max-width: 60%; 
@@ -31,7 +32,7 @@
     opacity: 0.9;
     margin-top: 0;
     
-    /* ⭐ DESKTOP FIX: Add a generous right margin to push text away from navigation */
+    /* DESKTOP FIX: Keeps text away from navigation */
     margin-right: 250px;
     max-width: 60%;
 }
@@ -49,14 +50,14 @@
         /* ORIGINAL MOBILE SETTINGS KEPT */
         font-size: .8em; 
         max-width: 100%; /* Revert width constraint */
-        /* ⭐ MOBILE FIX: Override desktop margin to ensure centering works */
+        /* MOBILE FIX: Override desktop margin to ensure centering works */
         margin-right: 0; 
     }
     .banner-area p {
         /* ORIGINAL MOBILE SETTINGS KEPT */
         font-size: 0.6em;
         max-width: 100%; /* Revert width constraint */
-        /* ⭐ MOBILE FIX: Override desktop margin to ensure centering works */
+        /* MOBILE FIX: Override desktop margin to ensure centering works */
         margin-right: 0;
     }
 }
