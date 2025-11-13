@@ -186,7 +186,19 @@ body {
   color: ##39FF14; 
   text-decoration: underline; 
 }
-
+.neon-text {
+  /* 1. Base Color */
+  color: #fff; 
+  text-shadow:
+    /* Inner/Sharpest Glow */
+    0 0 7px #fff,
+    /* Medium Glow */
+    0 0 10px #39FF14, 
+    0 0 21px #39FF14,
+    /* Outer/Wider Glow */
+    0 0 42px #39FF14, 
+    0 0 82px #39FF14;
+}
 .search-box {
   position: relative; 
   width: 100%; 
@@ -436,5 +448,6 @@ body {
     z-index: 102; 
   }
 }
+
 
 
