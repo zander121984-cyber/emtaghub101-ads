@@ -112,7 +112,7 @@ body {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  z-index: 101; /* 👈 FIX: Ensures the icon is clickable above the header */
+  z-index: 500; /* 👈 FIX: Ensures the icon is clickable above the header */
 }
 
 .hamburger span {
@@ -370,3 +370,4 @@ body {
     color: var(--primary);
   }
 }
+
