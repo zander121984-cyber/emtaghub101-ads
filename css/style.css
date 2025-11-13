@@ -307,7 +307,7 @@ body {
     position: absolute; 
     
     /* FIX 2: Zero vertical gap to the header */
-    top: 53px; 
+    top: 40px; 
     
     /* FIX 3: Revert to right alignment and use 100% width for stability */
     left: auto; /* Ensure 'left' property is removed or set to 'auto' */
@@ -407,3 +407,4 @@ body {
     color: var(--primary); 
   }
 }
+
