@@ -1,155 +1,240 @@
-/* ========================= RESET ========================= */
-* {
+/* =============================== 
+   Global Styles
+=============================== */
+
+/* Body and basic layout */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --primary: #004080;
-  --dark: #0f1724;
-  --muted: #6b7280;
-  --light: #f8f9fa;
+.container {
+  width: 90%;
+  margin: 0 auto;
 }
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background-color: var(--light);
-  color: var(--dark);
-  line-height: 1.5;
-  padding: 0 20px;
-}
-
-/* ========================= HEADER ========================= */
-header {
-  background-color: #333; /* Dark background */
-  padding: 10px 20px; /* Padding around header */
-}
-
-header .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  margin-right: auto; /* Align logo to the left */
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px; /* Space between main nav items */
-  list-style: none;
+h1, h2, h3 {
+  font-weight: normal;
   margin: 0;
+}
+
+ul {
+  list-style-type: none;
   padding: 0;
 }
 
-.nav-links li {
-  position: relative; /* Position dropdowns relative to li */
-}
-
-.nav-links a {
-  color: white;
-  font-size: 16px;
+a {
   text-decoration: none;
-  padding: 8px 12px;
+  color: inherit;
+}
+
+/* =============================== 
+   Header Navigation (Main + Submenu)
+=============================== */
+
+header {
+  background-color: #333;
+  padding: 15px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+nav .nav-links li {
+  position: relative;
+}
+
+nav .nav-links a {
+  color: #fff;
+  padding: 10px 15px;
   display: block;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  background-color: #555; /* Hover effect */
-  border-radius: 4px;
-}
-
-.nav-links li:hover > a {
-  background-color: #444; /* Hover effect on list items */
-}
-
-/* =============================== */
-/* Dropdown Styles (Submenu) */
-/* =============================== */
-.dropdown-menu {
-  display: none; /* Hide submenus by default */
-  position: absolute;
-  top: 100%; /* Position submenu below the parent item */
-  left: 0;
-  background-color: #444; /* Dark background for submenus */
-  padding: 10px;
-  min-width: 200px; /* Optional: Adjust submenu width */
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-menu li {
-  padding: 8px 12px;
-}
-
-.dropdown-menu li a {
-  color: white;
-  font-size: 14px;
-  padding: 6px 0;
-}
-
-.dropdown-menu li a:hover {
+nav .nav-links a:hover {
   background-color: #555;
+  border-radius: 4px;
 }
 
-.dropdown.active .dropdown-menu {
-  display: block; /* Show submenu when active */
+/* Dropdown submenu */
+nav .nav-links .dropdown {
+  position: relative;
 }
 
-/* =============================== */
-/* Mobile Navigation Styles */
-/* =============================== */
+nav .nav-links .dropdown .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav .nav-links .dropdown.active .submenu {
+  display: block;
+}
+
+nav .nav-links .submenu li {
+  padding: 10px;
+}
+
+nav .nav-links .submenu li a {
+  padding: 8px 15px;
+}
+
+nav .nav-links .submenu li a:hover {
+  background-color: #444;
+}
+
+/* =============================== 
+   Mobile Navigation
+=============================== */
+
 .hamburger {
   display: none;
   cursor: pointer;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.hamburger span {
-  background-color: white;
-  height: 4px;
-  width: 30px;
-  border-radius: 2px;
+  color: white;
+  font-size: 30px;
 }
 
 .nav-links.active {
-  display: flex; /* Show nav links when mobile menu is active */
-  flex-direction: column;
-  gap: 15px; /* Space out the links */
+  display: block !important;
 }
 
 @media (max-width: 768px) {
-  /* Hide default nav links on mobile */
   .nav-links {
     display: none;
     width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
   }
 
-  /* Show hamburger on mobile */
-  .hamburger {
-    display: flex;
-  }
-
-  /* Mobile menu items */
   .nav-links li {
-    width: 100%;
+    margin: 10px 0;
   }
 
-  /* Dropdown submenu for mobile */
-  .dropdown-menu {
-    position: static; /* Stack submenu below the parent on mobile */
-    width: 100%; /* Make submenu full width */
-  }
-
-  .dropdown.active > .dropdown-menu {
+  .hamburger {
     display: block;
   }
+
+  .nav-links li a {
+    padding: 12px;
+    font-size: 18px;
+  }
 }
+
+/* =============================== 
+   Article Section
+=============================== */
+
+#articlesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.article-card {
+  width: 300px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.article-card:hover {
+  transform: scale(1.05);
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-card-content {
+  padding: 15px;
+}
+
+.article-card h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.article-card p {
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.article-card small {
+  font-size: 12px;
+  color: #555;
+}
+
+/* =============================== 
+   Search Bar Styles
+=============================== */
+
+#searchResults {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.search-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background-color: #f4f4f4;
+}
+
+.no-result {
+  padding: 10px;
+  text-align: center;
+  color: #999;
+}
+
+/* =============================== 
+   Additional Layout Styles
+=============================== */
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
