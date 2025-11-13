@@ -315,14 +315,14 @@ body {
     background: var(--primary); 
     position: absolute; 
     
-    /* FIX 2: Zero vertical gap to the header (retaining 53px, which is likely the header height). */
+    /* VERTICAL POSITION: Keeps it right below the header. */
     top: 53px; 
     
-    /* FIX 3: Set 10px inset from the right edge. */
-    right: 10px; 
+    /* HORIZONTAL POSITION: Anchors the menu to the right edge. */
+    right: 0; /* <-- FINAL ANCHOR: Anchors the menu exactly to the right edge. */
     
-    /* FIX 4: Set width to leave a 10px gap on both sides (100% - 20px total horizontal spacing). */
-    width: calc(100% - 20px); 
+    /* WIDTH: Stretches the menu to the full width of the viewport for edge-to-edge spanning. */
+    width: 100vw; /* <-- FINAL WIDTH: Ensures the menu covers the entire width. */
     
     border-radius: 0 0 10px 10px; 
     transition: transform 0.3s ease-in-out; 
