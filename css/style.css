@@ -1,417 +1,409 @@
 /* ========================= RESET ========================= */
 * {
-  margin: 0; /* Removes default outer spacing (margin) from all elements, ensuring a clean start. */
-  padding: 0; /* Removes default inner spacing (padding) from all elements. */
-  box-sizing: border-box; /* Sets the box model so padding and border are included within the element's width and height. */
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
 }
 
 /* Define CSS variables for easy color management throughout the stylesheet. */
 :root {
-  --primary: #004080; /* Defines the main brand color (dark blue). */
-  --dark: #0f1724; /* Defines a variable for dark text/elements. */
-  --muted: #6b7280; /* Defines a variable for muted or grayed text color. */
-  --light: #f8f9fa; /* Defines a variable for the light background color (off-white). */
+  --primary: #004080; 
+  --dark: #0f1724; 
+  --muted: #6b7280; 
+  --light: #f8f9fa; 
 }
 
 /* Base styles for the document body */
 body {
-  font-family: "Segoe UI", Arial, sans-serif; /* Sets a clear, sans-serif font stack for readability. */
-  background-color: var(--light); /* Applies the light background variable to the body. */
-  color: var(--dark); /* Applies the dark text color variable as the default text color. */
-  line-height: 1.5; /* Sets standard line height for improved text readability. */
-  padding: 0 20px; /* Adds 20px of padding to the left and right of the body content for desktop view. */
+  font-family: "Segoe UI", Arial, sans-serif; 
+  background-color: var(--light); 
+  color: var(--dark); 
+  line-height: 1.5; 
+  padding: 0 20px; /* Desktop padding */
 }
 
 /* ========================= HEADER ========================= */
-/* Styling for the main header element that contains the logo and navigation. */
 .header {
-  display: flex; /* Enables flexbox layout for aligning children (logo and navbar). */
-  justify-content: space-between; /* Distributes space between the logo (left) and navbar (right). */
-  align-items: center; /* Vertically centers items (logo and navbar) in the header. */
-  background-color: var(--primary); /* Sets the header background to the primary dark blue color. */
-  padding: 15px 20px; /* Adds vertical and horizontal padding inside the header. */
-  color: white; /* Sets the text color inside the header to white. */
-  position: sticky; /* Makes the header stay fixed at the top when the user scrolls. */
-  top: 0; /* Pins the header to the very top edge of the viewport. */
-  z-index: 100; /* Sets a high stacking order to keep the header above all other page content. */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: var(--primary); 
+  padding: 15px 20px; 
+  color: white; 
+  position: sticky; 
+  top: 0; 
+  z-index: 100; 
 }
 
 .logo {
-  font-size: 1.4rem; /* Sets a slightly larger font size for the logo. */
-  font-weight: bold; /* Makes the logo text bold. */
+  font-size: 1.4rem; 
+  font-weight: bold; 
 }
 
 .navbar {
-  position: relative; /* Establishes a positioning context for any absolutely positioned children (like the mobile menu). */
+  position: relative; 
 }
 
 .nav-links {
-  display: flex; /* Displays navigation items horizontally using flexbox. */
-  list-style: none; /* Removes default bullet points from the list items. */
-  gap: 20px; /* Adds consistent horizontal spacing between each navigation link. */
+  display: flex; 
+  list-style: none; 
+  gap: 20px; 
 }
 
 .nav-links a {
-  color: white; /* Sets link text color to white. */
-  text-decoration: none; /* Removes the default underline from links. */
-  font-weight: 500; /* Sets a medium font weight. */
+  color: white; 
+  text-decoration: none; 
+  font-weight: 500; 
 }
 
 .nav-links a:hover {
-  color: #ffcc00; /* Changes link color to yellow/gold on mouse hover. */
+  color: #ffcc00; 
 }
 
 /* === Stable Dropdown Navigation (Desktop) === */
-/* Styling for the list item that contains a dropdown (parent item). */
 .dropdown {
-  position: relative; /* Essential for positioning the dropdown menu absolutely relative to this item. */
+  position: relative; 
 }
 
 .dropdown > a {
-  position: relative; /* Establishes stacking context for proper layer ordering. */
-  z-index: 10; /* Ensures the main link is above the hidden submenu when transitioning. */
+  position: relative; 
+  z-index: 10; 
 }
 
-/* Styling for the submenu list (the dropdown panel). */
 .dropdown-menu {
-  visibility: hidden; /* Hides the submenu visually (for smooth transition). */
-  opacity: 0; /* Makes the submenu transparent (for fade-in effect). */
-  transform: translateY(10px); /* Moves the submenu down slightly (for slide-in effect). */
-  position: absolute; /* Takes the submenu out of the normal document flow. */
-  top: 100%; /* Positions the submenu to start exactly below the parent link. */
-  left: 0; /* Aligns the submenu with the left edge of the parent item. */
-  background: white; /* Sets a white background for the menu panel. */
-  color: var(--dark); /* Sets the text color inside the submenu. */
-  border-radius: 6px; /* Rounds the corners of the menu panel. */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Adds a subtle shadow. */
-  list-style: none; /* Removes bullet points. */
-  min-width: 180px; /* Ensures the menu has a minimum width. */
-  transition: all 0.25s ease; /* Smooth transition for appearance properties. */
-  pointer-events: none; /* Prevents interaction/clicks on the hidden element (crucial for desktop). */
-  z-index: 99; /* Stacking order for the submenu (below the main header z-index of 100). */
+  visibility: hidden; 
+  opacity: 0; 
+  transform: translateY(10px); 
+  position: absolute; 
+  top: 100%; 
+  left: 0; 
+  background: white; 
+  color: var(--dark); 
+  border-radius: 6px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  list-style: none; 
+  min-width: 180px; 
+  transition: all 0.25s ease; 
+  pointer-events: none; 
+  z-index: 99; 
 }
 
-/* State change: When hovering over the parent dropdown item. */
 .dropdown:hover .dropdown-menu {
-  visibility: visible; /* Makes the submenu visually appear. */
-  opacity: 1; /* Makes the submenu fully opaque (fades in). */
-  transform: translateY(0); /* Slides the submenu up to its final position. */
-  pointer-events: auto; /* Allows links inside the submenu to be clicked. */
+  visibility: visible; 
+  opacity: 1; 
+  transform: translateY(0); 
+  pointer-events: auto; 
 }
 
-/* Styling for individual link items within the dropdown menu. */
 .dropdown-menu li a {
-  display: block; /* Makes the entire list item block clickable. */
-  padding: 10px 15px; /* Adds padding around the link text. */
-  color: var(--dark); /* Sets link text color to dark. */
-  text-decoration: none; /* Removes underline. */
-  transition: background 0.2s; /* Smooth transition for the hover background color. */
+  display: block; 
+  padding: 10px 15px; 
+  color: var(--dark); 
+  text-decoration: none; 
+  transition: background 0.2s; 
 }
 
-/* Hover effect for submenu links. */
 .dropdown-menu li a:hover {
-  background: var(--primary); /* Changes background to primary dark blue on hover. */
-  color: #fff; /* Changes text color to white on hover. */
+  background: var(--primary); 
+  color: #fff; 
 }
 
 /* Hamburger Icon */
 .hamburger {
-  display: none; /* Hides the hamburger icon by default (desktop view). */
-  flex-direction: column; /* Stacks the spans (lines) vertically. */
-  gap: 5px; /* Adds spacing between the three lines. */
-  cursor: pointer; /* Changes cursor to a pointer on hover. */
-  z-index: 103; /* FIX: Set to the highest z-index to guarantee it's clickable above all else. */
+  display: none; 
+  flex-direction: column; 
+  gap: 5px; 
+  cursor: pointer; 
+  z-index: 103; 
 }
 
-/* Styling for the individual lines (spans) of the hamburger icon. */
+/* Styling for the individual lines (spans) of the hamburger icon */
 .hamburger span {
-  width: 25px; /* Width of each line. */
-  height: 3px; /* Height (thickness) of each line. */
-  background: white; /* Color of the lines. */
-  border-radius: 3px; /* Slightly rounded ends. */
+  width: 25px; 
+  height: 3px; 
+  background: white; 
+  border-radius: 3px; 
 }
 
 /* ========================= ANNOUNCEMENT ========================= */
-/* Styling for the announcement banner section. */
 .announcement {
-  display: flex; /* Enables flexbox layout. */
-  justify-content: space-between; /* Spaces the text and the search box apart. */
-  align-items: center; /* Vertically aligns the content. */
-  background: #e9f3ff; /* Sets a light blue background. */
-  border-left: 5px solid var(--primary); /* Adds a thick blue border on the left. */
-  border-radius: 8px; /* Rounds the corners. */
-  padding: 10px 15px; /* Inner padding. */
-  margin: 20px 0; /* Outer top/bottom margin. */
-  flex-wrap: wrap; /* Allows content to wrap to the next line on small screens. */
-  gap: 10px; /* Spacing between wrapped items. */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: #e9f3ff; 
+  border-left: 5px solid var(--primary); 
+  border-radius: 8px; 
+  padding: 10px 15px; 
+  margin: 20px 0; 
+  flex-wrap: wrap; 
+  gap: 10px; 
 }
 
 .announcement-text {
-  flex: 1; /* Allows the text to grow and take up available space. */
-  min-width: 200px; /* Minimum width before wrapping. */
+  flex: 1; 
+  min-width: 200px; 
 }
 
 .announcement-text h2 {
-  font-size: 1rem; /* Standard font size. */
-  font-weight: 600; /* Semi-bold font. */
-  color: var(--dark); /* Dark text color. */
-  display: flex; /* Enables flex for aligning icon and text horizontally. */
-  align-items: center; /* Vertically centers the text components. */
-  gap: 6px; /* Spacing between icon/emoji and text. */
-  margin: 0; /* Removes default margin. */
+  font-size: 1rem; 
+  font-weight: 600; 
+  color: var(--dark); 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  margin: 0; 
 }
 
 .latest-blink {
-  color: var(--primary); /* Primary blue color. */
-  cursor: pointer; /* Pointer cursor on hover. */
-  font-weight: bold; /* Makes text bold. */
-  animation: blinkText 1.2s infinite; /* Applies the CSS keyframe animation. */
+  color: var(--primary); 
+  cursor: pointer; 
+  font-weight: bold; 
+  animation: blinkText 1.2s infinite; 
 }
 
 @keyframes blinkText {
-  0%, 50%, 100% { opacity: 1; } /* Fully opaque at start, middle, and end. */
-  25%, 75% { opacity: 0.3; } /* Partially transparent in between. */
+  0%, 50%, 100% { opacity: 1; } 
+  25%, 75% { opacity: 0.3; } 
 }
 
 .latest-blink:hover {
-  color: #ff6600; /* Changes color to orange on hover. */
-  text-decoration: underline; /* Adds an underline. */
+  color: #ff6600; 
+  text-decoration: underline; 
 }
 
 /* ========================= SEARCH ========================= */
-/* Container for the search input and results dropdown. */
 .search-box {
-  position: relative; /* Establishes a reference point for the absolute-positioned results dropdown. */
-  width: 100%; /* Default width. */
-  max-width: 300px; /* Maximum width limit. */
+  position: relative; 
+  width: 100%; 
+  max-width: 300px; 
 }
 
 #searchInput {
-  width: 100%; /* Takes full width of the container. */
-  padding: 8px 12px; /* Inner padding. */
-  border: 1px solid #ccc; /* Light gray border. */
-  border-radius: 6px; /* Rounded corners. */
-  outline: none; /* Removes default focus outline. */
-  transition: all 0.3s ease; /* Smooth transition for focus effect. */
+  width: 100%; 
+  padding: 8px 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  outline: none; 
+  transition: all 0.3s ease; 
 }
 
 #searchInput:focus {
-  border-color: var(--primary); /* Changes border color to primary blue on focus. */
-  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3); /* Adds a subtle blue shadow. */
+  border-color: var(--primary); 
+  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3); 
 }
 
-/* Search Results Dropdown container. */
+/* Search Results Dropdown container */
 #searchResults {
-  display: none; /* Hides the results dropdown by default. */
-  position: absolute; /* Positions the results outside the normal flow. */
-  top: 105%; /* Positions slightly below the input field. */
-  left: 0; /* Aligns with the left edge of the search box. */
-  width: 100%; /* Takes full width of the search box. */
-  background: white; /* White background. */
-  border: 1px solid #ddd; /* Light gray border. */
-  border-radius: 6px; /* Rounded corners. */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow. */
-  max-height: 200px; /* Limits the height of the dropdown. */
-  overflow-y: auto; /* Allows vertical scrolling if results exceed max-height. */
-  z-index: 20; /* Stacking order. */
+  display: none; 
+  position: absolute; 
+  top: 105%; 
+  left: 0; 
+  width: 100%; 
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 6px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  max-height: 200px; 
+  overflow-y: auto; 
+  z-index: 20; 
 }
 
 .search-item {
-  padding: 8px 12px; /* Inner padding. */
-  cursor: pointer; /* Changes cursor to pointer. */
+  padding: 8px 12px; 
+  cursor: pointer; 
 }
 
 .search-item:hover {
-  background: #e9f3ff; /* Light blue background on hover. */
+  background: #e9f3ff; 
 }
 
 .no-result {
-  padding: 8px 12px; /* Inner padding. */
-  color: var(--muted); /* Muted gray text color. */
+  padding: 8px 12px; 
+  color: var(--muted); 
 }
 
 /* ========================= CONTENT ========================= */
-/* Styling for the main content wrapper (articles + YouTube sidebar). */
 .content {
-  display: flex; /* Enables flexbox layout for side-by-side columns. */
-  gap: 20px; /* Spacing between the articles column and the YouTube sidebar. */
-  align-items: flex-start; /* Aligns content to the top. */
-  flex-wrap: wrap; /* Allows columns to stack on mobile. */
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-start; 
+  flex-wrap: wrap; 
 }
 
 .articles {
-  flex: 3; /* Allows the articles container to take 3 times the space of the sidebar. */
-  display: grid; /* Enables CSS Grid layout. */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Creates a responsive grid of cards. */
-  gap: 20px; /* Spacing between grid items (article cards). */
+  flex: 3; 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px; 
 }
 
 .article-card {
-  background: white; /* White background for the card. */
-  border-radius: 10px; /* Rounded corners. */
-  overflow: hidden; /* Clips content that overflows the border radius. */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow. */
-  cursor: pointer; /* Pointer cursor. */
-  text-decoration: none; /* Removes underline. */
-  color: inherit; /* Inherits text color from parent. */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition. */
+  background: white; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  cursor: pointer; 
+  text-decoration: none; 
+  color: inherit; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
 
 .article-card:hover {
-  transform: translateY(-5px); /* Lifts the card slightly. */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Enhances the shadow. */
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
 }
 
 .article-card img {
-  width: 100%; /* Image takes full width of the card. */
-  height: 160px; /* Fixed height. */
-  object-fit: cover; /* Ensures the image covers the area without distortion. */
+  width: 100%; 
+  height: 160px; 
+  object-fit: cover; 
 }
 
 .article-card-content {
-  padding: 15px; /* Padding for the text content area of the card. */
+  padding: 15px; 
 }
 
 .article-card-content h3 {
-  color: var(--primary); /* Primary blue title color. */
-  font-size: 1.1rem; /* Slightly larger title font. */
+  color: var(--primary); 
+  font-size: 1.1rem; 
 }
 
 .article-card-content p {
-  color: var(--muted); /* Muted gray text color. */
-  margin-top: 8px; /* Top margin for spacing. */
-  font-size: 0.95rem; /* Slightly smaller text. */
+  color: var(--muted); 
+  margin-top: 8px; 
+  font-size: 0.95rem; 
 }
 
 .article-card-content small {
-  display: block; /* Ensures the date takes its own line. */
-  margin-top: 8px; /* Top margin for spacing. */
-  color: #777; /* Dark gray color. */
+  display: block; 
+  margin-top: 8px; 
+  color: #777; 
 }
 
 /* ========================= YOUTUBE SECTION ========================= */
 .youtube-section {
-  flex: 1; /* Allows the sidebar to take 1 unit of space (relative to 3 units for articles). */
-  background: white; /* White background. */
-  border-radius: 10px; /* Rounded corners. */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow. */
-  padding: 15px; /* Inner padding. */
-  min-width: 280px; /* Ensures the sidebar doesn't shrink too much. */
+  flex: 1; 
+  background: white; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 15px; 
+  min-width: 280px; 
 }
 
 /* ========================= RESPONSIVE ========================= */
 /* Media query for screens 768px wide or less (mobile/tablet view). */
 @media (max-width: 768px) {
-  /* FIX: Remove body padding for edge-to-edge layout, necessary for full-width header/menu. */
+  /* FIX 1: Prevent horizontal overflow/scrolling on mobile devices. */
   body {
-    padding: 0; /* Removes the 20px padding applied in the base body style. */
+    padding: 0; /* Removes padding applied in the base body style. */
+    overflow-x: hidden; /* CRITICAL: Prevents content like the nav menu from causing horizontal scroll. */
   }
 
   /* Hides the desktop navigation links by default on mobile. */
   .nav-links {
-    display: none; /* Hides the menu. */
-    flex-direction: column; /* Stacks links vertically. */
-    background: var(--primary); /* Uses primary color for the menu background. */
-    position: absolute; /* Positions the menu relative to the navbar container. */
+    display: none; 
+    flex-direction: column; 
+    background: var(--primary); 
+    position: absolute; 
     
-    /* FIX: Zero vertical gap to the header */
-    top: 53px; /* Sets the menu's top edge to be 53px below the parent (adjust as needed for zero gap). */
+    /* FIX 2: Zero vertical gap to the header */
+    top: 53px; 
     
-    /* CRITICAL FIX: Anchor the menu to the LEFT edge and ensure it spans 100% of the viewport width. */
-    left: 0; /* Anchors the menu to the left edge of the screen. */
-    width: 100vw; /* Ensures the menu spans the full width of the viewport, eliminating overlap/gaps. */
+    /* FIX 3: Revert to right alignment and use 100% width for stability */
+    left: auto; /* Ensure 'left' property is removed or set to 'auto' */
+    right: 0; /* Anchors the menu to the right edge. */
+    width: 100%; /* Spans the full width of the parent container (navbar). */
     
-    border-radius: 0 0 10px 10px; /* Rounds the bottom corners. */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for opening/closing. */
-    z-index: 90; /* Stacking order for the open menu (below the header). */
+    border-radius: 0 0 10px 10px; 
+    transition: transform 0.3s ease-in-out; 
+    z-index: 90; 
   }
 
   /* State: When the 'active' class is added by JavaScript (menu opened). */
   .nav-links.active {
-    display: flex; /* Makes the menu visible. */
+    display: flex; 
   }
 
   /* Makes the hamburger icon visible on mobile. */
   .hamburger {
-    display: flex; /* Shows the hamburger icon. */
+    display: flex; 
   }
 
   /* Adjusts announcement section layout for mobile. */
   .announcement {
-    flex-direction: column; /* Stacks text and search box vertically. */
-    align-items: flex-start; /* Aligns content to the left. */
-    padding-left: 15px; /* Re-adds horizontal padding lost from body reset. */
-    padding-right: 15px; /* Re-adds horizontal padding lost from body reset. */
-    margin-left: 10px; /* Adds spacing from the left edge of the screen. */
-    margin-right: 10px; /* Adds spacing from the right edge of the screen. */
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding-left: 15px; 
+    padding-right: 15px; 
+    margin-left: 10px; 
+    margin-right: 10px; 
   }
   
   /* Adjusts content padding. */
   .content {
-    flex-direction: column; /* Stacks articles and YouTube sidebar vertically. */
-    padding: 0 10px; /* Adds slight padding for content inside the body. */
+    flex-direction: column; 
+    padding: 0 10px; 
   }
 
   /* REORDERING FIXES: Set the order of the main content blocks on mobile. */
   .youtube-section {
-    width: 100%; /* Makes the section span the full width of the content area. */
-    order: 1; /* Sets the YouTube section to appear first after the elements outside the content wrapper. */
+    width: 100%; 
+    order: 1; /* Sets the YouTube section to appear first. */
   }
   
   .articles {
-    order: 2; /* Sets the articles section to appear second, after the YouTube section. */
+    order: 2; /* Sets the articles section to appear second. */
   }
   /* END REORDERING FIXES */
 
   /* Ensures search input takes full mobile width. */
   #searchInput {
-    width: 100%; /* Makes the search input span the full width of its container. */
+    width: 100%; 
   }
 
   /* Sets the navbar context. */
   .navbar {
-    position: relative; /* Maintains relative positioning. */
-    z-index: 102; /* FIX: Keeps the navbar container stacked high. */
+    position: relative; 
+    z-index: 102; 
   }
 
   /* === Mobile Dropdown Menu Styling (Submenu Clickability) === */
 
   .dropdown {
-    width: 100%; /* Makes the dropdown list item full width. */
+    width: 100%; 
   }
     
   /* CRITICAL FIXES FOR SUBMENU CLICKABILITY */
   .dropdown-menu {
-    position: static; /* FIX: Submenu flows naturally, allowing it to be clicked properly on mobile. */
-    width: 100%; /* Takes full width of the parent item. */
-    background: transparent; /* Blends with the parent menu background. */
-    box-shadow: none; /* Removes shadow. */
-    border-radius: 0; /* Removes border radius. */
+    position: static; 
+    width: 100%; 
+    background: transparent; 
+    box-shadow: none; 
+    border-radius: 0; 
         
-    display: none; /* Hides the submenu by default (controlled by JS toggle). */
+    display: none; 
 
-    /* The following properties maintain appearance but are overridden by display: none/block for function */
     visibility: visible;
     opacity: 1;
     transform: none;
     pointer-events: auto;
-    padding: 0 0 5px 15px; /* Adds left indentation. */
+    padding: 0 0 5px 15px; 
   }
     
   /* Show the submenu when the parent <li> has the 'active' class from JS. */
   .dropdown.active .dropdown-menu {
-    display: block; /* Makes the submenu visible for the user. */
+    display: block; 
   }
 
   /* Submenu links style adjustment for stacking. */
   .dropdown-menu li a {
-    color: white; /* White text color. */
-    padding: 5px 15px 5px 15px; /* Adjusted padding. */
+    color: white; 
+    padding: 5px 15px 5px 15px; 
   }
     
   /* Hover effect for submenu links in mobile menu. */
   .dropdown-menu li a:hover {
-    background: #ffcc00; /* Yellow background on hover. */
-    color: var(--primary); /* Primary blue text on hover. */
+    background: #ffcc00; 
+    color: var(--primary); 
   }
 }
