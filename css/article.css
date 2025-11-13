@@ -11,8 +11,8 @@
   --dark: #0f1724;
   --muted: #6b7280;
   --light: #f8f9fa;
-  --article-bg: #ffffff; /* Added for article background */
-  --accent: #ffcc00; /* Added for article accents */
+  --article-bg: #ffffff;
+  --accent: #ffcc00;
 }
 
 /* Base styles for the document body */
@@ -23,7 +23,7 @@ body {
   line-height: 1.5;
   padding: 0 20px;
   transition: padding 0.3s ease;
-  /* Ensures footer stays at the bottom on short pages */
+  /* Flexbox for sticky footer */
   display: flex;
   flex-direction: column;
   min-height: 100vh; 
@@ -57,8 +57,7 @@ body.menu-open {
   position: relative;
 }
 
-/* --- DEFAULT STATE: HIDDEN --- */
-/* Mobile drawer must be hidden by default on ALL screen sizes unless explicitly shown. */
+/* --- DEFAULT STATE: HIDDEN (Mobile First) --- */
 .nav-links {
   list-style: none;
   display: none; 
@@ -79,7 +78,6 @@ body.menu-open {
 @media (min-width: 769px) {
     .nav-links {
         display: flex; /* Show desktop links only on large screens */
-        /* Reset mobile properties */
         position: static;
         height: auto;
         width: auto;
@@ -87,6 +85,9 @@ body.menu-open {
         box-shadow: none;
         padding: 0;
     }
+    .hamburger {
+        display: none; /* Hide hamburger on desktop */
+    }
 }
 
 /* === Desktop Dropdown Navigation === */
@@ -155,20 +156,13 @@ body.menu-open {
   transition: all 0.3s ease-in-out;
 }
 
-/* ========================= ANNOUNCEMENT/CONTENT/SEARCH (Removed/Combined) ========================= */
-
-/* Since you are using this specifically for articles, the general homepage content selectors 
-   like .announcement, .articles, .youtube-section, etc., are usually not needed. 
-   I am removing the styles for them as they conflict with the single-article layout.
-   Keeping only the search box, in case you still need it on the article page, but 
-   it would require a matching HTML structure outside of the main article content. 
-*/
+/* ========================= CONTENT & SEARCH STYLES (Retained Minimal) ========================= */
 
 .search-box {
   position: relative;
   width: 100%;
   max-width: 300px;
-  margin: 20px auto; /* Center the search box if it's used */
+  margin: 20px auto;
 }
 
 #searchInput {
@@ -215,20 +209,19 @@ body.menu-open {
 }
 
 
-/* ========================= SINGLE ARTICLE LAYOUT (article-container) ========================= */
+/* ========================= SINGLE ARTICLE LAYOUT ========================= */
 
 .article-container {
     background: var(--article-bg);
-    max-width: 850px; /* Optimal width for reading */
+    max-width: 850px;
     margin: 30px auto;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid var(--primary); /* Accent border */
-    flex-grow: 1; /* Allows article to fill space between header and footer */
+    border-top: 5px solid var(--primary);
+    flex-grow: 1;
 }
 
-/* Article Header/Title Styles */
 .article-container h1 {
     font-size: 2.2rem;
     color: var(--dark);
@@ -236,7 +229,6 @@ body.menu-open {
     margin-bottom: 10px;
 }
 
-/* Article Metadata (Author/Date) */
 .article-meta {
     color: var(--muted);
     font-size: 0.95rem;
@@ -245,7 +237,6 @@ body.menu-open {
     border-bottom: 1px solid #eee;
 }
 
-/* Article Images */
 .article-container img {
     width: 100%;
     max-height: 400px;
@@ -255,7 +246,6 @@ body.menu-open {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings within the Article */
 .article-container h3 {
     color: var(--primary);
     font-size: 1.5rem;
@@ -265,23 +255,20 @@ body.menu-open {
     padding-left: 10px;
 }
 
-/* Paragraphs */
 .article-container p {
     margin-bottom: 20px;
     text-align: justify;
     font-size: 1.05rem;
 }
 
-/* Lists */
 .article-container ul, .article-container ol {
-    margin: 15px 0 25px 40px; /* Increased left margin for lists */
+    margin: 15px 0 25px 40px;
 }
 
 .article-container li {
     margin-bottom: 8px;
 }
 
-/* Blockquotes/Citations */
 .article-container blockquote {
     border-left: 5px solid var(--primary);
     background: var(--light);
@@ -294,37 +281,36 @@ body.menu-open {
 
 /* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
-  /* Hides body padding on mobile */
+  /* --- BODY & PAGE WRAPPER ADJUSTMENTS --- */
+  /* Critical: Must remove padding to allow content to span full width */
   body {
-    padding: 0;
+    padding: 0 !important; 
     overflow-x: hidden;
   }
   
-  /* Makes the hamburger icon visible and position fixed for alignment with the drawer */
+  /* Article container needs less side padding on mobile */
+  .article-container {
+    margin: 15px 0; /* Remove side margin */
+    padding: 20px; /* Use reasonable inner padding */
+    width: 100%; /* Ensure it spans the full viewport width */
+    max-width: 100%;
+  }
+
+  /* --- HEADER & HAMBURGER ADJUSTMENTS --- */
+
+  /* Makes the hamburger icon visible and fixed */
   .hamburger {
     display: flex;
-    position: fixed; /* Pin to the viewport */
+    position: fixed;
     top: 15px;
     right: 20px;
-    z-index: 110; /* Ensures it's above the nav-links */
+    z-index: 110;
   }
 
-  /* --- HAMBURGER TO CLOSE (X) TRANSFORMATION --- */
-
-  /* Hide the middle span when active */
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  /* Rotate and position the top span */
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  /* Rotate and position the bottom span */
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+  /* Hamburger to Close (X) Transformation */
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   /* --- DRAWER MENU STYLES --- */
   .nav-links {
@@ -334,8 +320,8 @@ body.menu-open {
     top: 0;
     right: 0;
     height: 100%;
-    width: 280px;
-    max-width: 80%;
+    width: 280px; 
+    max-width: 80%; /* Limits width on extremely narrow screens */
     background-color: var(--primary);
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
     padding: 70px 20px 20px; 
@@ -346,9 +332,8 @@ body.menu-open {
     overflow-y: auto;
   }
 
-  /* State when 'active' class is added (menu opened) */
   .nav-links.active {
-    transform: translateX(0); /* Slides into view */
+    transform: translateX(0);
   }
 
   .nav-links li {
@@ -360,7 +345,6 @@ body.menu-open {
     border-bottom: none;
   }
 
-  /* Styling for the main link text inside the drawer */
   .nav-links a {
     color: #fff;
     text-decoration: none;
@@ -372,10 +356,7 @@ body.menu-open {
   }
 
   /* Mobile Dropdown Styling for the Drawer */
-  .dropdown {
-    width: 100%;
-    padding: 0;
-  }
+  .dropdown { width: 100%; padding: 0; }
   
   .dropdown-menu {
     position: static;
@@ -391,33 +372,20 @@ body.menu-open {
     pointer-events: auto;
   }
     
-  /* Show the submenu when the parent <li> has the 'active' class from JS. */
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
+  .dropdown.active .dropdown-menu { display: block; }
 
-  .dropdown-menu li a {
-    color: white;
-    text-align: left;
-    padding: 5px 0;
-  }
+  .dropdown-menu li a { color: white; text-align: left; padding: 5px 0; }
     
-  /* Hover effect for submenu links in mobile menu. */
-  .dropdown-menu li a:hover {
-    background: transparent;
-    color: #ffcc00;
-  }
-
-  /* --- Article Alignment on Mobile --- */
-  .article-container {
-    margin: 15px 10px;
-    padding: 20px;
+  .dropdown-menu li a:hover { background: transparent; color: #ffcc00; }
+  
+  /* Reduced list indent for mobile */
+  .article-container ul, .article-container ol {
+      margin-left: 20px;
   }
 }
 
 /* ========================= FOOTER ========================= */
 .footer {
-  /* Ensures footer sticks to the bottom */
   margin-top: auto; 
   background-color: #f1f1f1;
   padding: 20px;
@@ -430,7 +398,6 @@ body.menu-open {
   left: 0;
 }
 
-/* Footer Text Styles */
 .footer p {
   margin: 10px 0;
 }
