@@ -178,7 +178,7 @@ if (searchInput && searchResults) {
 }
 
 // ===================================
-// 📲 MOBILE NAVIGATION DRAWER LOGIC 
+// 📲 MOBILE NAVIGATION DRAWER LOGIC 
 // ===================================
 // Define the mobile breakpoint (must match CSS)
 const MOBILE_BREAKPOINT = 768;
@@ -188,61 +188,78 @@ const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
 
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
+// 🔑 ADDED: Select the new close button
+const navCloseButton = document.getElementById("navCloseButton"); 
 // Select the anchor tag inside .dropdown for the mobile toggle
-const dropdownToggles = document.querySelectorAll(".dropdown > a"); 
+const dropdownToggles = document.querySelectorAll(".dropdown > a"); 
 const dropdowns = document.querySelectorAll(".dropdown"); // The parent li elements
 
 if (hamburger && navLinks) {
-    // 1. Mobile Menu Toggle (Hamburger Icon)
-    hamburger.addEventListener('click', (e) => {
-        // Stop propagation prevents the document listener from immediately closing it
-        e.stopPropagation(); 
-        if (isMobile()) {
-            navLinks.classList.toggle('active');
-        }
-    });
+    // Function to close the main menu and all open submenus
+    const closeMenu = () => {
+        navLinks.classList.remove('active');
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    };
 
-    // 2. Mobile Dropdown Submenu Toggle
-    dropdownToggles.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // 1. Mobile Menu Toggle (Hamburger Icon)
+    hamburger.addEventListener('click', (e) => {
+        // Stop propagation prevents the document listener from immediately closing it
+        e.stopPropagation(); 
+        if (isMobile()) {
+            navLinks.classList.toggle('active');
+        }
+    });
+
+    // 🔑 ADDED: Close Menu via the dedicated close button
+    if (navCloseButton) {
+        navCloseButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Stop propagation
             if (isMobile()) {
-                e.preventDefault(); // Stop link navigation
-                e.stopPropagation(); // Stop document listener
-
-                const parentLi = link.closest('.dropdown');
-                
-                // Toggle the 'active' class on the parent <li>
-                parentLi.classList.toggle('active');
-
-                // Close other open submenus 
-                dropdowns.forEach((otherDropdown) => {
-                    if (otherDropdown !== parentLi) {
-                        otherDropdown.classList.remove("active");
-                    }
-                });
+                closeMenu();
             }
         });
-    });
+    }
 
-    // 3. Auto-hide Navigation Drawer on Outside Click/Touch (New Requirement)
-    document.addEventListener('click', (e) => {
-        // Only execute if the menu is active AND the screen is mobile size
-        if (navLinks.classList.contains('active') && isMobile()) {
-            
-            // Check if the click target is inside the nav menu or on the hamburger icon
-            const isClickInsideNav = navLinks.contains(e.target);
-            const isClickOnHamburger = hamburger.contains(e.target);
+    // 2. Mobile Dropdown Submenu Toggle
+    dropdownToggles.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (isMobile()) {
+                e.preventDefault(); // Stop link navigation
+                e.stopPropagation(); // Stop document listener
 
-            // If the click is not inside the menu AND not on the hamburger, close the menu.
-            if (!isClickInsideNav && !isClickOnHamburger) {
-                navLinks.classList.remove('active');
-                
-                // Close any open submenus when the main menu closes
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        }
-    });
+                const parentLi = link.closest('.dropdown');
+                
+                // Toggle the 'active' class on the parent <li>
+                parentLi.classList.toggle('active');
+
+                // Close other open submenus 
+                dropdowns.forEach((otherDropdown) => {
+                    if (otherDropdown !== parentLi) {
+                        otherDropdown.classList.remove("active");
+                    }
+                });
+            }
+        });
+    });
+
+    // 3. Auto-hide Navigation Drawer on Outside Click/Touch
+    document.addEventListener('click', (e) => {
+        // Only execute if the menu is active AND the screen is mobile size
+        if (navLinks.classList.contains('active') && isMobile()) {
+            
+            // Check if the click target is inside the nav menu or on the hamburger icon
+            const isClickInsideNav = navLinks.contains(e.target);
+            const isClickOnHamburger = hamburger.contains(e.target);
+
+            // If the click is not inside the menu AND not on the hamburger, close the menu.
+            // We ensure that clicking the close button does not re-open or interfere with the outside-click logic
+            const isClickOnCloseButton = navCloseButton && navCloseButton.contains(e.target); 
+
+            if (!isClickInsideNav && !isClickOnHamburger && !isClickOnCloseButton) {
+                closeMenu();
+            }
+        }
+    });
 }
-
