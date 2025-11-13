@@ -63,7 +63,7 @@ body {
   color: #ffcc00; 
 }
 
-/* 🔑 ADDED: Global rule to ensure close button elements are HIDDEN on desktop screens. */
+/* 🔑 GLOBAL HIDE: Ensure close button elements are HIDDEN on desktop screens. */
 .close-btn-container,
 #navCloseButton {
     display: none; 
@@ -321,23 +321,23 @@ body {
     display: flex; 
   }
 
-    /* 🔑 ADDED: Make close button visible and styled on mobile ONLY */
+    /* 🔑 MOBILE CLOSE BUTTON STYLES (VISIBLE ONLY HERE) */
     .close-btn-container {
-        display: block !important; /* Overrides the global 'display: none' */
-        /* Note: Since this is inside .nav-links li, we need to override the list item styles */
+        display: block !important; /* Overrides global hide */
+        /* ISOLATION: Prevent list item styling from applying here */
         border-bottom: none !important; 
-        padding: 0;
-        margin-bottom: 20px; /* Adds space below the close button and before the links */
-        text-align: right; /* Position the button to the right */
+        padding: 0 !important;          
+        margin: 0 0 20px 0;           
+        text-align: right; 
     }
     #navCloseButton {
-        display: block !important; /* Overrides the global 'display: none' */
+        display: block !important; 
         background: transparent;
         border: none;
         color: white; 
-        font-size: 2rem; /* Make the 'X' icon large */
+        font-size: 2rem; 
         line-height: 1;
-        font-weight: 300; /* Use a lighter weight 'X' */
+        font-weight: 300; 
         cursor: pointer;
         padding: 0 5px;
         transition: color 0.2s;
@@ -361,7 +361,6 @@ body {
     
     background-color: var(--primary); 
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
-    /* Reduced padding-top to account for the space added by .close-btn-container margin */
     padding: 20px 20px 20px; 
     
     /* START HIDDEN: Slide 100% of its width to the right */
@@ -377,12 +376,14 @@ body {
     transform: translateX(0); /* Slides into view */
   }
 
-  .nav-links li {
+  /* 🔑 TARGETED LIST ITEMS: Apply styles to all LI elements EXCEPT the close button container */
+  .nav-links li:not(.close-btn-container) {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .nav-links li:last-child {
+  /* 🔑 TARGETED LAST ITEM: Remove border from the LAST LI element EXCEPT the close button container */
+  .nav-links li:not(.close-btn-container):last-child {
     border-bottom: none;
   }
 
