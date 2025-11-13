@@ -156,101 +156,20 @@ body.menu-open {
   transition: all 0.3s ease-in-out;
 }
 
-/* ========================= ANNOUNCEMENT/CONTENT (Main Page/Home) ========================= */
-.announcement {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #e9f3ff;
-  border-left: 5px solid var(--primary);
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin: 20px auto;
-  flex-wrap: wrap;
-  gap: 10px;
-  width: 100%;
-  max-width: 1270px; /* Align with main content width */
-}
+/* ========================= CONTENT (Main Page/Home) ========================= */
 
-.announcement-text {
-  flex: 1;
-  min-width: 200px;
-}
+/* Removed all .announcement and search styles */
 
-.announcement-text h2 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dark);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-}
-
-.latest-blink {
-  color: var(--primary);
-  cursor: pointer;
-  font-weight: bold;
-  animation: blinkText 1.2s infinite;
-}
-
-@keyframes blinkText {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
-}
-
-.latest-blink:hover {
-  color: #ff6600;
-  text-decoration: underline;
-}
-
-.search-box {
-  position: center;
-  width: 100%;
-  max-width: 300px;
-}
-
-#searchInput {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  margin: 10px 0 0;
-  font-size: 16px;
-}
-
-#searchResults {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 100;
-  display: none;
-}
-
-.search-item {
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  border-bottom: 1px solid #ddd;
-}
-
-.search-item:hover {
-  background-color: #f1f1f1;
-}
-
+/* Desktop Layout: YouTube/Quick Links on the right */
 .content { /* Used for the main/home article grid */
   display: flex;
+  /* FIX: Reverse order to place .youtube-section (second element) on the right */
+  flex-direction: row-reverse; 
   gap: 20px;
   align-items: flex-start;
   flex-wrap: wrap;
   max-width: 1270px;
-  margin: 0 auto;
+  margin: 20px auto; /* Added margin-top for desktop content spacing */
 }
 
 .articles {
@@ -303,9 +222,26 @@ body.menu-open {
   color: #777;
 }
 
+.youtube-section {
+  flex: 1; /* Takes up its 1/4th of the space */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  min-width: 280px;
+  /* Retain mobile-specific internal sidebar ordering from previous steps */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  order: 1; 
+}
+
 /* ========================= ARTICLE LAYOUT CONTAINER (for individual article page) ========================= */
+/* This section handles the layout for a single article page */
 .container {
   display: flex;
+  /* Places sidebar (if using .sidebar and .article-main) on the right */
+  flex-direction: row-reverse; 
   justify-content: space-between;
   gap: 20px;
   padding: 0;
@@ -313,8 +249,6 @@ body.menu-open {
   max-width: 1310px;
   margin: 20px auto;
   box-sizing: border-box;
-  /* FIX: Reverses the order of main content and sidebar, placing the sidebar on the right */
-  flex-direction: row-reverse; 
 }
 
 /* ===================== ARTICLE MAIN SECTION (for individual article page) ===================== */
@@ -551,33 +485,31 @@ body.menu-open {
 
   /* --- ARTICLE LAYOUT MOBILE FIXES (Applied to both .container and .content) --- */
   .container, .content {
-    /* FIX: Revert to column stacking for mobile viewports */
+    /* Set to column for mobile */
     flex-direction: column; 
     padding: 15px; 
     margin: 0 auto; 
     gap: 15px;
   }
   
-  .announcement {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 10px 10px 20px 10px; /* Adjust margin for mobile */
-    width: auto;
-  }
+  /* Removed .announcement styles for mobile */
   
   .article-main, .sidebar {
     width: 100%; 
     margin-bottom: 15px; 
     padding: 15px;
   }
-
+  
+  /* FIX: Ensure YouTube/Quick Links (.youtube-section) appears first (order: 1) 
+     in the HOME/CONTENT layout, which is what "after the title of my article" means 
+     in a vertically stacked view (above the article list). The default order of 
+     .articles and .youtube-section is used in the .content section. */
   .youtube-section {
     margin-top: 10px; 
+    order: 1; /* This will make it appear at the top, after the main body/header */
   }
   
   .articles {
-    order: 2;
+    order: 2; /* This makes the main article grid appear below the YouTube/Quick Links section */
   }
 }
