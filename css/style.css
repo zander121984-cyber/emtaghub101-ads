@@ -1,438 +1,463 @@
 /* ========================= RESET ========================= */
 * {
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
 }
 
 /* Define CSS variables for easy color management throughout the stylesheet. */
 :root {
-  --primary: #004080; 
-  --dark: #0f1724; 
-  --muted: #6b7280; 
-  --light: #f8f9fa; 
+  --primary: #004080; 
+  --dark: #0f1724; 
+  --muted: #6b7280; 
+  --light: #f8f9fa; 
 }
 
 /* Base styles for the document body */
 body {
-  font-family: "Segoe UI", Arial, sans-serif; 
-  background-color: var(--light); 
-  color: var(--dark); 
-  line-height: 1.5; 
-  padding: 0 20px; 
+  font-family: "Segoe UI", Arial, sans-serif; 
+  background-color: var(--light); 
+  color: var(--dark); 
+  line-height: 1.5; 
+  padding: 0 20px; 
 }
 
 /* ========================= HEADER (Desktop & Mobile) ========================= */
 .header {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background-color: var(--primary); 
-  padding: 15px 20px; 
-  color: white; 
-  position: sticky; 
-  top: 0; 
-  z-index: 100; 
-  height: 53px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: var(--primary); 
+  padding: 15px 20px; 
+  color: white; 
+  position: sticky; 
+  top: 0; 
+  z-index: 100; 
+  height: 53px; 
 }
 
 .logo {
-  font-size: 1.4rem; 
-  font-weight: bold; 
+  font-size: 1.4rem; 
+  font-weight: bold; 
 }
 
 .navbar {
-  position: relative; 
+  position: relative; 
 }
 
 /* --- DEFAULT STATE: HIDDEN --- */
 /* Mobile drawer must be hidden by default on ALL screen sizes unless explicitly shown. */
 .nav-links {
-  list-style: none; 
-  display: none; /* Crucial: Start hidden to prevent layout issues */
-  gap: 20px; 
+  list-style: none; 
+  display: none; /* Crucial: Start hidden to prevent layout issues */
+  gap: 20px; 
 }
 
 .nav-links a {
-  color: white; 
-  text-decoration: none; 
-  font-weight: 500; 
+  color: white; 
+  text-decoration: none; 
+  font-weight: 500; 
 }
 
 .nav-links a:hover {
-  color: #ffcc00; 
+  color: #ffcc00; 
 }
 
 /* === Desktop Navigation Visibility (Only for screens > 768px) === */
 @media (min-width: 769px) {
-    .nav-links {
-        display: flex; /* Show desktop links only on large screens */
-        /* Reset mobile properties */
-        position: static; 
-        height: auto;
-        width: auto;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-    }
+    .nav-links {
+        display: flex; /* Show desktop links only on large screens */
+        /* Reset mobile properties */
+        position: static; 
+        height: auto;
+        width: auto;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+    }
 }
 
 /* === Desktop Dropdown Navigation === */
 .dropdown {
-  position: relative; 
+  position: relative; 
 }
 
 .dropdown > a {
-  position: relative; 
-  z-index: 10; 
+  position: relative; 
+  z-index: 10; 
 }
 
 .dropdown-menu {
-  visibility: hidden; 
-  opacity: 0; 
-  transform: translateY(10px); 
-  position: absolute; 
-  top: 100%; 
-  left: 0; 
-  background: white; 
-  color: var(--dark); 
-  border-radius: 6px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
-  list-style: none; 
-  min-width: 180px; 
-  transition: all 0.25s ease; 
-  pointer-events: none; 
-  z-index: 99; 
+  visibility: hidden; 
+  opacity: 0; 
+  transform: translateY(10px); 
+  position: absolute; 
+  top: 100%; 
+  left: 0; 
+  background: white; 
+  color: var(--dark); 
+  border-radius: 6px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  list-style: none; 
+  min-width: 180px; 
+  transition: all 0.25s ease; 
+  pointer-events: none; 
+  z-index: 99; 
 }
 
 .dropdown:hover .dropdown-menu {
-  visibility: visible; 
-  opacity: 1; 
-  transform: translateY(0); 
-  pointer-events: auto; 
+  visibility: visible; 
+  opacity: 1; 
+  transform: translateY(0); 
+  pointer-events: auto; 
 }
 
 .dropdown-menu li a {
-  display: block; 
-  padding: 10px 15px; 
-  color: var(--dark); 
-  text-decoration: none; 
-  transition: background 0.2s; 
+  display: block; 
+  padding: 10px 15px; 
+  color: var(--dark); 
+  text-decoration: none; 
+  transition: background 0.2s; 
 }
 
 .dropdown-menu li a:hover {
-  background: var(--primary); 
-  color: #fff; 
+  background: var(--primary); 
+  color: #fff; 
 }
 
 /* Hamburger Icon (Hidden on desktop) */
 .hamburger {
-  display: none; 
-  flex-direction: column; 
-  gap: 5px; 
-  cursor: pointer; 
-  z-index: 103; 
+  display: none; 
+  flex-direction: column; 
+  gap: 5px; 
+  cursor: pointer; 
+  z-index: 103; 
 }
 
 .hamburger span {
-  width: 25px; 
-  height: 3px; 
-  background: white; 
-  border-radius: 3px; 
+  width: 25px; 
+  height: 3px; 
+  background: white; 
+  border-radius: 3px; 
 }
 
 /* ========================= ANNOUNCEMENT/CONTENT/SEARCH (No changes) ========================= */
 .announcement {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background: #e9f3ff; 
-  border-left: 5px solid var(--primary); 
-  border-radius: 8px; 
-  padding: 10px 15px; 
-  margin: 20px 0; 
-  flex-wrap: wrap; 
-  gap: 10px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: #e9f3ff; 
+  border-left: 5px solid var(--primary); 
+  border-radius: 8px; 
+  padding: 10px 15px; 
+  margin: 20px 0; 
+  flex-wrap: wrap; 
+  gap: 10px; 
 }
 
 .announcement-text {
-  flex: 1; 
-  min-width: 200px; 
+  flex: 1; 
+  min-width: 200px; 
 }
 
 .announcement-text h2 {
-  font-size: 1rem; 
-  font-weight: 600; 
-  color: var(--dark); 
-  display: flex; 
-  align-items: center; 
-  gap: 6px; 
-  margin: 0; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  color: var(--dark); 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  margin: 0; 
 }
 
 .latest-blink {
-  color: var(--primary); 
-  cursor: pointer; 
-  font-weight: bold; 
-  animation: blinkText 1.2s infinite; 
+  color: var(--primary); 
+  cursor: pointer; 
+  font-weight: bold; 
+  animation: blinkText 1.2s infinite; 
 }
 
 @keyframes blinkText {
-  0%, 50%, 100% { opacity: 1; } 
-  25%, 75% { opacity: 0.3; } 
+  0%, 50%, 100% { opacity: 1; } 
+  25%, 75% { opacity: 0.3; } 
 }
 
 .latest-blink:hover {
-  color: #ff6600; 
-  text-decoration: underline; 
+  color: #ff6600; 
+  text-decoration: underline; 
 }
 
 .search-box {
-  position: relative; 
-  width: 100%; 
-  max-width: 300px; 
+  position: relative; 
+  width: 100%; 
+  max-width: 300px; 
 }
 
 #searchInput {
-  width: 100%; 
-  padding: 8px 12px; 
-  border: 1px solid #ccc; 
-  border-radius: 6px; 
-  outline: none; 
-  transition: all 0.3s ease; 
+  width: 100%; 
+  padding: 8px 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  outline: none; 
+  transition: all 0.3s ease; 
 }
 
 #searchInput:focus {
-  border-color: var(--primary); 
-  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3); 
+  border-color: var(--primary); 
+  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3); 
 }
 
 #searchResults {
-  display: none; 
-  position: absolute; 
-  top: 105%; 
-  left: 0; 
-  width: 100%; 
-  background: white; 
-  border: 1px solid #ddd; 
-  border-radius: 6px; 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-  max-height: 200px; 
-  overflow-y: auto; 
-  z-index: 20; 
+  display: none; 
+  position: absolute; 
+  top: 105%; 
+  left: 0; 
+  width: 100%; 
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 6px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  max-height: 200px; 
+  overflow-y: auto; 
+  z-index: 20; 
 }
 
 .search-item {
-  padding: 8px 12px; 
-  cursor: pointer; 
+  padding: 8px 12px; 
+  cursor: pointer; 
 }
 
 .search-item:hover {
-  background: #e9f3ff; 
+  background: #e9f3ff; 
 }
 
 .no-result {
-  padding: 8px 12px; 
-  color: var(--muted); 
+  padding: 8px 12px; 
+  color: var(--muted); 
 }
 
 .content {
-  display: flex; 
-  gap: 20px; 
-  align-items: flex-start; 
-  flex-wrap: wrap; 
+  display: flex; 
+  gap: 20px; 
+  align-items: flex-start; 
+  flex-wrap: wrap; 
 }
 
 .articles {
-  flex: 3; 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px; 
+  flex: 3; 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px; 
 }
 
 .article-card {
-  background: white; 
-  border-radius: 10px; 
-  overflow: hidden; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  cursor: pointer; 
-  text-decoration: none; 
-  color: inherit; 
-  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+  background: white; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  cursor: pointer; 
+  text-decoration: none; 
+  color: inherit; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
 
 .article-card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
 }
 
 .article-card img {
-  width: 100%; 
-  height: 160px; 
-  object-fit: cover; 
+  width: 100%; 
+  height: 160px; 
+  object-fit: cover; 
 }
 
 .article-card-content {
-  padding: 15px; 
+  padding: 15px; 
 }
 
 .article-card-content h3 {
-  color: var(--primary); 
-  font-size: 1.1rem; 
+  color: var(--primary); 
+  font-size: 1.1rem; 
 }
 
 .article-card-content p {
-  color: var(--muted); 
-  margin-top: 8px; 
-  font-size: 0.95rem; 
+  color: var(--muted); 
+  margin-top: 8px; 
+  font-size: 0.95rem; 
 }
 
 .article-card-content small {
-  display: block; 
-  margin-top: 8px; 
-  color: #777; 
+  display: block; 
+  margin-top: 8px; 
+  color: #777; 
 }
 
 .youtube-section {
-  flex: 1; 
-  background: white; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-  padding: 15px; 
-  min-width: 280px; 
+  flex: 1; 
+  background: white; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  padding: 15px; 
+  min-width: 280px; 
 }
 
 /* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
-  /* Hides body padding on mobile */
-  body {
-    padding: 0; 
-    overflow-x: hidden; 
-  }
-  
-  /* Makes the hamburger icon visible on mobile. */
-  .hamburger {
-    display: flex; 
-  }
-
-  /* --- DRAWER MENU STYLES --- */
-  .nav-links {
-    display: flex; /* Override global display: none to enable flex for column layout */
-    flex-direction: column; 
+    /* Hides body padding on mobile */
+    body {
+        padding: 0; 
+        overflow-x: hidden; 
+    }
     
-    /* Fixed position for full-screen overlay */
-    position: fixed; 
-    top: 0; 
-    right: 0; 
-    height: 100%; 
-    width: 280px; 
-    max-width: 80%; 
+    /* Makes the hamburger icon visible on mobile. */
+    .hamburger {
+        display: flex; 
+    }
+
+    /* --- CLOSE BUTTON STYLES (New) --- */
+    .close-btn-container {
+        /* Remove the border added to all other list items */
+        border-bottom: none !important;
+        padding: 0;
+        margin-bottom: 20px;
+        text-align: right; /* Pushes the button to the right side of the drawer */
+    }
+
+    #navCloseButton {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+
+    #navCloseButton:hover {
+        color: #ffcc00;
+    }
+
+    /* --- DRAWER MENU STYLES --- */
+    .nav-links {
+        display: flex; /* Override global display: none to enable flex for column layout */
+        flex-direction: column; 
+        
+        /* Fixed position for full-screen overlay */
+        position: fixed; 
+        top: 0; 
+        right: 0; 
+        height: 100%; 
+        width: 280px; 
+        max-width: 80%; 
+        
+        background-color: var(--primary); 
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
+        /* Adjusted padding to make room for the close button if it was absolutely positioned,
+           but 60px 20px 20px is fine for flow layout now. */
+        padding: 60px 20px 20px; 
+        
+        /* START HIDDEN: Slide 100% of its width to the right */
+        transform: translateX(100%); 
+        transition: transform 0.3s ease-in-out; 
+        z-index: 105; 
+        list-style: none;
+        overflow-y: auto; 
+    }
+
+    /* State when 'active' class is added (menu opened) */
+    .nav-links.active {
+        transform: translateX(0); /* Slides into view */
+    }
+
+    .nav-links li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
     
-    background-color: var(--primary); 
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
-    padding: 60px 20px 20px; 
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    /* Styling for the main link text inside the drawer */
+    .nav-links a {
+        color: #fff; 
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: block; 
+        padding: 8px 0;
+        transition: color 0.2s;
+        text-align: left; 
+    }
+
+    /* Mobile Dropdown Styling for the Drawer */
+    .dropdown {
+        width: 100%; 
+        padding: 0; 
+    }
     
-    /* START HIDDEN: Slide 100% of its width to the right */
-    transform: translateX(100%); 
-    transition: transform 0.3s ease-in-out; 
-    z-index: 105; 
-    list-style: none;
-    overflow-y: auto; 
-  }
+    .dropdown-menu {
+        position: static; 
+        width: 100%; 
+        background: rgba(0, 0, 0, 0.1); 
+        box-shadow: none; 
+        border-radius: 0; 
+        display: none; 
+        padding: 5px 0 5px 15px; 
+        
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+        
+    /* Show the submenu when the parent <li> has the 'active' class from JS. */
+    .dropdown.active .dropdown-menu {
+        display: block; 
+    }
 
-  /* State when 'active' class is added (menu opened) */
-  .nav-links.active {
-    transform: translateX(0); /* Slides into view */
-  }
+    .dropdown-menu li a {
+        color: white; 
+        text-align: left; 
+        padding: 5px 0; 
+    }
+        
+    /* Hover effect for submenu links in mobile menu. */
+    .dropdown-menu li a:hover {
+        background: transparent; 
+        color: #ffcc00; 
+    }
 
-  .nav-links li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .nav-links li:last-child {
-    border-bottom: none;
-  }
-
-  /* Styling for the main link text inside the drawer */
-  .nav-links a {
-    color: #fff; 
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: block; 
-    padding: 8px 0;
-    transition: color 0.2s;
-    text-align: left; 
-  }
-
-  /* Mobile Dropdown Styling for the Drawer */
-  .dropdown {
-    width: 100%; 
-    padding: 0; 
-  }
-  
-  .dropdown-menu {
-    position: static; 
-    width: 100%; 
-    background: rgba(0, 0, 0, 0.1); 
-    box-shadow: none; 
-    border-radius: 0; 
-    display: none; 
-    padding: 5px 0 5px 15px; 
+    /* --- General Content Alignment --- */
+    .announcement {
+        flex-direction: column; 
+        align-items: flex-start; 
+        padding-left: 15px; 
+        padding-right: 15px; 
+        margin-left: 10px; 
+        margin-right: 10px; 
+    }
     
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
+    .content {
+        flex-direction: column; 
+        padding: 0 10px; 
+    }
+
+    .youtube-section {
+        width: 100%; 
+        order: 1; 
+    }
     
-  /* Show the submenu when the parent <li> has the 'active' class from JS. */
-  .dropdown.active .dropdown-menu {
-    display: block; 
-  }
+    .articles {
+        order: 2; 
+    }
 
-  .dropdown-menu li a {
-    color: white; 
-    text-align: left; 
-    padding: 5px 0; 
-  }
-    
-  /* Hover effect for submenu links in mobile menu. */
-  .dropdown-menu li a:hover {
-    background: transparent; 
-    color: #ffcc00; 
-  }
+    #searchInput {
+        width: 100%; 
+    }
 
-  /* --- General Content Alignment --- */
-  .announcement {
-    flex-direction: column; 
-    align-items: flex-start; 
-    padding-left: 15px; 
-    padding-right: 15px; 
-    margin-left: 10px; 
-    margin-right: 10px; 
-  }
-  
-  .content {
-    flex-direction: column; 
-    padding: 0 10px; 
-  }
-
-  .youtube-section {
-    width: 100%; 
-    order: 1; 
-  }
-  
-  .articles {
-    order: 2; 
-  }
-
-  #searchInput {
-    width: 100%; 
-  }
-
-  .navbar {
-    position: relative; 
-    z-index: 102; 
-  }
+    .navbar {
+        position: relative; 
+        z-index: 102; 
+    }
 }
