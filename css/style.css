@@ -318,16 +318,25 @@ body {
     /* VERTICAL POSITION: Keeps it right below the header. */
     top: 53px; 
     
-    /* CRITICAL FIX: Anchor the menu to the LEFT edge and ensure no right-side conflict. */
-    right: auto; /* Disables anchoring to the right */
-    left: 0; /* <-- FIX: Starts the menu at the left edge of the screen. */
+    /* ANCHOR FIX: Starts the menu at the left edge. */
+    right: auto; 
+    left: 0; 
     
-    /* WIDTH: Stretches the menu to the full width of the viewport for edge-to-edge spanning. */
+    /* WIDTH: Stretches the menu to the full width. */
     width: 100vw; 
+    
+    /* FIX: Add padding to the container for vertical spacing and overall alignment. */
+    padding: 10px 0; 
     
     border-radius: 0 0 10px 10px; 
     transition: transform 0.3s ease-in-out; 
     z-index: 90; 
+  }
+
+  /* FIX: Center the link text within the menu items */
+  .nav-links li a {
+    text-align: center; 
+    padding: 10px 0;
   }
 
   /* State: When the 'active' class is added by JavaScript (menu opened). */
@@ -398,7 +407,8 @@ body {
     opacity: 1;
     transform: none;
     pointer-events: auto;
-    padding: 0 0 5px 15px; 
+    /* Removed old padding/indentation since we are centering now */
+    padding: 0; 
   }
     
   /* Show the submenu when the parent <li> has the 'active' class from JS. */
@@ -409,7 +419,9 @@ body {
   /* Submenu links style adjustment for stacking. */
   .dropdown-menu li a {
     color: white; 
-    padding: 5px 15px 5px 15px; 
+    /* Set center alignment for sub-menu items too */
+    text-align: center; 
+    padding: 5px 15px; 
   }
     
   /* Hover effect for submenu links in mobile menu. */
