@@ -1,105 +1,195 @@
-/* ===================== BODY STYLES ===================== */
-body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
+/* ========================= RESET ========================= */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  box-sizing: border-box;
 }
 
-/* ===================== CONTAINER (Layout) ===================== */
+/* Define CSS variables for easy color management throughout the stylesheet. */
+:root {
+  --primary: #004080; /* Blue */
+  --dark: #0f1724;
+  --muted: #6b7280;
+  --light: #f8f9fa;
+  --article-bg: #f4f4f4; /* Article-specific background */
+}
+
+/* ========================= BASE & ARTICLE BODY STYLES (Combined) ========================= */
+body {
+  font-family: "Segoe UI", Arial, sans-serif; /* Main site font */
+  line-height: 1.5;
+  padding: 0 20px;
+  background-color: var(--light);
+  color: var(--dark);
+  transition: padding 0.3s ease;
+}
+
+/* Class added by JS to prevent background scrolling on mobile when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ========================= HEADER (Desktop & Mobile) ========================= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 15px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 53px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.navbar {
+  position: relative;
+}
+
+/* --- DEFAULT STATE: HIDDEN --- */
+.nav-links {
+  list-style: none;
+  display: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+/* === Desktop Navigation Visibility (Only for screens > 768px) === */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex; /* Show desktop links only on large screens */
+        /* Reset mobile properties */
+        position: static;
+        height: auto;
+        width: auto;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+/* === Desktop Dropdown Navigation === */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  position: relative;
+  z-index: 10;
+}
+
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  color: var(--dark);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  min-width: 180px;
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: var(--dark);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Hamburger Icon (Hidden on desktop, requires transition) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 103;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ========================= ARTICLE LAYOUT CONTAINER ========================= */
+
 .container {
   display: flex;
   justify-content: space-between;
-  gap: 10px; /* Adjust this gap to control the space between the article and sidebar */
-  padding: 0 px !important; /* Adjust padding on the left and right edges here */
+  gap: 20px; /* Increased gap slightly */
+  padding: 0; /* Removed !important */
   width: 100%;
-  max-width: 1310px !important; /* Adjust this to control the maximum width of the container */
-  margin: 0 auto !important; /* This centers the container */
+  max-width: 1310px; /* Removed !important */
+  margin: 20px auto; /* Centers the container and adds vertical spacing */
   box-sizing: border-box;
 }
 
 /* ===================== ARTICLE MAIN SECTION ===================== */
 .article-main {
-  flex: 0 0 70%; /* This controls the width of the article section */
+  flex: 0 0 70%; 
   background: white;
-  padding: 10px !important; /* Adjust this to change the padding inside the article */
+  padding: 20px; /* Increased padding for better appearance */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  margin-bottom: 10px !important; /* Space between article and other sections */
-  width: 100%; /* Ensure it takes the full width */
-}
-/* ===================== ARTICLE META (Author, Date, etc.) ===================== */
-.article-meta {
-  margin-left: 20px; /* Add left margin to indent the article meta */
-  font-style: italic; /* Optional: Make the meta text italic */
-  color: #777; /* Optional: Change the color of the meta information */
-  font-size: 1rem; /* Optional: Adjust the font size of the meta text */
-  margin-bottom: 10px; /* Optional: Space below the meta text */
-}
-
-/* ===================== ARTICLE CONTENT INDENTATION ===================== */
-.article-main p, 
-.article-main ul, 
-.article-main ol, 
-.article-main h3 { /* Add h3 to the selectors for indentation */
-  text-indent: 20px; /* Indentation for first line of paragraphs, list items, and h3 headers */
-  margin-left: 20px; /* Left margin for the entire paragraph or list */
-  margin-bottom: 10px; /* Optional: adds space between paragraphs and list items */
-}
-
-/* ===================== ARTICLE CONTENT: BULLET LISTS ===================== */
-.article-main ul, .article-main ol {
-  list-style-position: inside; /* Ensure bullets/numbers are inside the container */
-  padding-left: 0; /* Remove default padding for better alignment */
-}
-
-.article-main li {
-  margin-left: 20px; /* Additional indent for list items */
-  margin-bottom: 8px; /* Optional: space between list items */
-}
-
-/* ===================== ARTICLE TITLE ===================== */
-.article-title {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  margin-left: 20px; /* Add left margin for the article title */
-  color: #004080;
-}
-
-/* ===================== SECTION TITLE ===================== */
-.section-title {
-  font-size: 1.8rem;
-  color: #004080;
-  margin-top: 20px;
-  margin-left: 20px; /* Add left margin for section titles */
-  border-bottom: 2px solid #004080;
-  padding-bottom: 5px;
-}
-
-/* ===================== H3 HEADER STYLE ===================== */
-.article-main h3 {
-  margin-left: 20px; /* Indent the h3 headers */
-  color: #004080; /* Same color as section titles */
-  margin-bottom: 15px; /* Optional: space below h3 headers */
+  margin-bottom: 20px; 
+  width: 100%; 
+  min-height: 500px; /* Ensure a minimum height */
 }
 
 /* ===================== SIDEBAR SECTION ===================== */
 .sidebar {
-  flex: 0 0 30%; /* This controls the width of the sidebar */
+  flex: 0 0 30%; 
   background: white;
-  padding: 5px !important; /* Padding inside the sidebar */
+  padding: 20px; /* Increased padding */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  margin-bottom: 20px !important; /* Space between sidebar and other sections */
-  width: 100%; /* Ensure the sidebar takes full width in smaller screens */
+  margin-bottom: 20px; 
+  width: 100%; 
 }
 
 /* ===================== QUICK LINKS SECTION ===================== */
 .quick-links h3, .youtube-section h3 {
   font-size: 1.5rem;
-  color: #004080;
+  color: var(--primary);
+  margin-bottom: 15px;
 }
 
 .quick-links ul {
@@ -112,7 +202,7 @@ body {
 }
 
 .quick-links a {
-  color: #004080;
+  color: var(--primary);
   text-decoration: none;
   font-size: 1rem;
 }
@@ -124,7 +214,7 @@ body {
 /* ===================== YOUTUBE SECTION (Iframe) ===================== */
 .youtube-section {
   width: 100%;
-  margin-top: 10px; /* Adjust this to control space above the YouTube section */
+  margin-top: 20px; 
   background: white;
   padding: 10px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
@@ -137,13 +227,14 @@ body {
 /* Adjust the YouTube iframe size */
 .youtube-section iframe {
   width: 100%;
-  height: 200px; /* Adjust the height of the YouTube video */
+  height: 200px; 
   border-radius: 8px;
 }
 
 /* ===================== SEARCH BOX AND RESULTS ===================== */
 .search-box {
   position: relative;
+  margin-bottom: 10px;
 }
 
 #searchInput {
@@ -151,7 +242,7 @@ body {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
-  margin: 10px 0;
+  margin: 10px 0 0;
   font-size: 16px;
 }
 
@@ -180,38 +271,118 @@ body {
   background-color: #f1f1f1;
 }
 
-/* ===================== ARTICLE STYLES ===================== */
-.article-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #004080;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  color: #004080;
-  margin-top: 40px;
-  border-bottom: 2px solid #004080;
-  padding-bottom: 5px;
-}
-
-/* Image styling */
-figure {
-  margin: 20px 0;
-  text-align: center;
-}
-
-figure img {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
+/* ========================= ANNOUNCEMENT/CONTENT (Main Page/Home) ========================= */
+/* Note: The home page article display will use .content, while the individual article page uses .container */
+.announcement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e9f3ff;
+  border-left: 5px solid var(--primary);
   border-radius: 8px;
+  padding: 10px 15px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  max-width: 1270px; /* Align with main content width */
 }
 
-figcaption {
+.announcement-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.announcement-text h2 {
   font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.latest-blink {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: bold;
+  animation: blinkText 1.2s infinite;
+}
+
+@keyframes blinkText {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+.latest-blink:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.content { /* Used for the main/home article grid */
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1270px;
+  margin: 0 auto;
+}
+
+.articles {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.article-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.article-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.article-card-content {
+  padding: 15px;
+}
+
+.article-card-content h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.article-card-content p {
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.article-card-content small {
+  display: block;
+  margin-top: 8px;
   color: #777;
-  margin-top: 10px;
 }
 
 /* ===================== BACK TO TOP BUTTON ===================== */
@@ -222,23 +393,142 @@ figcaption {
   text-decoration: underline;
 }
 
-/* ===================== MOBILE RESPONSIVE DESIGN ===================== */
+/* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
+  /* Hides body padding on mobile and ensures full width */
+  body {
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--article-bg); /* Use the slightly darker article BG on mobile */
+  }
+  
+  /* Makes the hamburger icon visible and position fixed for alignment with the drawer */
+  .hamburger {
+    display: flex;
+    position: fixed; 
+    top: 15px;
+    right: 20px;
+    z-index: 110; 
+  }
+
+  /* --- HAMBURGER TO CLOSE (X) TRANSFORMATION --- */
+
+  /* Hide the middle span when active */
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Rotate and position the top span */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  /* Rotate and position the bottom span */
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* --- DRAWER MENU STYLES --- */
+  .nav-links {
+    display: flex; 
+    flex-direction: column;
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 280px;
+    max-width: 80%;
+    
+    background-color: var(--primary);
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 70px 20px 20px; 
+    
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 105;
+    list-style: none;
+    overflow-y: auto;
+  }
+
+  /* State when 'active' class is added (menu opened) */
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.2s;
+    text-align: left;
+  }
+
+  /* Mobile Dropdown Styling for the Drawer */
+  .dropdown {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    border-radius: 0;
+    display: none;
+    padding: 5px 0 5px 15px;
+    
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+    
+  /* Show the submenu when the parent <li> has the 'active' class from JS. */
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu li a {
+    color: white;
+    text-align: left;
+    padding: 5px 0;
+  }
+    
+  .dropdown-menu li a:hover {
+    background: transparent;
+    color: #ffcc00;
+  }
+
+  /* --- ARTICLE LAYOUT MOBILE FIXES --- */
   .container {
-    flex-direction: column !important; /* Stack vertically */
-    padding: 15px !important; /* Add padding for mobile devices */
+    flex-direction: column; 
+    padding: 15px; 
+    margin: 0 auto; /* Center the container content */
   }
 
   .article-main, .sidebar {
-    width: 100% !important; /* Ensure both containers take full width on mobile */
-  }
-
-  /* Adjust margins and padding for mobile screens */
-  .article-main, .sidebar {
-    margin-bottom: 15px; /* Control space between sections */
+    width: 100%; 
+    margin-bottom: 15px; 
+    padding: 15px;
   }
 
   .youtube-section {
-    margin-top: 10px !important; /* Adjust top margin for YouTube section */
+    margin-top: 10px; 
   }
-}
+
+  /* Ensure the article card grid wraps correctly on mobile */
+  .content {
+    padding
