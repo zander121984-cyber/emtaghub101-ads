@@ -1,31 +1,31 @@
 /* ========================= RESET ========================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Define CSS variables for easy color management throughout the stylesheet. */
 :root {
-  --primary: #004080;
-  --dark: #0f1724;
-  --muted: #6b7280;
-  --light: #f8f9fa;
+  --primary: #004080;
+  --dark: #0f1724;
+  --muted: #6b7280;
+  --light: #f8f9fa;
 }
 
-/* ===================== BODY STYLES (FROM BLOCK 2) ===================== */
+/* Base styles for the document body */
 body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0; /* Changed from 0 20px to 0 for better mobile control */
-  background-color: #f4f4f4; /* Used color from block 2 */
-  color: #333; /* Used color from block 2 */
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+  padding: 0 20px;
+  transition: padding 0.3s ease; /* Ensure smooth transition on body padding */
 }
 
 /* Class added by JS to prevent background scrolling on mobile when menu is open */
 body.menu-open {
-  overflow: hidden;
+  overflow: hidden;
 }
 
 /* ========================= HEADER (Desktop & Mobile) ========================= */
@@ -148,128 +148,6 @@ body.menu-open {
   border-radius: 3px;
   transition: all 0.3s ease-in-out; /* Added transition */
 }
-/* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
-@media (max-width: 768px) {
-  /* Hides body padding on mobile */
-  body {
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  /* Makes the hamburger icon visible and position fixed for alignment with the drawer */
-  .hamburger {
-    display: flex;
-    position: fixed; /* Pin to the viewport */
-    top: 15px;
-    right: 20px;
-    z-index: 110; /* Ensures it's above the nav-links */
-  }
-
-  /* --- HAMBURGER TO CLOSE (X) TRANSFORMATION --- */
-
-  /* Hide the middle span when active */
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  /* Rotate and position the top span */
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  /* Rotate and position the bottom span */
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  /* --- DRAWER MENU STYLES --- */
-  .nav-links {
-    display: flex; /* Override global display: none to enable flex for column layout */
-    flex-direction: column;
-    
-    /* Fixed position for full-screen overlay */
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 280px;
-    max-width: 80%;
-    
-    background-color: var(--primary);
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
-    /* Adjusted padding to leave space for the fixed hamburger/close icon */
-    padding: 70px 20px 20px; 
-    
-    /* START HIDDEN: Slide 100% of its width to the right */
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 105;
-    list-style: none;
-    overflow-y: auto;
-  }
-
-  /* State when 'active' class is added (menu opened) */
-  .nav-links.active {
-    transform: translateX(0); /* Slides into view */
-  }
-
-  .nav-links li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .nav-links li:last-child {
-    border-bottom: none;
-  }
-
-  /* Styling for the main link text inside the drawer */
-  .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    display: block;
-    padding: 8px 0;
-    transition: color 0.2s;
-    text-align: left;
-  }
-
-  /* Mobile Dropdown Styling for the Drawer */
-  .dropdown {
-    width: 100%;
-    padding: 0;
-  }
-  
-  .dropdown-menu {
-    position: static;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.1);
-    box-shadow: none;
-    border-radius: 0;
-    display: none;
-    padding: 5px 0 5px 15px;
-    
-    visibility: visible;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-    
-  /* Show the submenu when the parent <li> has the 'active' class from JS. */
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
-
-  .dropdown-menu li a {
-    color: white;
-    text-align: left;
-    padding: 5px 0;
-  }
-    
-  /* Hover effect for submenu links in mobile menu. */
-  .dropdown-menu li a:hover {
-    background: transparent;
-    color: #ffcc00;
-  }
 /* ========================= FOOTER ========================= */
 .footer {
   background-color: #f1f1f1;
@@ -297,4 +175,5 @@ body.menu-open {
 .footer a:hover {
   text-decoration: underline;
 }
+
 
