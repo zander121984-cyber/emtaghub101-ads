@@ -190,21 +190,20 @@ if (hamburger && navLinks) {
 }
 
 // ===============================
-// 🍔 Mobile Dropdown Toggle
+// 🍔 Dropdown Submenu Toggle (Mobile) 
 // ===============================
 const dropdowns = document.querySelectorAll(".dropdown");
 
 dropdowns.forEach((dropdown) => {
   const dropdownToggle = dropdown.querySelector("a");
 
-  // Toggle dropdown visibility on click (for mobile)
   dropdownToggle.addEventListener("click", (event) => {
     event.preventDefault();  // Prevent link navigation
 
-    // Toggle active class to show/hide the dropdown
+    // Toggle the dropdown visibility
     dropdown.classList.toggle("active");
 
-    // Close other dropdowns if any are open
+    // Optionally close other dropdowns
     dropdowns.forEach((otherDropdown) => {
       if (otherDropdown !== dropdown) {
         otherDropdown.classList.remove("active");
@@ -213,14 +212,3 @@ dropdowns.forEach((dropdown) => {
   });
 });
 
-// ===============================
-// 🍔 Mobile Navigation Toggle
-// ===============================
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-if (hamburger && navLinks) {
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-}
