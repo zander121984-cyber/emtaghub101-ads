@@ -5,40 +5,48 @@
   box-sizing: border-box;
 }
 
-/* Define CSS variables */
+/* Define CSS variables for easy color management throughout the stylesheet. */
 :root {
-  --primary: #004080; /* Blue */
+  --primary: #004080;
   --dark: #0f1724;
   --muted: #6b7280;
   --light: #f8f9fa;
+  --article-bg: #ffffff; /* New variable for article and sidebar background */
 }
 
-/* ===================== BASE & BODY STYLES ===================== */
+/* Base styles for the document body */
 body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+  padding: 0 20px;
+  transition: padding 0.3s ease;
+  /* Add Flexbox to push the footer to the bottom */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Class added by JS to prevent background scrolling on mobile when menu is open */
 body.menu-open {
-  overflow: hidden; /* Prevents background scroll on mobile when menu is open */
+  overflow: hidden;
 }
 
-/* ========================= HEADER & NAVIGATION (CORRECTED) ========================= */
+/* ========================= HEADER (Desktop & Mobile) ========================= */
+/* ... (NO CHANGE: Header, Logo, Navbar, Nav-links, Dropdowns, Hamburger remain the same) ... */
+
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Ensures vertical centering of logo and nav/hamburger */
+  align-items: center;
   background-color: var(--primary);
   padding: 15px 20px;
   color: white;
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 53px; /* Fixed header height */
+  height: 53px;
 }
 
 .logo {
@@ -48,20 +56,13 @@ body.menu-open {
 
 .navbar {
   position: relative;
-  height: 100%; /* Ensures navbar takes full height to align content */
-  display: flex;
-  align-items: center;
 }
 
-/* Close button is hidden by default on desktop */
-.close-btn {
-    display: none;
-}
-
-/* --- DESKTOP NAVIGATION --- */
+/* --- DEFAULT STATE: HIDDEN --- */
+/* Mobile drawer must be hidden by default on ALL screen sizes unless explicitly shown. */
 .nav-links {
   list-style: none;
-  display: none; /* Hidden by default for mobile-first approach */
+  display: none; /* Crucial: Start hidden to prevent layout issues */
   gap: 20px;
 }
 
@@ -75,8 +76,27 @@ body.menu-open {
   color: #ffcc00;
 }
 
+/* === Desktop Navigation Visibility (Only for screens > 769px) === */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+        position: static;
+        height: auto;
+        width: auto;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+/* === Desktop Dropdown Navigation === */
 .dropdown {
   position: relative;
+}
+
+.dropdown > a {
+  position: relative;
+  z-index: 10;
 }
 
 .dropdown-menu {
@@ -117,9 +137,9 @@ body.menu-open {
   color: #fff;
 }
 
-/* Hamburger Icon */
+/* Hamburger Icon (Hidden on desktop, requires transition) */
 .hamburger {
-  display: none; /* Hidden by default on desktop */
+  display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
@@ -135,93 +155,204 @@ body.menu-open {
   transition: all 0.3s ease-in-out;
 }
 
-/* ========================= ARTICLE MAIN CONTENT STYLES ========================= */
-.article-main-content {
-    max-width: 900px;
-    margin: 30px auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 30px;
+/* ========================= ANNOUNCEMENT/SEARCH (NO CHANGE) ========================= */
+.announcement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e9f3ff;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.article-main-content h1 {
-    color: var(--primary);
-    margin-bottom: 10px;
+.announcement-text {
+  flex: 1;
+  min-width: 200px;
 }
 
-.article-meta {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+.announcement-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
 }
 
-.article-main-content img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 25px;
-}
-
-.article-main-content blockquote {
-    border-left: 4px solid var(--primary);
-    padding-left: 15px;
-    font-style: italic;
-    color: var(--dark);
-    background: #f9f9f9;
-    border-radius: 6px;
-    margin: 20px 0;
-    padding: 10px 15px;
-}
-
-/* ========================= FOOTER ========================= */
-.footer {
-  background-color: #f1f1f1;
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #333;
-  width: 100%;
-  margin-top: 30px; /* Space above footer */
-}
-
-.footer p {
-  margin: 10px 0;
-}
-
-.footer a {
+.latest-blink {
   color: var(--primary);
-  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  animation: blinkText 1.2s infinite;
 }
 
-.footer a:hover {
+@keyframes blinkText {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+.latest-blink:hover {
+  color: #ff6600;
   text-decoration: underline;
 }
 
-/* ========================= MOBILE RESPONSIVE DESIGN (<= 768px) ========================= */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3);
+}
+
+#searchResults {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.search-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background: #e9f3ff;
+}
+
+.no-result {
+  padding: 8px 12px;
+  color: var(--muted);
+}
+
+/* ========================= ARTICLE PAGE LAYOUT (CHANGES HERE) ========================= */
+
+.content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1310px; /* Max width of the overall content area */
+  margin: 20px auto;
+}
+
+/* --- MAIN ARTICLE CONTAINER (70% width) --- */
+.article-main {
+  flex: 3; /* Takes 70% of available space */
+  background: var(--article-bg);
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 600px; /* Ensure content area is readable */
+}
+
+/* --- SIDEBAR CONTAINER (30% width) --- */
+.sidebar {
+  flex: 1; /* Takes 30% of available space */
+  background: var(--article-bg);
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Remove unused styles from gallery mode */
+/* .articles, .article-card, .article-card img, .article-card-content, etc. are now redundant */
+
+/* --- YOUTUBE SECTION (INSIDE SIDEBAR) --- */
+.youtube-section {
+  flex: none; /* Let the sidebar control the width */
+  background: none;
+  padding: 0;
+  min-width: auto;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Add basic Quick Links styling if you include them in the sidebar */
+.quick-links h3, .youtube-section h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+.quick-links a {
+    color: var(--dark);
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+.quick-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
-  /* Hide the hamburger icon on smaller screens when the menu is open (it's replaced by close-btn) */
+  /* Hides body padding on mobile */
+  body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Makes the hamburger icon visible and position fixed for alignment with the drawer */
   .hamburger {
-    display: flex; /* Show the hamburger */
-    position: fixed;
+    display: flex;
+    position: fixed; /* Pin to the viewport */
     top: 15px;
     right: 20px;
-    z-index: 110;
+    z-index: 110; /* Ensures it's above the nav-links */
   }
+  
+  /* --- CONTENT LAYOUT FOR MOBILE --- */
+  .content {
+    flex-direction: column; /* Stack article and sidebar vertically */
+    padding: 0 15px;
+    margin: 15px auto;
+  }
+  
+  .article-main, .sidebar {
+    flex: 1 1 100%; /* Take full width */
+    padding: 15px;
+    margin-bottom: 15px;
+    min-width: auto;
+  }
 
-    /* Show the close button when the menu is active (requires JS interaction) */
-    .nav-links.active + .hamburger {
-        display: none;
-    }
-    .close-btn {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 2rem;
-        color: white;
-        cursor: pointer;
-        z-index: 115;
-    }
+  /* ... (Remaining mobile styles for hamburger, drawer, dropdowns are unchanged) ... */
+  /* --- HAMBURGER TO CLOSE (X) TRANSFORMATION --- */
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   /* --- DRAWER MENU STYLES --- */
   .nav-links {
@@ -243,58 +374,102 @@ body.menu-open {
     overflow-y: auto;
   }
 
-  .nav-links.active {
-    transform: translateX(0);
-  }
+  .nav-links.active { transform: translateX(0); }
 
   .nav-links li {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
-  .nav-links a {
-    display: block;
-    font-size: 1.1rem;
-  }
-    
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.1);
-        box-shadow: none;
-        border-radius: 0;
-        display: none;
-        padding: 5px 0 5px 15px;
-        visibility: visible;
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-    }
-    
-    .dropdown.active .dropdown-menu {
-        display: block;
-    }
 
-    /* Adjust article margins for better viewing on small screens */
-    .article-main-content {
-        margin: 15px;
-        padding: 20px;
-    }
+  .nav-links li:last-child { border-bottom: none; }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.2s;
+    text-align: left;
+  }
+
+  /* Mobile Dropdown Styling for the Drawer */
+  .dropdown { width: 100%; padding: 0; }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    border-radius: 0;
+    display: none;
+    padding: 5px 0 5px 15px;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* Show the submenu when the parent <li> has the 'active' class from JS. */
+  .dropdown.active .dropdown-menu { display: block; }
+
+  .dropdown-menu li a { color: white; text-align: left; padding: 5px 0; }
+
+  .dropdown-menu li a:hover { background: transparent; color: #ffcc00; }
+
+  /* --- General Content Alignment --- */
+  .announcement {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .youtube-section {
+    width: 100%;
+    order: 1;
+  }
+
+  .articles {
+    order: 2;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .navbar {
+    position: relative;
+    z-index: 102;
+  }
 }
 
-/* === Desktop Visibility for nav-links (overrides mobile display: none) === */
-@media (min-width: 769px) {
-    .nav-links {
-        display: flex;
-        position: static;
-        height: auto;
-        width: auto;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-    }
-    
-    .hamburger {
-        display: none; /* Ensure hamburger is hidden on desktop */
-    }
+/* ========================= FOOTER ========================= */
+.footer {
+  margin-top: auto; /* Pushes the footer to the bottom */
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+/* Footer Text Styles */
+.footer p {
+  margin: 10px 0;
+}
+
+.footer a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
