@@ -188,7 +188,7 @@ const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
 
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
-// 🔑 ADDED: Select the new close button
+// 🔑 Select the new close button
 const navCloseButton = document.getElementById("navCloseButton"); 
 // Select the anchor tag inside .dropdown for the mobile toggle
 const dropdownToggles = document.querySelectorAll(".dropdown > a"); 
@@ -212,10 +212,10 @@ if (hamburger && navLinks) {
         }
     });
 
-    // 🔑 ADDED: Close Menu via the dedicated close button
+    // 🔑 Close Menu via the dedicated close button
     if (navCloseButton) {
         navCloseButton.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stop propagation
+            e.stopPropagation(); 
             if (isMobile()) {
                 closeMenu();
             }
@@ -252,11 +252,9 @@ if (hamburger && navLinks) {
             // Check if the click target is inside the nav menu or on the hamburger icon
             const isClickInsideNav = navLinks.contains(e.target);
             const isClickOnHamburger = hamburger.contains(e.target);
-
-            // If the click is not inside the menu AND not on the hamburger, close the menu.
-            // We ensure that clicking the close button does not re-open or interfere with the outside-click logic
             const isClickOnCloseButton = navCloseButton && navCloseButton.contains(e.target); 
 
+            // If the click is not inside the menu AND not on the hamburger, close the menu.
             if (!isClickInsideNav && !isClickOnHamburger && !isClickOnCloseButton) {
                 closeMenu();
             }
