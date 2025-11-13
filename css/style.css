@@ -68,6 +68,7 @@ body {
   z-index: 10;
 }
 
+/* Dropdown Menu Fix */
 .dropdown-menu {
   visibility: hidden;
   opacity: 0;
@@ -83,15 +84,26 @@ body {
   min-width: 180px;
   transition: all 0.25s ease;
   pointer-events: none;
+  z-index: 10; /* Ensure dropdown is on top */
 }
 
+/* Show dropdown on hover (desktop) */
 .dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Enable clicking */
+}
+
+/* Mobile Dropdown (Active State) */
+.dropdown.active .dropdown-menu {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
+/* Submenu item styling */
 .dropdown-menu li a {
   display: block;
   padding: 10px 15px;
@@ -349,3 +361,4 @@ body {
     pointer-events: auto;
   }
 }
+
