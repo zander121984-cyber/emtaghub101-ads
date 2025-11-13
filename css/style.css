@@ -1,175 +1,256 @@
-/* =============================== 
-   Global Styles
-=============================== */
-
-/* Body and basic layout */
-body {
-  font-family: Arial, sans-serif;
+/* ========================= RESET ========================= */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container {
-  width: 90%;
-  margin: 0 auto;
+:root {
+  --primary: #004080;
+  --dark: #0f1724;
+  --muted: #6b7280;
+  --light: #f8f9fa;
 }
 
-h1, h2, h3 {
-  font-weight: normal;
-  margin: 0;
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+  padding: 0 20px; /* Added padding to both left and right */
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* =============================== 
-   Header Navigation (Main + Submenu)
-=============================== */
-
-header {
-  background-color: #333;
-  padding: 15px;
-}
-
-nav {
+/* ========================= HEADER ========================= */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--primary);
+  padding: 15px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-nav .logo {
-  color: #fff;
-  font-size: 24px;
+.logo {
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
-nav .nav-links {
+.navbar {
+  position: relative;
+}
+
+.nav-links {
   display: flex;
-  gap: 15px;
+  list-style: none;
+  gap: 20px;
 }
 
-nav .nav-links li {
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+/* === Stable Dropdown Navigation === */
+.dropdown {
   position: relative;
 }
 
-nav .nav-links a {
-  color: #fff;
-  padding: 10px 15px;
-  display: block;
-  font-size: 16px;
-}
-
-nav .nav-links a:hover {
-  background-color: #555;
-  border-radius: 4px;
-}
-
-/* Dropdown submenu */
-nav .nav-links .dropdown {
+.dropdown > a {
   position: relative;
+  z-index: 10;
 }
 
-nav .nav-links .dropdown .submenu {
-  display: none;
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #333;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: white;
+  color: var(--dark);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  min-width: 180px;
+  transition: all 0.25s ease;
+  pointer-events: none;
 }
 
-nav .nav-links .dropdown.active .submenu {
+.dropdown:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-menu li a {
   display: block;
+  padding: 10px 15px;
+  color: var(--dark);
+  text-decoration: none;
+  transition: background 0.2s;
 }
 
-nav .nav-links .submenu li {
-  padding: 10px;
+.dropdown-menu li a:hover {
+  background: var(--primary);
+  color: #fff;
 }
 
-nav .nav-links .submenu li a {
-  padding: 8px 15px;
-}
-
-nav .nav-links .submenu li a:hover {
-  background-color: #444;
-}
-
-/* =============================== 
-   Mobile Navigation
-=============================== */
-
+/* Hamburger */
 .hamburger {
   display: none;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
-  color: white;
-  font-size: 30px;
 }
 
-.nav-links.active {
-  display: block !important;
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-    background-color: #333;
-    position: absolute;
-    top: 60px;
-    left: 0;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links li a {
-    padding: 12px;
-    font-size: 18px;
-  }
-}
-
-/* =============================== 
-   Article Section
-=============================== */
-
-#articlesContainer {
+/* ========================= ANNOUNCEMENT ========================= */
+.announcement {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e9f3ff;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 20px 0;
   flex-wrap: wrap;
+  gap: 10px;
+}
+
+.announcement-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.announcement-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.latest-blink {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: bold;
+  animation: blinkText 1.2s infinite;
+}
+
+@keyframes blinkText {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+.latest-blink:hover {
+  color: #ff6600;
+  text-decoration: underline;
+}
+
+/* ========================= SEARCH ========================= */
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 3px rgba(0, 64, 128, 0.3);
+}
+
+/* Search Results Dropdown */
+#searchResults {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.search-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background: #e9f3ff;
+}
+
+.no-result {
+  padding: 8px 12px;
+  color: var(--muted);
+}
+
+/* ========================= CONTENT ========================= */
+.content {
+  display: flex;
   gap: 20px;
-  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.articles {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .article-card {
-  width: 300px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background: white;
+  border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .article-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .article-card img {
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
 }
 
@@ -177,64 +258,74 @@ nav .nav-links .submenu li a:hover {
   padding: 15px;
 }
 
-.article-card h3 {
-  font-size: 18px;
-  margin: 0 0 10px;
+.article-card-content h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
 }
 
-.article-card p {
-  font-size: 14px;
-  margin: 0 0 15px;
+.article-card-content p {
+  color: var(--muted);
+  margin-top: 8px;
+  font-size: 0.95rem;
 }
 
-.article-card small {
-  font-size: 12px;
-  color: #555;
+.article-card-content small {
+  display: block;
+  margin-top: 8px;
+  color: #777;
 }
 
-/* =============================== 
-   Search Bar Styles
-=============================== */
-
-#searchResults {
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: white;
-  width: 100%;
-  max-width: 300px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+/* ========================= YOUTUBE SECTION ========================= */
+.youtube-section {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  min-width: 280px;
 }
 
-.search-item {
-  padding: 10px;
-  cursor: pointer;
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--primary);
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 200px;
+    border-radius: 0 0 10px 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .announcement {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .youtube-section {
+    width: 100%;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .navbar {
+    position: relative;
+  }
 }
-
-.search-item:hover {
-  background-color: #f4f4f4;
-}
-
-.no-result {
-  padding: 10px;
-  text-align: center;
-  color: #999;
-}
-
-/* =============================== 
-   Additional Layout Styles
-=============================== */
-
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
