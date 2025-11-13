@@ -1,15 +1,41 @@
 /* Styling for the prominent announcement banner */
 .announcement {
-    background-color: #fff3cd; /* Yellow/Warning background */
+    /* Base styles for a warning look */
+    background-color: #fff3cd; /* Light Yellow/Warning background */
     color: #856404; /* Dark text */
     border: 1px solid #ffeeba;
     padding: 15px;
-    margin: 20px 0;
+    
+    /* CRITICAL: Constrain width and center it to align with the .article-container */
+    max-width: 900px;
+    margin: 20px auto; /* Centered horizontally (0 auto) with 20px vertical space */
+    
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for lift */
+    transition: transform 0.3s ease; /* For hover effect */
+}
+
+/* Optional hover effect to grab attention */
+.announcement:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .announcement-text {
     margin: 0;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 768px) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .announcement {
+        /* Add slight horizontal padding on mobile to match the body */
+        margin-left: 10px;
+        margin-right: 10px;
+        /* Remove the max-width restriction on the sides */
+        max-width: calc(100% - 20px); 
+    }
 }
