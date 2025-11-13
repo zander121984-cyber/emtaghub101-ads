@@ -14,7 +14,7 @@
   --article-bg: #f4f4f4; /* Article-specific background */
 }
 
-/* ========================= BASE & ARTICLE BODY STYLES (Combined) ========================= */
+/* ========================= BASE & LAYOUT WRAPPER ========================= */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
@@ -22,6 +22,10 @@ body {
   background-color: var(--light);
   color: var(--dark);
   transition: padding 0.3s ease;
+  /* Use flex for sticky footer on the viewport */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body.menu-open {
@@ -43,7 +47,7 @@ body.menu-open {
 }
 
 .logo {
-  font-size: 1.4rem; 
+  font-size: 1.4rem; 
   font-weight: bold;
 }
 
@@ -54,7 +58,7 @@ body.menu-open {
 /* --- DEFAULT STATE: HIDDEN --- */
 .nav-links {
   list-style: none;
-  display: none; 
+  display: none; 
   gap: 20px;
 }
 
@@ -71,7 +75,7 @@ body.menu-open {
 /* === Desktop Navigation Visibility (Only for screens > 768px) === */
 @media (min-width: 769px) {
     .nav-links {
-        display: flex; 
+        display: flex; 
         position: static;
         height: auto;
         width: auto;
@@ -123,28 +127,6 @@ body.menu-open {
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 103; transition: all 0.3s ease-in-out; }
 .hamburger span { width: 25px; height: 3px; background: white; border-radius: 3px; transition: all 0.3s ease-in-out; }
 
-
-/* ========================= CONTENT (Home Page Layout - if used) ========================= */
-.content { 
-  display: flex;
-  flex-direction: row-reverse; /* Puts the second element (sidebar) on the right */
-  gap: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 1270px;
-  margin: 20px auto; 
-}
-.articles {
-  flex: 3;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-.youtube-section.home-sidebar { /* Example if you have a separate sidebar class for home page */
-  flex: 1; 
-  min-width: 280px;
-}
-
 /* ========================= ARTICLE LAYOUT CONTAINER (Individual Article Page) ========================= */
 .container {
   display: flex;
@@ -155,102 +137,143 @@ body.menu-open {
   max-width: 1310px;
   margin: 20px auto;
   box-sizing: border-box;
-  /* FIX: Reverses order so .sidebar (second element in HTML) appears on the RIGHT of .article-main */
-  flex-direction: row-reverse; 
+  /* FIX: Puts the sidebar (second element in HTML) on the RIGHT of .article-main */
+  flex-direction: row-reverse; 
 }
 
-/* ===================== ARTICLE MAIN SECTION ===================== */
+/* ===================== ARTICLE MAIN SECTION (Left Column) ===================== */
 .article-main {
-  flex: 0 0 70%; /* Takes exactly 70% width on desktop */
+  flex: 0 0 70%; 
   background: white;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin-bottom: 20px;
   min-height: 500px;
-  order: 2; /* Default order, but ensures it's below sidebar on mobile */
+  /* Use flex for mobile reordering of its children (title, meta, image, content) */
+  display: flex;
+  flex-direction: column;
+  order: 2; /* Default/Desktop order */
 }
 
 .article-title {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    color: var(--dark);
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    color: var(--dark);
+    order: 1;
 }
 
-/* ===================== SIDEBAR SECTION ===================== */
+.article-meta {
+    margin-bottom: 15px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    order: 2;
+}
+
+/* ===================== DESKTOP: TABLOID IMAGE (FLOATING LEFT) ===================== */
+.article-tabloid-image {
+    /* DESKTOP: Float the image left next to the text */
+    width: 150px;
+    float: left; 
+    margin: 0 15px 10px 0; /* Top, Right, Bottom, Left */
+    border-radius: 4px;
+    overflow: hidden;
+    order: 3; /* Mobile ordering */
+}
+
+.article-tabloid-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure the main content flows around the floated image */
+.article-main h2, .article-main p, .article-main ul {
+    order: 4; /* Mobile ordering for the content body */
+}
+
+/* Clear float after the last element that needs to wrap the image */
+.article-main:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* ===================== SIDEBAR SECTION (Right Column) ===================== */
 .sidebar {
-  flex: 0 0 30%; /* Takes exactly 30% width on desktop */
+  flex: 0 0 30%; 
   background: white;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin-bottom: 20px;
   
-  /* Allows reordering of content *inside* the sidebar */
+  /* Inner layout for YouTube and Quick Links */
   display: flex;
   flex-direction: column;
-  gap: 20px; 
-
-  order: 1; /* Moves the sidebar to the TOP on mobile */
+  gap: 20px; 
+  
+  order: 1; /* Desktop order, ensures it's placed on the RIGHT */
 }
 
-/* ===================== QUICK LINKS SECTION ===================== */
+/* ===================== YOUTUBE & QUICK LINKS (Inside Sidebar) ===================== */
+.youtube-section {
+    order: 1; /* YouTube appears above Quick Links inside the sidebar */
+}
+.quick-links {
+    order: 2; /* Quick Links appears below YouTube inside the sidebar */
+}
+
 .quick-links h3, .youtube-section h3 {
-  font-size: 1.2rem; /* Adjusted slightly smaller for sidebar headers */
+  font-size: 1.2rem; 
   color: var(--primary);
   margin-bottom: 15px;
-}
-
-.quick-links {
-    order: 2;  /* Position: second item inside the sidebar */
 }
 
 .quick-links ul {
   list-style: none;
   padding-left: 0;
 }
-
 .quick-links ul li {
   margin: 10px 0;
 }
-
 .quick-links a {
   color: var(--primary);
   text-decoration: none;
   font-size: 1rem;
 }
-
 .quick-links a:hover {
   text-decoration: underline;
 }
 
-/* ===================== YOUTUBE SECTION (Iframe) ===================== */
-.youtube-section {
-  width: 100%;
-  background: var(--article-bg); /* Slight distinction */
-  padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  order: 1;  /* Position: first item inside the sidebar */
-}
-
-/* Adjust the YouTube iframe size */
 .youtube-section iframe {
   width: 100%;
   height: 200px;
   border-radius: 8px;
-  border: none;
+  border: none;
 }
 
-/* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
+/* ========================= FOOTER ========================= */
+.footer {
+  /* Ensures footer sticks to the bottom of the viewport content ends */
+  margin-top: auto; 
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+}
+
+
+/* ========================= MOBILE MODE FIXES (<= 768px) ========================= */
 @media (max-width: 768px) {
-  
-  /* --- Mobile Container Reset --- */
-  .container, .content {
+  
+  body { padding: 0; overflow-x: hidden; } /* Removes body padding */
+  
+  /* --- ARTICLE/SIDEBAR CONTAINER RESET --- */
+  .container {
     flex-direction: column;  /* Stack vertically */
     padding: 15px; 
     margin: 0 auto; 
@@ -258,26 +281,88 @@ body.menu-open {
   }
   
   .article-main, .sidebar {
-    width: 100%;  /* Takes full width on mobile */
-    margin-bottom: 15px; 
-    padding: 15px;
+    width: 100%; 
+    margin-bottom: 0; 
+    padding: 0; /* Remove padding from wrapper containers */
+    background: none; /* Remove background/shadow from wrapper containers */
+    box-shadow: none;
   }
- 
-  /* Body and Nav (unchanged) */
-  body { padding: 0; overflow-x: hidden; background-color: var(--article-bg); }
-  .hamburger { display: flex; position: fixed; top: 15px; right: 20px; z-index: 110; }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-  .nav-links { /* Mobile Drawer styles */
-    display: flex; flex-direction: column; position: fixed; top: 0; right: 0; height: 100%; width: 280px; max-width: 80%; background-color: var(--primary); box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); padding: 70px 20px 20px; transform: translateX(100%); transition: transform 0.3s ease-in-out; z-index: 105; list-style: none; overflow-y: auto; }
-  .nav-links.active { transform: translateX(0); }
-  .nav-links li { padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-  .nav-links li:last-child { border-bottom: none; }
-  .nav-links a { color: #fff; text-decoration: none; font-size: 1.1rem; display: block; padding: 8px 0; transition: color 0.2s; text-align: left; }
-  .dropdown { width: 100%; padding: 0; }
-  .dropdown-menu { position: static; width: 100%; background: rgba(0, 0, 0, 0.1); box-shadow: none; border-radius: 0; display: none; padding: 5px 0 5px 15px; visibility: visible; opacity: 1; transform: none; pointer-events: auto; }
-  .dropdown.active .dropdown-menu { display: block; }
-  .dropdown-menu li a { color: white; text-align: left; padding: 5px 0; }
-  .dropdown-menu li a:hover { background: transparent; color: #ffcc00; }
+
+  /* --- Mobile Layout: Article Main Ordering --- */
+  /* Target the elements inside the article-main to apply the full mobile order. */
+  
+  /* The full order is: Title, Author, Quick Links, Tabloid Image, Context, YouTube */
+  
+  /* 1. Article Title: Order 1 */
+  .article-title { order: 1; padding: 15px 15px 5px 15px; background: white; border-radius: 8px 8px 0 0; }
+  
+  /* 2. Article Meta: Order 2 */
+  .article-meta { order: 2; padding: 0 15px 15px 15px; background: white; border-radius: 0 0 8px 8px; margin-bottom: 15px;}
+  
+  /* 3. Sidebar (Quick Links/YouTube) Ordering */
+  .sidebar { 
+      order: 3; /* The whole sidebar container comes after Title/Meta */
+      display: flex; /* Ensure it's a flex container for its children */
+      flex-direction: column;
+      gap: 15px;
+  }
+  
+  /* 3a. Quick Links: Order 1 inside sidebar */
+  .sidebar > .quick-links {
+      order: 1; 
+      padding: 15px; 
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 4. Tabloid Image: Order 3 inside article-main (after Title/Meta) */
+  .article-tabloid-image {
+      float: none; /* Disable float */
+      width: 100%; /* Full width image */
+      margin: 0; 
+      order: 4; /* Appears after Quick Links */
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 5. Article Context: Order 4 inside article-main */
+  .article-main h2, .article-main p, .article-main ul {
+      order: 5; /* Appears after Tabloid Image */
+      padding: 0 15px; /* Apply padding to content elements */
+  }
+
+  /* Apply background to the main article context for a clean look */
+  .article-main > h2:first-of-type {
+      margin-top: 15px;
+  }
+  .article-main > h2, .article-main > p, .article-main > h3, .article-main > ul, .article-main > figure {
+      padding-left: 15px;
+      padding-right: 15px;
+      background: white; /* Give context a white background */
+  }
+  .article-main > p:last-child {
+      padding-bottom: 15px;
+      border-radius: 0 0 8px 8px;
+  }
+  
+  /* 6. YouTube: Order 2 inside sidebar */
+  .sidebar > .youtube-section {
+      order: 2; /* Appears after Quick Links */
+      padding: 15px; 
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* --- Cleanup on float/border for figures inside content --- */
+  .article-main figure { /* Applies to category images */
+      float: none;
+      width: 100%;
+      margin: 15px 0;
+  }
 }
+
+/* ... (Include your existing mobile drawer navigation styles here, as they were not requested to change) ... */
