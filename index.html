@@ -1,85 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EMTAGHub101 — Home</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EMTAGHub101 — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="header">
-    <div class="logo">
-            <img src="images//logo/EmtagHubLogo.png" alt="EMTAGHub101 Logo" class="header-logo">
-    </div>
+  <!-- ========================= HEADER ========================= -->
+  <header class="header">
+    <div class="logo">EMTAGHub101</div>
 
-    <nav class="navbar">
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
 
-        <li class="dropdown">
-          <a href="#">Safety & Security</a>
-          <ul class="dropdown-menu">
-            <li><a href="article/hazard.risk.identification.control/index.html">OSH General Awareness</a></li>
-            <li><a href="#">OSH Programs</a></li>
-          </ul>
-        </li>
+        <li class="dropdown">
+          <a href="#">Safety & Security</a>
+          <ul class="dropdown-menu">
+            <li><a href="article/hazard.risk.identification.control/index.html">OSH General Awareness</a></li>
+            <li><a href="#">OSH Programs</a></li>
+          </ul>
+        </li>
 
-        <li class="dropdown">
-          <a href="#">Information Technology</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Troubleshooting</a></li>
-            <li><a href="#">Networking</a></li>
-          </ul>
-        </li>
+        <li class="dropdown">
+          <a href="#">Information Technology</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Troubleshooting</a></li>
+            <li><a href="#">Networking</a></li>
+          </ul>
+        </li>
 
-        <li><a href="#">DIY & Practical Living</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
+        <li><a href="#">DIY & Practical Living</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
 
-      <div class="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-  </header>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        <section class="announcement">
-      <div class="announcement-text">
-        <h2>
-          📰 New Published Article:
-          <span id="latest-article" class="latest-blink">Loading...</span>
-        </h2>
-      </div>
+  <!-- ========================= MAIN ========================= -->
+  <main>
+    <!-- 📰 Announcement + Search -->
+    <section class="announcement">
+      <div class="announcement-text">
+        <h2>
+          📰 New Published Article:
+          <span id="latest-article" class="latest-blink">Loading...</span>
+        </h2>
+      </div>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search articles..." />
-        <div id="searchResults"></div>
-      </div>
-    </section>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search articles..." />
+        <div id="searchResults"></div>
+      </div>
+    </section>
 
-        <section class="content">
-      <div class="articles" id="articlesContainer"></div>
+    <!-- 📚 Articles + 🎥 YouTube -->
+    <section class="content">
+      <div class="articles" id="articlesContainer"></div>
 
-      <aside class="youtube-section">
-        <h3>🎥 Watch on YouTube</h3>
-        <iframe
-          width="100%"
-          height="250"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          allowfullscreen>
-        </iframe>
-      </aside>
-    </section>
-  </main>
+      <aside class="youtube-section">
+        <h3>🎥 Watch on YouTube</h3>
+        <iframe
+          width="100%"
+          height="250"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          allowfullscreen>
+        </iframe>
+      </aside>
+    </section>
+  </main>
 
-  <script src="js/script.js"></script>
-     <footer class="footer">
-    <p>&copy; 2025 EMTAGHub101. All rights reserved.</p>
-    <p>Your one-stop hub for knowledge, safety, security, technology innovation, inspirations, and self-development inspirations. Crafting learning through articles, insights, and narratives that educate, empower, and inspire.</p>
-    <p>Contact: <a href="mailto:emtaghub101@gmail.com">emtaghub101@gmail.com</a></p>
-    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Disclaimer</a></p>
-  </footer>
+  <script src="js/script.js"></script>
+   <!-- ========================= FOOTER ========================= -->
+  <footer class="footer">
+    <p>&copy; 2025 EMTAGHub101. All rights reserved.</p>
+    <p>Your one-stop hub for knowledge, safety, security, technology innovation, inspirations, and self-development inspirations. Crafting learning through articles, insights, and narratives that educate, empower, and inspire.</p>
+    <p>Contact: <a href="mailto:emtaghub101@gmail.com">emtaghub101@gmail.com</a></p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Disclaimer</a></p>
+  </footer>
 </body>
 </html>
+
+
 
