@@ -4,7 +4,10 @@
     color: white;
     /* Desktop padding */
     padding: 20px 20px 15px 20px; 
-    text-align: center;
+    
+    /* CHANGE 1: ALIGN TEXT TO LEFT ON DESKTOP */
+    text-align: left; 
+    
     margin-bottom: 20px;
     position: relative; 
     width: 100%; /* Ensures full width */
@@ -15,6 +18,11 @@
     font-size: 1.5em; 
     margin-bottom: 3px;
     margin-top: 5px; 
+    
+    /* CHANGE 2: SHRINK CONTENT WIDTH TO AVOID NAVIGATION */
+    /* Assuming logo area is about 200px and nav area is 200px, 
+       this ensures the text stays clear of the right side. */
+    max-width: 65%;
 }
 
 .banner-area p {
@@ -22,6 +30,9 @@
     font-size: 1em; 
     opacity: 0.9;
     margin-top: 0;
+    
+    /* Apply same width constraint as h1 */
+    max-width: 65%;
 }
 
 /* ------------------------------------- */
@@ -29,26 +40,21 @@
 /* ------------------------------------- */
 @media (max-width: 768px) {
     .banner-area {
-        /* CRITICAL MOBILE ADJUSTMENT: Sufficient top padding */
-        padding: 17px 15px 17px 16px; 
+        /* CRITICAL MOBILE ADJUSTMENT: Since logo, nav, and H1/P stack on mobile, 
+           the text should be centered again for aesthetic balance. */
+        padding: 60px 15px 20px 15px; /* Reverting to 60px padding for safety */
+        text-align: center; 
     }
     .banner-area h1 {
-        /* FURTHER REDUCED MOBILE H1: from 1.4em to 1.2em */
-        font-size: .8em; 
+        /* Remove max-width constraint on mobile to let it use full screen width */
+        max-width: 100%;
+        /* Adjusted mobile size */
+        font-size: 1.2em; 
     }
     .banner-area p {
-        /* FURTHER REDUCED MOBILE P: from 0.9em to 0.8em */
-        font-size: 0.6em;
+        /* Remove max-width constraint on mobile */
+        max-width: 100%;
+        /* Adjusted mobile size */
+        font-size: 0.8em;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
