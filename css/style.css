@@ -314,12 +314,14 @@ body {
     background: var(--primary); /* Uses primary color for the menu background. */
     position: absolute; /* Positions the menu relative to the navbar container. */
     
-    /* FIX: Zero vertical gap to the header */
+    /* FIX: Adjusted for zero vertical gap to the header. */
     top: 53px; /* Sets the menu's top edge to be 53px below the parent (adjust as needed for zero gap). */
     
-    /* CRITICAL FIX: Anchor the menu to the LEFT edge and ensure it spans 100% of the viewport width. */
-    left: 0; /* Anchors the menu to the left edge of the screen. */
-    width: 100vw; /* Ensures the menu spans the full width of the viewport, eliminating overlap/gaps. */
+    /* FIX: Force alignment to the right edge of the viewport. */
+    right: 0 !important; /* Overrides any inherited right positioning, aligning it to the right edge. */
+    
+    /* Optional: Ensures menu spans full width to the edge, minus body padding (0px here). */
+    width: calc(100vw - 0px); /* Calculates the width based on viewport width for edge-to-edge spanning. */
     
     border-radius: 0 0 10px 10px; /* Rounds the bottom corners. */
     transition: transform 0.3s ease-in-out; /* Smooth transition for opening/closing. */
