@@ -28,7 +28,7 @@
 @media (max-width: 768px) {
     .logo-area {
         /* On small screens, center the logo at the very top */
-        left: 50%;
+        left: 10%;
         top: 10px; 
         transform: translateX(-50%); /* Center horizontally */
     }
@@ -36,4 +36,5 @@
         /* REDUCED SIZE FOR MOBILE LOGO */
         max-width: 80px; 
     }
+
 }
