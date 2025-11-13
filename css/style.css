@@ -20,10 +20,9 @@ body {
   color: var(--dark); 
   line-height: 1.5; 
   padding: 0 20px; 
-  transition: margin-left 0.3s; /* Enables smooth body shift (optional) */
 }
 
-/* ========================= HEADER ========================= */
+/* ========================= HEADER (Desktop & Mobile) ========================= */
 .header {
   display: flex; 
   justify-content: space-between; 
@@ -34,7 +33,7 @@ body {
   position: sticky; 
   top: 0; 
   z-index: 100; 
-  height: 53px; /* Set a fixed height for consistency */
+  height: 53px; /* Ensure consistent header height */
 }
 
 .logo {
@@ -46,10 +45,18 @@ body {
   position: relative; 
 }
 
+/* Default Desktop Navigation */
 .nav-links {
   display: flex; 
   list-style: none; 
   gap: 20px; 
+  /* Reset mobile specific properties for desktop */
+  position: static; 
+  height: auto;
+  width: auto;
+  transform: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 .nav-links a {
@@ -110,7 +117,7 @@ body {
   color: #fff; 
 }
 
-/* Hamburger Icon */
+/* Hamburger Icon (Hidden on desktop) */
 .hamburger {
   display: none; 
   flex-direction: column; 
@@ -287,7 +294,7 @@ body {
   min-width: 280px; 
 }
 
-/* ========================= RESPONSIVE DRAWER NAVIGATION ========================= */
+/* ========================= RESPONSIVE DRAWER NAVIGATION (<= 768px) ========================= */
 @media (max-width: 768px) {
   /* Hides body padding on mobile */
   body {
@@ -302,27 +309,27 @@ body {
 
   /* --- DRAWER MENU STYLES --- */
   .nav-links {
-    display: flex; /* Always display but hide visually */
+    display: flex; 
     flex-direction: column; 
     
-    /* NEW: Fixed position for full-screen overlay */
+    /* Fixed position for full-screen overlay */
     position: fixed; 
     top: 0; 
     right: 0; 
-    height: 100%; /* Full viewport height */
-    width: 280px; /* Fixed width for the drawer */
-    max-width: 80%; /* Ensures it doesn't cover the whole screen on small phones */
+    height: 100%; 
+    width: 280px; 
+    max-width: 80%; 
     
-    background-color: var(--primary); /* Blue background */
+    background-color: var(--primary); 
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
-    padding: 60px 20px 20px; /* Padding for the content inside, pushing it below the top edge */
+    padding: 60px 20px 20px; 
     
     /* START HIDDEN: Slide 100% of its width to the right */
     transform: translateX(100%); 
     transition: transform 0.3s ease-in-out; 
-    z-index: 105; /* Above header and hamburger */
+    z-index: 105; 
     list-style: none;
-    overflow-y: auto; /* Allows scrolling if menu content is tall */
+    overflow-y: auto; 
   }
 
   /* NEW: State when 'active' class is added (menu opened) */
@@ -347,23 +354,23 @@ body {
     display: block; 
     padding: 8px 0;
     transition: color 0.2s;
-    text-align: left; /* Aligned left for the drawer style */
+    text-align: left; 
   }
 
   /* Mobile Dropdown Styling for the Drawer */
   .dropdown {
     width: 100%; 
-    padding: 0; /* Remove padding */
+    padding: 0; 
   }
   
   .dropdown-menu {
     position: static; 
     width: 100%; 
-    background: rgba(0, 0, 0, 0.1); /* Slightly darker background for submenu */
+    background: rgba(0, 0, 0, 0.1); 
     box-shadow: none; 
     border-radius: 0; 
     display: none; 
-    padding: 5px 0 5px 15px; /* Indent submenu items */
+    padding: 5px 0 5px 15px; 
     
     visibility: visible;
     opacity: 1;
@@ -377,7 +384,7 @@ body {
   }
 
   .dropdown-menu li a {
-    color: #fff; 
+    color: white; 
     text-align: left; 
     padding: 5px 0; 
   }
