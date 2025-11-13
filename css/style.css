@@ -112,7 +112,7 @@ body {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  z-index: 1000; /* 👈 FIX: Ensures the icon is clickable above the header */
+  z-index: 103; /* FIX: Highest z-index for clickability */
 }
 
 .hamburger span {
@@ -329,9 +329,10 @@ body {
 
   .navbar {
     position: relative;
+    z-index: 102; /* FIX: Added z-index to navigation container */
   }
 
-  /* === FIX: Mobile Dropdown Menu Styling (Submenu Clickability) === */
+  /* === Mobile Dropdown Menu Styling (Submenu Clickability) === */
 
   .dropdown {
     width: 100%;
@@ -345,7 +346,7 @@ body {
     box-shadow: none; 
     border-radius: 0; 
         
-    display: none; /* Start hidden (controlled by JS toggle) */
+    display: none; 
 
     visibility: visible;
     opacity: 1;
@@ -370,5 +371,3 @@ body {
     color: var(--primary);
   }
 }
-
-
