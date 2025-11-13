@@ -2,12 +2,16 @@
 .banner-area {
     background-color: #1A2338; /* Deep Navy Blue from Logo */
     color: white;
-    /* Desktop padding is now 20px on top */
-    padding: 20px 20px 15px 20px; 
     
-    /* MODIFIED: Align all banner text content to the left */
+    /* MODIFIED: Combined all padding into one line. 
+       Increased LEFT padding to 100px to push content right. 
+       Used 20px top padding for logo clearance.
+       Format: [Top] [Right] [Bottom] [Left] */
+    padding: 20px 20px 15px 100px; 
+    
+    /* Align all banner text content to the left */
     text-align: left; 
-    padding: 10px 100px 17px 16px; 
+    
     margin-bottom: 20px;
     position: relative; 
     width: 100%; /* Ensures full width */
@@ -19,8 +23,10 @@
     margin-bottom: 3px;
     margin-top: 5px; 
     
-    /* MODIFIED: Constrain the width so text doesn't hit the navigation links */
-    max-width: 65%;
+    /* MODIFIED: Removed max-width. The content is now constrained by the 
+       right padding of the .banner-area (20px) and the navigation area. 
+       This allows the text to flow better to the right without forcing a break. */
+    max-width: none;
 }
 
 .banner-area p {
@@ -29,8 +35,8 @@
     opacity: 0.9;
     margin-top: 0;
     
-    /* MODIFIED: Constrain the width */
-    max-width: 65%;
+    /* MODIFIED: Removed max-width */
+    max-width: none;
 }
 
 /* ------------------------------------- */
@@ -38,21 +44,18 @@
 /* ------------------------------------- */
 @media (max-width: 768px) {
     .banner-area {
-        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        /* ORIGINAL MOBILE SETTINGS KEPT */
         padding: 17px 15px 17px 16px; 
         text-align: center; /* Keep text centered on mobile */
     }
     .banner-area h1 {
-        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        /* ORIGINAL MOBILE SETTINGS KEPT */
         font-size: .8em; 
-        max-width: 100%; /* Remove desktop constraint */
+        max-width: 100%; /* Removed desktop constraint */
     }
     .banner-area p {
-        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        /* ORIGINAL MOBILE SETTINGS KEPT */
         font-size: 0.6em;
-        max-width: 100%; /* Remove desktop constraint */
+        max-width: 100%; /* Removed desktop constraint */
     }
 }
-
-
-
