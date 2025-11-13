@@ -83,7 +83,7 @@ body {
   min-width: 180px;
   transition: all 0.25s ease;
   pointer-events: none;
-  z-index: 99; /* Ensure submenu is above main content */
+  z-index: 99;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -112,6 +112,7 @@ body {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  z-index: 101; /* 👈 FIX: Ensures the icon is clickable above the header */
 }
 
 .hamburger span {
@@ -330,40 +331,38 @@ body {
     position: relative;
   }
 
-  /* === FIX: Mobile Dropdown Menu Styling === */
+  /* === FIX: Mobile Dropdown Menu Styling (Submenu Clickability) === */
 
   .dropdown {
-    width: 100%; /* Ensure the parent LI takes full width */
+    width: 100%;
   }
     
-  /* CRITICAL FIXES FOR CLICKABILITY: Overrides desktop visibility/positioning */
+  /* CRITICAL FIXES FOR SUBMENU CLICKABILITY */
   .dropdown-menu {
-    position: static; /* Forces submenu to stack vertically in the list */
+    position: static; 
     width: 100%;
-    background: transparent; /* Seamlessly blend with the main menu background */
+    background: transparent;
     box-shadow: none; 
     border-radius: 0; 
         
-    /* Hiding based on JS toggle */
-    display: none; /* Start hidden */
+    display: none; /* Start hidden (controlled by JS toggle) */
 
-    /* Ensure links are fully accessible when shown */
     visibility: visible;
     opacity: 1;
     transform: none;
-    pointer-events: auto; /* IMPORTANT: Ensures links are clickable */
-    padding: 0 0 5px 15px; /* Slight indentation */
+    pointer-events: auto;
+    padding: 0 0 5px 15px;
   }
     
-  /* CRITICAL: Show the submenu when the parent <li> has the 'active' class from JS */
+  /* Show the submenu when the parent <li> has the 'active' class from JS */
   .dropdown.active .dropdown-menu {
     display: block;
   }
 
   /* Submenu links style adjustment for stacking */
   .dropdown-menu li a {
-    color: white; /* Ensure text is visible on the primary background */
-    padding: 5px 15px 5px 15px; /* Adjust padding for better look */
+    color: white;
+    padding: 5px 15px 5px 15px;
   }
     
   .dropdown-menu li a:hover {
