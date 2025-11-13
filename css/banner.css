@@ -30,7 +30,7 @@
 @media (max-width: 768px) {
     .banner-area {
         /* CRITICAL MOBILE ADJUSTMENT: Sufficient top padding */
-        padding: 60px 15px 20px 15px; 
+        padding: 40px 15px 20px 15px; 
     }
     .banner-area h1 {
         /* FURTHER REDUCED MOBILE H1: from 1.4em to 1.2em */
@@ -41,4 +41,5 @@
         font-size: 0.5em;
     }
 }
+
 
