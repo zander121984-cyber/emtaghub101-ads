@@ -1,0 +1,18 @@
+/* Styling for the site footer */
+.main-footer {
+    background-color: #343a40; /* Dark gray */
+    color: #f8f9fa; /* Light text */
+    padding: 20px 20px;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+.footer-links a {
+    color: #adb5bd;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: white;
+}

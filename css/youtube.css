@@ -1,0 +1,20 @@
+/* Styling for the sidebar or embedded video area */
+.youtube-widget {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.youtube-placeholder {
+    background-color: #343a40; /* Dark background to resemble a video player */
+    color: white;
+    padding: 40px 20px;
+    border-radius: 6px;
+}
+
+.youtube-placeholder p {
+    margin-top: 15px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}

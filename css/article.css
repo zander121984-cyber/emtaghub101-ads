@@ -1,0 +1,63 @@
+/* Styling specific to the article content */
+.full-article {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.full-article h2 {
+    color: #004085; /* Darker blue for main title */
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.full-article h3 {
+    color: #007bff;
+    margin-top: 30px;
+}
+
+.article-meta {
+    font-style: italic;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.interaction-quote {
+    background-color: #e2f0fb;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin: 20px 0;
+    color: #004085;
+}
+
+.prevention-table ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.example-list {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 3px solid #ced4da;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 768px) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .full-article {
+        padding: 15px; /* Reduced padding for mobile */
+    }
+    .full-article h2 {
+        font-size: 1.5em;
+    }
+    .full-article h3 {
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
+    .interaction-quote {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+}

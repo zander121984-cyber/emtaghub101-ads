@@ -1,0 +1,41 @@
+/* Styling for the large header area below the logo/nav */
+.banner-area {
+    background-color: #007bff; /* Primary Blue */
+    color: white;
+    /* REDUCED PADDING: Use minimal vertical padding to shrink the banner height */
+    padding: 5px 20px 15px 20px; 
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative; 
+    width: 100%; /* Ensures full width */
+}
+
+.banner-area h1 {
+    /* Significantly reduced font size to help shrink the banner */
+    font-size: 1.5em; 
+    margin-bottom: 3px;
+    margin-top: 5px; /* Added small top margin for spacing */
+}
+
+.banner-area p {
+    font-size: 1em; /* Reduced size */
+    opacity: 0.9;
+    margin-top: 0;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 768px) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .banner-area {
+        /* CRITICAL MOBILE ADJUSTMENT: Since logo and nav stack on mobile, 
+           we must maintain enough top padding to clear them. */
+        padding: 100px 15px 20px 15px; 
+    }
+    .banner-area h1 {
+        font-size: 1.4em; 
+    }
+    .banner-area p {
+        font-size: 0.9em;
+    }
+}

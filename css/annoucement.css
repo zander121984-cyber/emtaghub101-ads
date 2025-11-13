@@ -1,0 +1,15 @@
+/* Styling for the prominent announcement banner */
+.announcement {
+    background-color: #fff3cd; /* Yellow/Warning background */
+    color: #856404; /* Dark text */
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.announcement-text {
+    margin: 0;
+}

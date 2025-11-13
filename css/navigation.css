@@ -1,0 +1,126 @@
+/* Styling for the main navigation menu */
+.main-header {
+    /* No flex here, header is a simple block */
+    padding: 0; 
+    border-bottom: none;
+}
+
+/* ------------------------------------- */
+/* DESKTOP STYLES (Navigation in Top Right) */
+/* ------------------------------------- */
+
+.main-nav {
+    /* Absolute Positioning relative to the banner */
+    position: absolute;
+    top: 15px; 
+    right: 50px; /* Adjusted to 20px for better desktop spacing */
+    z-index: 10;
+    padding: 0;
+    background: none; 
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Links horizontal */
+}
+
+.main-nav li {
+    margin-left: 20px; 
+    padding: 0;
+    border-bottom: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: white; 
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #ffc107;
+}
+
+/* Hide Hamburger Button on Desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 768px) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    
+    /* 1. Hamburger Button (Visible on Mobile) */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 200; /* Above everything */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+    
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: white; /* Color of the bars */
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* Close icon transformation (X) */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0; /* Hide middle bar */
+    }
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* 2. Off-Canvas Navigation Panel */
+    .main-nav {
+        /* CRITICAL: Fixed position relative to viewport */
+        position: fixed; 
+        top: 0;
+        right: -300px; /* Start off-screen to the right (Hidden state) */
+        width: 250px; /* Width of the menu panel */
+        height: 100%;
+        background-color: #343a40; /* Dark background for the panel */
+        padding-top: 60px; /* Space for the logo/toggle at the top */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease-in-out; /* Slide animation */
+        z-index: 100;
+    }
+
+    /* 3. Open State (JS adds the 'is-open' class) */
+    .main-nav.is-open {
+        right: 0; /* Slide into view */
+    }
+
+    /* 4. Navigation Links inside the panel */
+    .main-nav ul {
+        flex-direction: column; 
+        padding: 20px;
+    }
+
+    .main-nav li {
+        margin: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a {
+        color: #f8f9fa; /* Light text for dark background */
+        display: block;
+        padding: 10px 0;
+    }
+}

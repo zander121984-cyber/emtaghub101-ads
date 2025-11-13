@@ -1,0 +1,39 @@
+/* Styling for the site logo/title */
+.logo-area {
+    /* CRITICAL: Absolute Positioning relative to the banner */
+    position: absolute;
+    left: 12px; /* Distance from the banner's left edge */
+    top: 12px; /* Place near the top */
+    z-index: 10; 
+    padding: 0;
+    text-align: left;
+}
+
+.header-logo {
+    /* REDUCED SIZE FOR STANDARD DESKTOP LOGO */
+    max-width: 80px; 
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.logo-area a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 768px) */
+/* ------------------------------------- */
+@media (max-width: 768px) {
+    .logo-area {
+        /* On small screens, center the logo at the very top */
+        left: 50%;
+        top: 10px; 
+        transform: translateX(-50%); /* Center horizontally */
+    }
+    .header-logo {
+        /* REDUCED SIZE FOR MOBILE LOGO */
+        max-width: 80px; 
+    }
+}
