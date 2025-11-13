@@ -2,10 +2,10 @@
 .banner-area {
     background-color: #1A2338; /* Deep Navy Blue from Logo */
     color: white;
-    /* Desktop padding */
+    /* Desktop padding is now 20px on top */
     padding: 20px 20px 15px 20px; 
     
-    /* CHANGE 1: ALIGN TEXT TO LEFT ON DESKTOP */
+    /* MODIFIED: Align all banner text content to the left */
     text-align: left; 
     
     margin-bottom: 20px;
@@ -14,24 +14,22 @@
 }
 
 .banner-area h1 {
-    /* Desktop font size remains the same */
+    /* Desktop font size remains 1.5em */
     font-size: 1.5em; 
     margin-bottom: 3px;
     margin-top: 5px; 
     
-    /* CHANGE 2: SHRINK CONTENT WIDTH TO AVOID NAVIGATION */
-    /* Assuming logo area is about 200px and nav area is 200px, 
-       this ensures the text stays clear of the right side. */
+    /* MODIFIED: Constrain the width so text doesn't hit the navigation links */
     max-width: 65%;
 }
 
 .banner-area p {
-    /* Desktop font size remains the same */
+    /* Desktop font size remains 1em */
     font-size: 1em; 
     opacity: 0.9;
     margin-top: 0;
     
-    /* Apply same width constraint as h1 */
+    /* MODIFIED: Constrain the width */
     max-width: 65%;
 }
 
@@ -40,21 +38,18 @@
 /* ------------------------------------- */
 @media (max-width: 768px) {
     .banner-area {
-        /* CRITICAL MOBILE ADJUSTMENT: Since logo, nav, and H1/P stack on mobile, 
-           the text should be centered again for aesthetic balance. */
-        padding: 60px 15px 20px 15px; /* Reverting to 60px padding for safety */
-        text-align: center; 
+        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        padding: 17px 15px 17px 16px; 
+        text-align: center; /* Keep text centered on mobile */
     }
     .banner-area h1 {
-        /* Remove max-width constraint on mobile to let it use full screen width */
-        max-width: 100%;
-        /* Adjusted mobile size */
-        font-size: 1.2em; 
+        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        font-size: .8em; 
+        max-width: 100%; /* Remove desktop constraint */
     }
     .banner-area p {
-        /* Remove max-width constraint on mobile */
-        max-width: 100%;
-        /* Adjusted mobile size */
-        font-size: 0.8em;
+        /* ORIGINAL MOBILE SETTINGS RESTORED/KEPT */
+        font-size: 0.6em;
+        max-width: 100%; /* Remove desktop constraint */
     }
 }
