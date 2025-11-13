@@ -192,6 +192,10 @@ const navLinks = document.querySelector(".nav-links");
 const dropdownToggles = document.querySelectorAll(".dropdown > a"); 
 const dropdowns = document.querySelectorAll(".dropdown"); // The parent li elements
 
+// 🔑 NEW: Select the dedicated close button
+const navCloseButton = document.getElementById("navCloseButton");
+
+
 if (hamburger && navLinks) {
     // 1. Mobile Menu Toggle (Hamburger Icon)
     hamburger.addEventListener('click', (e) => {
@@ -201,6 +205,22 @@ if (hamburger && navLinks) {
             navLinks.classList.toggle('active');
         }
     });
+    
+    // 4. 🔑 NEW: Close Menu via Dedicated Button
+    if (navCloseButton) {
+        navCloseButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents outside-click handler from double-firing
+            if (isMobile() && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                
+                // Close any open submenus
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    }
+
 
     // 2. Mobile Dropdown Submenu Toggle
     dropdownToggles.forEach(link => {
@@ -224,7 +244,7 @@ if (hamburger && navLinks) {
         });
     });
 
-    // 3. Auto-hide Navigation Drawer on Outside Click/Touch (New Requirement)
+    // 3. Auto-hide Navigation Drawer on Outside Click/Touch
     document.addEventListener('click', (e) => {
         // Only execute if the menu is active AND the screen is mobile size
         if (navLinks.classList.contains('active') && isMobile()) {
