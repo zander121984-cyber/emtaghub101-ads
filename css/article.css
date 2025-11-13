@@ -200,7 +200,7 @@ body.menu-open {
 .search-box {
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
 }
 
 #searchInput {
@@ -573,4 +573,5 @@ body.menu-open {
     order: 2;
   }
 }
+
 
