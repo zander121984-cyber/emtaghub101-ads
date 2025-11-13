@@ -30,7 +30,7 @@
     .banner-area {
         /* CRITICAL MOBILE ADJUSTMENT: Since logo and nav stack on mobile, 
            we must maintain enough top padding to clear them. */
-        padding: 100px 15px 20px 15px; 
+        padding: 70px 15px 20px 15px; 
     }
     .banner-area h1 {
         font-size: 1.4em; 
@@ -38,4 +38,5 @@
     .banner-area p {
         font-size: 0.9em;
     }
+
 }
