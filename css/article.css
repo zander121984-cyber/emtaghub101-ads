@@ -12,7 +12,6 @@
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer; 
-    border-radius: 8px;
     transition: transform 0.2s ease;
 }
 
@@ -22,6 +21,7 @@
 
 /* --- IMAGE FLOATING LEFT (Text wraps on the right) --- */
 .article-image-left {
+    /* ⭐ CORRECTION 1: Must be float: left for text to wrap on the right ⭐ */
     float: left; 
     
     /* Margin adjusted: 0 Top, 25px Right (pushes text away), 15px Bottom, 0 Left */
@@ -32,7 +32,6 @@
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    border-radius: 8px;
     transition: transform 0.2s ease;
 }
 
@@ -69,38 +68,22 @@
 /* MOBILE OPTIMIZATION (Up to 768px) */
 /* ------------------------------------- */
 @media (max-width: 768px) {
-    /* Ensure padding looks good on small screens */
-    .full-article {
-        padding: 20px 15px; 
-    }
-
-    /* * ⭐ FIX: Mobile styles are now completely separate for .article-image-right
-     * This ensures the user maintains distinct control over this element.
-     */
-    .article-image-right {
+    /* ⚠️ Correction: Using a common selector for all article images on mobile */
+    .article-image-right, .article-image-left {
         /* Reset float and margin for small screens */
-        float: none; 
-        display: block; 
-        margin: 0 right; /* Centers the image */
+        float: none; /* ⭐ Added: Disables floating on mobile for better flow ⭐ */
+        display: block; /* Makes the image take its own line */
+        margin: 15px auto; /* Centers the image */
         
-        width: 40vw; /* FULFILLS REQUIREMENT: 40vw size on mobile */
+        /* FULFILLS REQUIREMENT: 40vw size on mobile */
+        width: 40vw; 
     }
     
-    /* * ⭐ FIX: Mobile styles are now completely separate for .article-image-left
-     * This ensures the user maintains distinct control over this element.
-     */
-    .article-image-left {
-        /* Reset float and margin for small screens */
-        float: none; 
-        display: block; 
-        margin: 0 left; /* Centers the image */
-        
-        width: 40vw; /* FULFILLS REQUIREMENT: 40vw size on mobile */
-    }
-    
+    /* Note: If you absolutely need the image to float on mobile, remove 
+       float: none; and display: block; above, but floating tiny images 
+       on mobile usually results in messy wrapping. */
+       
     #lightbox-overlay {
         position: fixed;
     }
 }
-
-
