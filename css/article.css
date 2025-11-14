@@ -69,17 +69,25 @@
 /* ------------------------------------- */
 @media (max-width: 768px) {
     /* ⚠️ Correction: Using a common selector for all article images on mobile */
-    .article-image-right, .article-image-left {
+    .article-image-right{
         /* Reset float and margin for small screens */
-        float: none; /* ⭐ Added: Disables floating on mobile for better flow ⭐ */
+        float: right; /* ⭐ Added: Disables floating on mobile for better flow ⭐ */
         display: block; /* Makes the image take its own line */
         margin: 15px auto; /* Centers the image */
         
         /* FULFILLS REQUIREMENT: 40vw size on mobile */
         width: 40vw; 
     }
-    
-    /* Note: If you absolutely need the image to float on mobile, remove 
+    .article-image-left {
+    /* Reset float and margin for small screens */
+        float: left; /* ⭐ Added: Disables floating on mobile for better flow ⭐ */
+        display: block; /* Makes the image take its own line */
+        margin: 15px auto; /* Centers the image */
+        
+        /* FULFILLS REQUIREMENT: 40vw size on mobile */
+        width: 40vw; 
+    }
+        /* Note: If you absolutely need the image to float on mobile, remove 
        float: none; and display: block; above, but floating tiny images 
        on mobile usually results in messy wrapping. */
        
@@ -87,3 +95,4 @@
         position: fixed;
     }
 }
+
