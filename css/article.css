@@ -1,120 +1,17 @@
-/* Styling specific to the article content container */
-.full-article {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* --- 1. Headings (H2, H3, H4) --- */
-
-/* Primary article title (H2) */
-.full-article h2 {
-    color: #004085; /* Darker blue for main title */
-    font-size: 2em; /* Added font size for clarity */
-    margin-top: 10px; /* Added margin for spacing */
-    margin-bottom: 5px; /* Added margin for spacing */
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 10px;
-}
-
-/* Section titles (H3) */
-.full-article h3 {
-    color: #007bff; /* Primary Blue */
-    font-size: 1.5em; /* Added font size for clarity */
-    margin-top: 30px;
-    margin-bottom: 10px; /* Added margin for spacing */
-}
-
-/* Sub-section titles (H4) - Added for consistency */
-.full-article h4 {
-    color: #0B3C5D; /* Dark Ocean Blue for structure */
-    font-size: 1.25em;
-    margin-top: 20px;
-    margin-bottom: 8px;
-}
-
-/* --- 2. Article Metadata & General Text --- */
-
-.article-meta {
-    font-style: italic;
-    color: #6c757d;
-    margin-bottom: 20px;
-    font-size: 0.9em; /* Added font size for clarity */
-}
-
-/* Standard paragraph styling */
-.full-article p {
-    font-size: 1.1em;
-    line-height: 1.7;
-    margin-bottom: 15px;
-    text-align: justify; /* Justify text for a formal look */
-}
-
-/* Style the links within the article */
-.full-article p a {
-    color: #00BCD4; /* Vibrant Cyan */
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.full-article p a:hover {
-    text-decoration: underline;
-}
-
-/* --- 3. Quotes, Lists, and Specific Sections --- */
-
-/* Your styled quote/callout block */
-.interaction-quote {
-    background-color: #e2f0fb;
-    border-left: 5px solid #007bff;
-    padding: 15px;
-    margin: 20px 0;
-    color: #004085;
-}
-
-/* Styling for lists of examples (ul/ol) */
-.full-article ul, .full-article ol {
-    padding-left: 25px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.full-article ul li, .full-article ol li {
-    margin-bottom: 8px;
-    font-size: 1.05em;
-}
-
-/* Your specific list styling */
-.prevention-table ul {
-    list-style: disc;
-    margin-left: 20px;
-}
-
-.example-list {
-    margin-left: 20px;
-    padding-left: 10px;
-    border-left: 3px solid #ced4da;
-}
-
-/* Added: Conclusion Section Highlight (Enhancing the final thought) */
-#conclusion {
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-    margin-top: 30px;
-    background-color: #f8f9fa; /* Light background for separation */
-    padding: 20px;
-    border-radius: 5px;
-}
-
 /* --- 4. Image Floating (Crucial for Layout) --- */
 
 .article-feature-image {
-    /* DESKTOP/STANDARD STYLING */
-    float: left; /* Image floats left, text wraps on the right */
-    width: 300px; 
+    /* STYLING FOR BOTH DESKTOP AND MOBILE */
+    
+    /* ⭐ MODIFIED: Apply float right globally (outside @media) ⭐ */
+    float: right; 
+    
+    /* Margin adjusted to push text away from the image on the LEFT */
+    /* Margin: [Top] [Right] [Bottom] [Left] */
+    margin: 0 0 15px 25px; 
+    
+    width: 300px; /* Default desktop width */
     height: auto;
-    margin: 0 25px 15px 0; /* Pushes text away from the image on the right */
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -123,31 +20,16 @@
 /* MOBILE OPTIMIZATION (Up to 768px) */
 /* ------------------------------------- */
 @media (max-width: 768px) {
-    .full-article {
-        padding: 15px; /* Reduced padding for mobile */
-    }
-    .full-article h2 {
-        font-size: 1.5em;
-        text-align: left; /* Ensure title is left-aligned on mobile */
-    }
-    .full-article h3 {
-        font-size: 1.2em;
-        margin-top: 20px;
-    }
-    .interaction-quote {
-        padding: 10px;
-        font-size: 0.95em;
-    }
-    .full-article p {
-        text-align: left; /* Justify often looks bad on narrow mobile screens */
-        font-size: 1em;
-    }
-    
-    /* Reset float and center image on small screens */
+    /* We only need to adjust the width and reset display/margin properties */
     .article-feature-image {
-        float: none; 
-        display: block;
-        margin: 15px auto; 
-        width: 25vw; /* 1/4 of viewport width, as previously requested */
+        /* Keep float: right (inherited from global style) */
+        
+        /* FULFILLS REQUIREMENT: 1/4 size of the mobile screen */
+        width: 25vw; 
+        
+        /* Reset display/margin to maintain float functionality */
+        display: inline;
+        margin-top: 5px; /* Small top margin for spacing */
     }
+    /* ... other mobile styles ... */
 }
