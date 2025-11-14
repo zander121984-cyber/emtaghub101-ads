@@ -1,6 +1,6 @@
 /* --- 4. Image Floating (Crucial for Layout) --- */
 
-.article-feature-image {
+.article-image-right {
     /* STYLING FOR BOTH DESKTOP AND MOBILE */
     
     /* Apply float right globally to wrap text on the left */
@@ -20,7 +20,31 @@
     transition: transform 0.2s ease; /* Smooth hover feedback */
 }
 
-.article-feature-image:hover {
+.article-image-right:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.article-image-left {
+    /* STYLING FOR BOTH DESKTOP AND MOBILE */
+    
+    /* Apply float right globally to wrap text on the left */
+    float: right; 
+    
+    /* Margin adjusted to push text away from the image on the LEFT */
+    /* Margin: [Top] [Right] [Bottom] [Left] */
+    margin: 0 0 15px 25px; 
+    
+    width: 300px; /* Default desktop width */
+    height: auto;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    
+    /* Added: Styling to make the image look clickable */
+    cursor: pointer; 
+    transition: transform 0.2s ease; /* Smooth hover feedback */
+}
+
+.article-image-left:hover {
     transform: scale(1.02); /* Slight zoom on hover */
 }
 
@@ -80,3 +104,4 @@
         position: fixed;
     }
 }
+
