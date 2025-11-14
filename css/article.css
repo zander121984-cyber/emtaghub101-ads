@@ -3,7 +3,7 @@
 .article-feature-image {
     /* STYLING FOR BOTH DESKTOP AND MOBILE */
     
-    /* ⭐ MODIFIED: Apply float right globally (outside @media) ⭐ */
+    /* Apply float right globally to wrap text on the left */
     float: right; 
     
     /* Margin adjusted to push text away from the image on the LEFT */
@@ -14,7 +14,50 @@
     height: auto;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    
+    /* Added: Styling to make the image look clickable */
+    cursor: pointer; 
+    transition: transform 0.2s ease; /* Smooth hover feedback */
 }
+
+.article-feature-image:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+/* --- Lightbox / Modal Styling (To display image on click) --- */
+
+#lightbox-overlay {
+    /* Hides the lightbox by default */
+    display: none; 
+    
+    /* Position over everything */
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Dark, semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.9); 
+    
+    /* Centers content (the enlarged image) */
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-image {
+    /* Max size of the enlarged image */
+    max-width: 90%;
+    max-height: 90%;
+    
+    /* Animation for smooth appearance */
+    transition: transform 0.3s ease-in-out;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
 
 /* ------------------------------------- */
 /* MOBILE OPTIMIZATION (Up to 768px) */
@@ -24,13 +67,16 @@
     .article-feature-image {
         /* Keep float: right (inherited from global style) */
         
-        /* FULFILLS REQUIREMENT: 1/4 size of the mobile screen */
+        /* FULFILLS REQUIREMENT: 40vw size on mobile */
         width: 40vw; 
         
         /* Reset display/margin to maintain float functionality */
         display: inline;
         margin-top: 5px; /* Small top margin for spacing */
     }
-    /* ... other mobile styles ... */
+    
+    /* Ensure the overlay covers the screen on mobile as well */
+    #lightbox-overlay {
+        position: fixed;
+    }
 }
-
