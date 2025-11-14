@@ -35,9 +35,9 @@
             
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Resources</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="#article-toc">Resources</a></li>
+                    <li><a href="#contact-us">Contact</a></li>
                 </ul>
             </nav>
             <h1>The Hub for Knowledge, Safety, and Innovation</h1>
@@ -55,10 +55,49 @@
                 <h2>Unsafe Act and Unsafe Condition: The Core Principles of Accident Causation</h2>
                 <p class="article-meta">Published on <time datetime="2025-11-13">November 13, 2025</time> by The Safety Team</p>
             </header>
+            
+            <img src="images/article/safety-concept-diagram.jpg" alt="Diagram showing the interaction of Unsafe Act and Unsafe Condition" class="article-feature-image">
 
             <section id="introduction">
-                <p>In the field of Occupational Health and Safety (OHS), accident prevention is not about luck; it's about systematic control. The foundation of this control rests on distinguishing and managing the two primary causes of incidents: the **Unsafe Act** and the **Unsafe Condition**. Developed through decades of safety research, these concepts provide a simple yet powerful framework for analyzing and preventing workplace incidents. A truly robust safety program must address both the human element and the environment.</p>
+                <p>In the field of Occupational Health and Safety (OHS), accident 
+                <a href="#prevention-methods">prevention is not about luck</a>; it's about systematic control. The 
+                foundation of this control rests on distinguishing and managing the two 
+                primary causes of incidents: the **<a href="#unsafe-act">Unsafe Act</a>** and the **<a href="#unsafe-condition">Unsafe Condition</a>**. Developed through decades of safety research, these 
+                concepts provide a simple yet powerful framework for analyzing and 
+                preventing workplace incidents. A truly robust safety program must 
+                address both the human element and the environment.</p>
             </section>
+
+            <section id="unsafe-act">
+                <h3>1. Unsafe Acts: The Human Factor (90% of Incidents)</h3>
+                <p>An Unsafe Act is a deviation from standard operating procedure, an accepted practice, or common sense that could lead to an injury or incident. It is a direct result of human behavior and often accounts for the vast majority of incidents (historically cited as 88-96% by Heinrich's model, although modern science suggests a more complex interaction).</p>
+                
+                <h4>Examples of Unsafe Acts:</h4>
+                <ul>
+                    <li>**Ignoring Procedures:** Failure to follow Lockout/Tagout (LOTO) procedures.</li>
+                    <li>**Improper Use of Tools:** Using a wrench as a hammer or lifting with the back instead of the legs.</li>
+                    <li>**Distraction:** Using a mobile phone while operating machinery or driving a forklift.</li>
+                    <li>**No PPE:** Operating a grinder without safety glasses.</li>
+                    <li>**Horseplay:** Engaging in practical jokes or running in designated walking areas.</li>
+                </ul>
+                <p>Mitigation strategies for Unsafe Acts focus heavily on **training, supervision, behavior-based safety (BBS) programs, and strong safety leadership.**</p>
+            </section>
+            
+            <section id="unsafe-condition">
+                <h3>2. Unsafe Conditions: The Environmental Factor</h3>
+                <p>An Unsafe Condition is any physical or environmental fault in the workplace that could cause an incident. It is the flaw in the environment, equipment, or process that, when combined with an Unsafe Act or simple bad luck, results in harm. These conditions require immediate reporting and engineering solutions, primarily using the Hierarchy of Controls.</p>
+                
+                <h4>Examples of Unsafe Conditions:</h4>
+                <ol>
+                    <li>**Defective Equipment:** Frayed wiring on a power tool or a cracked ladder rung.</li>
+                    <li>**Poor Housekeeping:** Spills not cleaned up or boxes blocking emergency exits.</li>
+                    <li>**Inadequate Guarding:** Missing machine guards or barriers around exposed pits.</li>
+                    <li>**Ventilation:** Insufficient airflow leading to the buildup of toxic fumes.</li>
+                    <li>**Lack of Warning Systems:** Missing caution tape or non-functioning smoke detectors.</li>
+                </ol>
+                <p>Mitigation for Unsafe Conditions relies on regular **inspections, preventative maintenance, engineering controls, and robust hazard identification systems** (like EMTAG Hub's tagging protocols).</p>
+            </section>
+
 
             <section id="conclusion">
                 <h3>Conclusion: The Path to Zero Harm</h3>
@@ -68,6 +107,8 @@
         </article>
     </main>
 
+    <div id="contact-us"></div>
+    
     <aside class="youtube-widget">
         <div class="youtube-placeholder">
             <p>Watch our video on the Hierarchy of Controls (Styled by `css/youtube.css`)</p>
@@ -77,13 +118,10 @@
     <footer class="main-footer">
         <p>&copy; <span id="current-year">2025</span> Safety First Institute | All Rights Reserved.</p>
         <div class="footer-links">
-            <a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a>
+            <a href="#privacy">Privacy Policy</a> | <a href="#disclaimer">Disclaimer</a>
         </div>
     </footer>
 
     <script src="js/menu-toggle.js"></script> 
-
-</body>
-
+    </body>
 </html>
-
