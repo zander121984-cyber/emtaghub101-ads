@@ -3,7 +3,7 @@
 .article-container {
     max-width: 600px; /* Max width for the entire article content */
     margin: 20px auto;
-    padding: 0 20px;
+    padding: 0 20px 20px 0;
     line-height: 1.6;
 }
 
@@ -158,5 +158,6 @@
         position: fixed;
     }
 }
+
 
 
