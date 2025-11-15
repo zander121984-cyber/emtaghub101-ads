@@ -1,78 +1,3 @@
-/* =====================================================
-   🌐 EMTAGHub101 — Footer Styles (Optimized)
-   ===================================================== */
-
-/* ----- Footer Wrapper ----- */
-.footer {
-  background: #0a1a33;              /* Dark elegant blue */
-  color: #e5e7eb;                   /* Soft gray text color */
-  padding: 7px 3px;               /* Reduced padding for smaller height */
-  margin-top: 100px;                 /* Reduced space above footer */
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25); /* Soft top shadow */
-}
-
-/* ----- Flex Container ----- */
-.footer-container {
-  display: flex;                    /* Use flex layout */
-  justify-content: space-between;   /* Spread columns horizontally */
-  flex-wrap: wrap;                  /* Allow columns to wrap on small screens */
-  gap: 40px;                        /* Reduced gap between footer sections */
-  max-width: 1200px;                /* Center content with fixed width limit */
-  margin: auto;                     /* Center the whole footer */
-}
-
-/* ----- Column Titles (About/Contact/Links) ----- */
-.footer h3,
-.footer h4 {
-  color: #ffffff;                   /* White color for titles */
-  margin-bottom: 10px;              /* Reduced spacing under titles */
-  font-weight: 700;                 /* Make titles bold */
-  font-size: .7rem;                  /* Slightly smaller titles */
-}
-
-/* ----- Contact Section ----- */
-.footer-contact {
-  flex: 1 1 20px;                  /* Flexible width, smaller minimum */
-  font-size: 0.95rem;               /* Compact text */
-}
-
-.footer-contact a {
-  color: #38bdf8;                   /* Light cyan for links */
-  text-decoration: none;            /* Remove underline */
-}
-
-.footer-contact a:hover {
-  text-decoration: underline;       /* Add underline on hover */
-}
-
-/* ----- Quick Links Section ----- */
-.footer-links {
-  flex: 1 1 20px;                  /* Narrower section width */
-  display: flex;                    /* Vertical list */
-  flex-direction: column;
-}
-
-.footer-links a {
-  color: #9ca3af;                   /* Muted gray text */
-  margin-bottom: 5px;               /* Reduced spacing between links */
-  text-decoration: none;            /* Clean links */
-  font-size: 0.95rem;               /* Slightly smaller text */
-}
-
-.footer-links a:hover {
-  color: #ffffff;                   /* White on hover */
-}
-
-/* ----- Footer Bottom Line ----- */
-.footer-bottom {
-  text-align: center;               /* Center align bottom text */
-  margin-top: 15px;                 /* Small gap above bottom line */
-  padding-top: 10px;                /* Padding above separator line */
-  border-top: 1px solid rgba(300, 300, 300, 0.15); /* Soft separator line */
-  font-size: 0.85rem;               /* Smaller footer bottom text */
-  color: #9ca3af;                   /* Soft gray */
-}
-
 @media (max-width: 600px) {
   .footer {
     padding: 10px 5px;
@@ -81,21 +6,27 @@
   .footer-container {
     flex-wrap: wrap;                
     justify-content: center;        
+    gap: 10px;
+  }
+
+  .footer-about {
+    flex: 0 0 90%;                  
+    text-align: center;
+    font-size: 0.75rem;            /* Smaller text */
+    line-height: 1.2;
   }
 
   .footer-contact,
   .footer-links {
     flex: 0 0 45%;                  
-    text-align: left;
-    font-size: 0.6rem;            /* Smaller text */
+    text-align: center;
+    font-size: 0.75rem;            /* Smaller text */
     line-height: 1.2;
   }
 
   .footer-links a,
   .footer-contact a {
-   text-align: left;
-   margin-bottom: 2px;
-     
+    margin-bottom: 2px;
   }
 
   .footer-bottom {
@@ -104,11 +35,3 @@
     padding-top: 5px;
   }
 }
-
-
-
-
-
-
-
-
