@@ -62,49 +62,43 @@
   opacity: 0.92; /* Soft faded text */
   margin-bottom: 6px; /* Space below title before tagline starts */
 }
+
+/* Mobile responsiveness — keep horizontal layout */
 @media (max-width: 600px) {
 
-  /* Stack logo and text vertically */
-  .banner-inner {
-    flex-direction: column;        /* Logo above text */
-    align-items: center;           /* Center everything */
-    text-align: center;            /* Center text */
-    gap: 5px;                      /* Reduce space between logo and text */
-    padding: 5px 10px;             /* Less padding for mobile */
+  .site-banner {
+    padding: 5px 10px; /* Reduce padding */
   }
 
-  /* Logo adjustments */
+  .banner-inner {
+    flex-direction: row; /* Keep horizontal layout */
+    align-items: center; /* Keep text vertically centered to logo */
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
   .banner-logo {
-    height: 40px;                  /* Shrink logo further */
+    height: 60px; /* Scale down logo for mobile */
     width: auto;
     padding: 0;
     filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
-    border-radius: 10%;
   }
 
-  /* Title adjustments */
+  .banner-text {
+    margin-left: 5px;
+  }
+
   .banner-title {
-    font-size: 1.2rem;             /* Smaller, fits mobile width */
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin-bottom: 3px;
-  }
-
-  /* Main tagline */
-  .tagline-main {
-    font-size: 0.8rem;             /* Compact for mobile */
-    opacity: 0.9;
+    font-size: 1.2rem; /* Smaller text to fit screen */
     margin-bottom: 2px;
   }
 
-  /* Sub tagline */
-  .tagline-sub {
-    font-size: 0.65rem;            /* Very compact for mobile */
-    opacity: 0.85;
+  .tagline-main {
+    font-size: 0.8rem;
+    margin-bottom: 1px;
   }
 
-  /* Optional: reduce gap below banner */
-  .site-banner {
-    padding: 5px 10px;
+  .tagline-sub {
+    font-size: 0.65rem;
   }
 }
