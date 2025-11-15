@@ -55,13 +55,13 @@
         width: 100%;                    /* Ensures the group takes full container width */
         justify-content: space-between; /* Pushes contact and links apart */
         align-items: flex-start;        /* Aligns items to the top */
-        padding: 0 8px;                /* Adjusted horizontal padding to 8px for buffer (was 10px) */
+        padding: 0 8px;                 /* Adjusted horizontal padding to 8px for buffer */
     }
 
     /* FIX: Contact section gets 58% for long text (e.g., email) to prevent messy wrapping */
     .footer-contact {
-        flex-basis: 58%;                /* Adjusted to 58% (was 60%) to create more buffer space */
-        max-width: 58%; 
+        flex-basis: 58%;                /* Set to 58% to allow space for content */
+        /* max-width: 58%; <= REMOVED to prevent overflow conflict */ 
         text-align: left;
         font-size: 0.8rem;              /* Standardized font size for readability */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
@@ -69,8 +69,8 @@
 
     /* FIX: Links section gets 30% */
     .footer-links {
-        flex-basis: 30%;                /* Remains 30% */
-        max-width: 30%;
+        flex-basis: 30%;                /* Set to 30% */
+        /* max-width: 30%; <= REMOVED to prevent overflow conflict */
         text-align: left;
         font-size: 0.8rem;              /* Standardized font size for readability */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
