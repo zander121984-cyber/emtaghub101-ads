@@ -133,7 +133,7 @@
     /* TIGHTER FONT & MARGINS: Title font size and margin below the title on mobile */
     .footer-contact h3,
     .footer-links h3 {
-        font-size: 1rem;                /* Sets the title size for mobile */
+        font-size: .9rem;                /* Sets the title size for mobile */
         margin-top: 0;                  /* CRITICAL FIX: ELIMINATES H3 TOP MARGIN COLLAPSE */
         margin-bottom: 3px;             /* Minimized vertical space below h3 (title) */
     }
@@ -166,4 +166,5 @@
         flex-shrink: 0; 
     }
 }
+
 
