@@ -1,37 +1,32 @@
+
+/* =====================================
+   📱 Mobile — Keep Horizontal, Scale Content
+   ===================================== */
 @media (max-width: 600px) {
   .footer {
-    padding: 10px 5px;
+    padding: 15px 10px;
   }
 
   .footer-container {
-    flex-wrap: wrap;                
-    justify-content: center;        
-    gap: 10px;
+    flex-wrap: wrap;                /* Allow slight wrap if very narrow */
+    justify-content: center;        /* Center columns horizontally */
+    gap: 15px;
   }
 
   .footer-about {
-    flex: 0 0 90%;                  
+    flex: 0 0 80%;                  /* Scaled width for mobile */
     text-align: center;
-    font-size: 0.75rem;            /* Smaller text */
-    line-height: 1.2;
   }
 
   .footer-contact,
   .footer-links {
-    flex: 0 0 45%;                  
+    flex: 0 0 40%;                  /* Scale columns proportionally */
     text-align: center;
-    font-size: 0.75rem;            /* Smaller text */
-    line-height: 1.2;
   }
 
   .footer-links a,
   .footer-contact a {
-    margin-bottom: 2px;
-  }
-
-  .footer-bottom {
-    font-size: 0.7rem;             /* Fit mobile screen */
-    margin-top: 8px;
-    padding-top: 5px;
+    font-size: 0.85rem;             /* Slightly smaller text */
+    margin-bottom: 3px;
   }
 }
