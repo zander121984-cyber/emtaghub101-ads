@@ -141,7 +141,7 @@
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
         font-size: 0.75rem;             /* Final reduction of font size for compactness */
-        padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
+        padding-top: 10px;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
     /* FIX: Links section gets 30% */
@@ -181,4 +181,5 @@
     }
     
 }
+
 
