@@ -179,7 +179,7 @@
     .footer-contact h3,
     .footer-links h3 {
         font-size: 1rem;
-        margin-bottom: 5px;             /* REDUCED SPACE: Reduced margin below h3 (was 10px) */
+        margin-bottom: 3px;             /* REDUCED SPACE: Reduced margin below h3 from 5px to 3px */
     }
     
     /* TIGHTER FONT: Reduced content font size for quick links */
