@@ -216,8 +216,8 @@
     
     /* Position mobile menu below the header (Assuming header height ~80px) */
     .mobile-menu-container {
-        top: 150px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
-        height: calc(100%); /* Calculates the remaining height of the viewport for the menu to fill */
+        top: 80px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
+        height: calc(100% - 80px); /* Calculates the remaining height of the viewport for the menu to fill */
     }
 }
 
@@ -231,10 +231,11 @@
     
     /* Adjust menu position/height (Assuming header height ~70px on mobile) */
     .mobile-menu-container {
-        top: 70px; /* Adjusts the menu start position to 70px down (for smaller mobile banners) */
-        height: calc(100% - 70px); /* Calculates the remaining height based on the new top position */
+        top: 100px; /* Adjusts the menu start position to 70px down (for smaller mobile banners) */
+        height: calc(100% - 100px); /* Calculates the remaining height based on the new top position */
         width: 90%; /* Increases the width of the mobile menu to 90% of the screen for better use of space */
     }
 }
+
 
 
