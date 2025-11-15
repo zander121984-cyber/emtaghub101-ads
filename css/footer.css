@@ -171,18 +171,19 @@
     .footer-contact h3,
     .footer-links h3 {
         /* Adjust title size for mobile readability if necessary */
-        font-size: 1.1rem;
+        font-size: 9rem;
     }
     
     /* FIX: Reduced font size further to 0.8em to prevent overlap */
     .footer-contact {
-        font-size: 0.8em; 
+        font-size: 0.6em; 
     }
     
     .footer-links a {
         margin-bottom: 3px;
     }
 }
+
 
 
 
