@@ -96,7 +96,13 @@
     font-size: 0.7rem;
      gap: 15px;                      /* Smaller spacing between sections */
   }
-
+  .footer-contact {
+    text-align: left;             /* Center-align all text on mobile */
+    flex-direction: column;         /* Stack columns vertically */
+    align-items: center;            /* Center items */
+    font-size: 0.7rem;
+     gap: 15px;                      /* Smaller spacing between sections */
+  }
   .footer-links,
   .footer-contact,
   .footer-about {
@@ -109,6 +115,7 @@
     margin-bottom: 3px;             /* Tighten link spacing on small screens */
   }
 }
+
 
 
 
