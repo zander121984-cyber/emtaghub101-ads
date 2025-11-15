@@ -1,0 +1,80 @@
+/* =====================================================
+   NEW: Navigation Menu Positioning and Styling
+   ===================================================== */
+
+/* 1. Positioning the Nav */
+.main-nav {
+  /* Positions the nav in the top right corner relative to .site-banner */
+  position: absolute;
+  top: 10px; /* Adjust vertical distance from the top */
+  right: 10px; /* Adjust horizontal distance from the right */
+  z-index: 20; /* Ensure it is above other banner content */
+}
+
+/* 2. Styling the Top-Level Links */
+.main-nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Makes top items horizontal */
+  flex-wrap: wrap;
+  justify-content: flex-end; /* Aligns links to the right */
+}
+.main-nav li {
+  position: relative;
+}
+.main-nav a {
+  display: block;
+  padding: 5px 8px;
+  text-decoration: none;
+  color: #333; /* Dark text for contrast */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  border-radius: 4px;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+.main-nav a:hover {
+  background-color: #ddd;
+}
+
+/* 3. Styling Sub-Menus (Dropdowns) */
+.main-nav ul ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute; 
+  top: 100%; /* Drops down below the parent link */
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-width: 200px;
+  z-index: 30;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: none; /* Hidden by default */
+}
+
+/* Sub-sub-menu positioning (flyout to the right) */
+.main-nav ul ul ul {
+  top: 0; 
+  left: 100%;
+  min-width: 180px;
+}
+
+/* Show sub-menus on hover */
+.main-nav li:hover > ul {
+  display: block;
+}
+
+/* Sub-menu link appearance */
+.main-nav ul ul a {
+    color: #333;
+    background-color: transparent; 
+    border-radius: 0;
+    margin: 0;
+    padding: 8px 15px;
+}
+
+/* Adjust the banner-text margin to prevent overlap if necessary */
+.banner-text {
+    margin-top: 50px; /* Example adjustment */
+}
