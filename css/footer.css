@@ -35,7 +35,7 @@
 }
 
 /* ------------------------------------- */
-/* DESKTOP STYLES (Default) */
+/* DESKTOP STYLES (Default) - FLEXIBILITY ADDED */
 /* ------------------------------------- */
 
 /* Enforce horizontal alignment on desktop using the horizontal group */
@@ -46,18 +46,18 @@
     gap: 40px;                      /* Gap between contact and links columns */
 }
 
-/* Set balanced desktop sizing for sections (60% / 40% split for balance) */
+/* Set balanced desktop sizing for sections (Uses flex-grow for fluid sizing) */
 .footer-contact {
-    flex-basis: 60%;               /* Give Contact section 60% of the space */
-    max-width: 60%;                /* Prevent Contact from taking more than 60% */
+    flex-grow: 1.5;                /* NEW: Gives Contact 1.5 parts of the remaining space (e.g., ~60% share) */
+    /* REMOVED: max-width: 60%; and flex-basis: 60%; to prevent shrinking */
     text-align: left;
     /* Large font size for contact details on desktop */
     font-size: 1em;
 }
 
 .footer-links {
-    flex-basis: 40%;               /* Give Quick Links section 40% of the space */
-    max-width: 40%;                /* Prevent Links from taking more than 40% */
+    flex-grow: 1;                  /* NEW: Gives Quick Links 1 part of the remaining space (e.g., ~40% share) */
+    /* REMOVED: max-width: 40%; and flex-basis: 40%; to prevent shrinking */
     /* Style for the link list container */
     display: flex;
     flex-direction: column;
