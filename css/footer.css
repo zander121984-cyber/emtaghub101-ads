@@ -58,19 +58,19 @@
         padding: 0 10px;                /* Increased horizontal padding to 10px for buffer */
     }
 
-    /* ADJUSTED: Contact section now takes 70% of the horizontal space */
+    /* ADJUSTED: Contact section now takes 55% of the horizontal space (Closer to 50/50 split) */
     .footer-contact {
-        flex-basis: 70%;                /* Explicitly gives Contact 70% of the available horizontal space */
-        max-width: 70%; 
+        flex-basis: 55%;                /* Gives Contact 55% of horizontal space */
+        max-width: 55%; 
         text-align: left;
         font-size: 0.75rem;             /* Reduced content font size for contact details for better fit */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
-    /* ADJUSTED: Links section now takes 20% of the horizontal space */
+    /* ADJUSTED: Links section now takes 35% of the horizontal space (Closer to 50/50 split) */
     .footer-links {
-        flex-basis: 20%;                /* Explicitly gives Quick Links 20% of the available horizontal space */
-        max-width: 20%;
+        flex-basis: 35%;                /* Gives Quick Links 35% of horizontal space */
+        max-width: 35%;
         text-align: left;
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
