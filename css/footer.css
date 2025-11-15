@@ -58,20 +58,21 @@
         padding: 0 10px;                /* Horizontal padding for buffer */
     }
 
-    /* CLEANED: Contact section is now 48% for symmetrical look */
+    /* FIX: Contact section gets 60% for long text (e.g., email) to prevent messy wrapping */
     .footer-contact {
-        flex-basis: 48%;                /* Gives Contact 48% of horizontal space */
-        max-width: 48%; 
+        flex-basis: 60%;                /* Gives Contact 60% of horizontal space */
+        max-width: 60%; 
         text-align: left;
         font-size: 0.8rem;              /* Standardized font size for readability */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
-    /* CLEANED: Links section is now 48% for symmetrical look */
+    /* FIX: Links section gets 30% */
     .footer-links {
-        flex-basis: 48%;                /* Gives Quick Links 48% of horizontal space */
-        max-width: 48%;
+        flex-basis: 30%;                /* Gives Quick Links 30% of horizontal space */
+        max-width: 30%;
         text-align: left;
+        font-size: 0.8rem;              /* Standardized font size for readability */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
     
@@ -90,10 +91,9 @@
         padding-right: 0;               /* Removed extra padding */
     }
 
-    /* TIGHTER FONT: Reduced content font size for quick links */
+    /* TIGHTER FONT: Vertical spacing for quick links */
     .footer-links a {
         margin-bottom: 3px;             /* Sets 3px vertical spacing between individual quick links */
-        font-size: 0.8rem;              /* Standardized font size for readability */
     }
 
     /* Ensure icons align correctly on mobile and don't wrap text */
