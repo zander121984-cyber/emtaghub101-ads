@@ -1,184 +1,155 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EMTAGHub101 — Home</title>
-    
-    <!-- 1. Load Tailwind CSS CDN and Configuration -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Tailwind colors defined for consistency
-                        'emtag-dark': '#0a1a33',
-                        'emtag-blue': '#1e40af',
-                        'emtag-light': '#f3f4f6',
-                        'emtag-accent': '#3b82f6',
-                        'emtag-neon': '#00ffff',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <!-- 2. Link Font Awesome Icons (Updated to 6.5.2) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <!-- 3. Link Custom CSS Styles (Contains banner overrides and mobile menu logic) -->
-    <link rel="stylesheet" href="styles.css" />
-    
-    <!-- User's original links (Commented out as functionality is now handled by Tailwind and styles.css) -->
-    <!-- <link rel="stylesheet" href="css/logo-banner.css" /> -->
-    <!-- <link rel="stylesheet" href="css/footer.css" /> -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMTAGHub101 — Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/logo-banner.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    /* Basic styling for the main nav container */
+    .main-nav {
+      background-color: #333; /* Dark background for the main bar */
+      font-family: Arial, sans-serif;
+    }
+    /* Style for the top-level list */
+    .main-nav > ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex; /* Makes top items horizontal */
+      flex-wrap: wrap;
+    }
+    /* Style for all list items */
+    .main-nav li {
+      position: relative; /* Crucial for positioning sub-menus */
+    }
+    /* Style for all links */
+    .main-nav a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: white;
+      white-space: nowrap; /* Keeps link text from wrapping */
+    }
+    .main-nav a:hover {
+      background-color: #555;
+    }
 
+    /* Style for all sub-menus (ul inside an li) */
+    .main-nav ul ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      position: absolute; /* Takes sub-menu out of normal flow */
+      top: 100%; /* Positions it right below the parent link */
+      left: 0;
+      background-color: #444; /* Slightly lighter background for sub-menus */
+      min-width: 200px;
+      z-index: 10;
+      display: none; /* Hides sub-menus by default */
+    }
+
+    /* Style for sub-sub-menus (ul inside a sub-menu li) */
+    .main-nav ul ul ul {
+      top: 0; /* Positions sub-sub-menu to the side */
+      left: 100%;
+      background-color: #555;
+    }
+
+    /* Show sub-menus when hovering over the parent list item */
+    .main-nav li:hover > ul {
+      display: block;
+    }
+  </style>
 </head>
-<body class="bg-emtag-light font-sans">
+<body>
 
-    <!-- PRIMARY HEADER: BANNER (Retained your classes: site-banner, banner-inner, etc.) -->
-    <!-- Applied Tailwind classes for coloring, shadow, and sticky positioning for the whole banner area -->
-    <header class="site-banner bg-emtag-dark border-b border-gray-700 shadow-lg sticky top-0 z-40">
-        
-        <!-- Adjusted your inner div to include Tailwind's responsive max-width and padding -->
-        <div class="banner-inner max-w-7xl mx-auto flex items-center justify-start space-x-4 pl-0 pr-5 sm:pr-6 lg:pr-8 py-2">
+<header class="site-banner">
+  <div class="banner-inner">
 
-            <!-- Logo (Left) - RESTORED ORIGINAL PATH -->
-            <img src="images/logo/EmtagHubLogo.png"
-                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/3b82f6/ffffff?text=E';"
-                 alt="EMTAGHub Logo"
-                 title="EMTAGHub Logo"
-                 class="banner-logo h-[100px] w-auto p-3 object-contain rounded-lg neon-glow banner-logo-mobile" />
+    <img src="images/logo/EmtagHubLogo.png" alt="EMTAGHub Logo" class="banner-logo" />
 
-            <!-- Title + Tagline (Right) -->
-            <div class="banner-text flex-1 text-white flex flex-col justify-center banner-text-wrapper">
-                <h1 class="banner-title text-xl sm:text-[2.1rem] font-bold leading-tight mb-1 banner-title-mobile">The Hub for Knowledge & Innovation</h1>
-                <div class="banner-main text-sm text-gray-300 hidden sm:block banner-tagline-mobile">Empowering individuals to connect, learn, and create in the world of emerging technologies</div>
-            </div>
-
-        </div>
-    </header>
-    
-    <!-- NAVIGATION BAR (Responsive Menu - INSERTED after the main banner) -->
-    <div class="bg-emtag-blue h-12 flex items-center shadow-lg sticky top-0 z-30">
-        <div class="relative flex items-center justify-between h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-
-            <!-- Mobile Menu Button (Hamburger - Left) -->
-            <button id="mobile-menu-open-btn" class="lg:hidden p-1 rounded-lg text-white hover:bg-emtag-blue/75 transition duration-150">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-
-            <!-- DESKTOP NAVIGATION -->
-            <nav id="desktop-nav" class="hidden lg:block w-full">
-                <ul class="flex space-x-6 text-white text-sm font-semibold justify-end">
-                    
-                    <li class="p-2">
-                        <a href="#home" class="active-link pb-1 border-b-2 border-white transition duration-150 ease-in-out hover:border-emtag-accent">HOME</a>
-                    </li>
-                    <li class="relative group p-2">
-                        <a href="#technologies" class="nav-link-base pb-1 hover:border-b-2 hover:border-emtag-accent">TECHNOLOGIES</a>
-                        <div class="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-95 group-hover:scale-100 z-50">
-                            <div class="py-1">
-                                <a href="#ai-ml" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">AI & ML</a>
-                                <a href="#web3" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Web3 & Blockchain</a>
-                                <a href="#iot" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">IoT & Robotics</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="relative group p-2">
-                        <a href="#learn" class="nav-link-base pb-1 hover:border-b-2 hover:border-emtag-accent">LEARN & CREATE</a>
-                        <div class="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 transform scale-95 group-hover:scale-100 z-50">
-                            <div class="py-1">
-                                <a href="#tutorials" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tutorials</a>
-                                <a href="#projects" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Projects</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p-2">
-                        <a href="#community" class="nav-link-base pb-1 hover:border-b-2 hover:border-emtag-accent">COMMUNITY</a>
-                    </li>
-                    <li class="p-2">
-                        <a href="#about" class="nav-link-base pb-1 hover:border-b-2 hover:border-emtag-accent">ABOUT</a>
-                    </li>
-                    <li class="p-2">
-                        <a href="#contact" class="nav-link-base pb-1 hover:border-b-2 hover:border-emtag-accent">CONTACT</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+    <div class="banner-text">
+      <h1 class="banner-title">The Hub for Knowledge & Innovation</h1>
+      <div class="banner-main">Empowering individuals to connect, learn, and create in the world of emerging technologies</div>
     </div>
 
-    <!-- Mobile Navigation Sidebar (INSERTED before main content) -->
-    <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 h-full bg-emtag-dark shadow-2xl overflow-y-auto lg:hidden pt-4 z-50">
-        <!-- Close Button (Top right of the sidebar) -->
-        <button id="mobile-menu-close-btn" class="absolute top-4 right-4 text-white p-2 rounded-full hover:bg-white/10 transition duration-150">
-            <i class="fas fa-times text-2xl"></i>
-        </button>
+  </div>
+</header>
 
-        <nav class="py-16 text-white">
-            <!-- This list is generated by JavaScript -->
-            <ul id="mobile-menu-list">
-                <!-- Content will be injected here by script.js -->
-            </ul>
-        </nav>
+<nav class="main-nav">
+  <ul>
+    <li><a href="#">HOME</a></li>
+    <li>
+      <a href="#">SAFETY & SECURITY</a>
+      <ul>
+        <li>
+          <a href="#">Safety</a>
+          <ul>
+            <li><a href="#">OSH General Awareness</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Security</a>
+          <ul>
+            <li><a href="#">Physical Security</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">INFORMATION TECHNOLOGY</a>
+      <ul>
+        <li><a href="#">Troubleshooting</a></li>
+        <li><a href="#">Networking</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">DIY & Practical Living</a>
+      <ul>
+        <li><a href="#">DIY Solar Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#">ABOUT US</a></li>
+    <li><a href="#">CONTACT US</a></li>
+  </ul>
+</nav>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-horizontal-group">
+
+      <div class="footer-contact">
+        <h3>Connect With Us</h3>
+
+        <p><i class="fa-solid fa-envelope"></i>
+          <a href="mailto:emtaghub101@gmail.com"> emtaghub101@gmail.com</a></p>
+
+        <p><i class="fa-brands fa-youtube"></i>
+          <a href="https://youtube.com/@emtaghub101" target="_blank"> YouTube Channel</a></p>
+
+        <p><i class="fa-brands fa-facebook"></i>
+          <a href="https://facebook.com/emtag.tv" target="_blank"> Facebook Page</a></p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+
+        <a href="#"><i class="fa-solid fa-user-shield"></i> Privacy Policy</a>
+        <a href="#"><i class="fa-solid fa-scale-balanced"></i> Terms of Use</a>
+        <a href="#"><i class="fa-solid fa-exclamation-circle"></i> Disclaimer</a>
+      </div>
+
+    </div>
     </div>
 
+  <div class="footer-bottom">
+    © 2025 EMTAGHub101. All rights reserved.
+  </div>
+</footer>
 
-    <!-- Main Content Area (Placeholder) -->
-    <main class="max-w-7xl mx-auto p-4 sm:p-8 min-h-screen">
-        <div class="bg-white p-6 md:p-10 rounded-xl shadow-xl">
-            <h2 class="text-2xl font-bold text-emtag-blue mb-4">Content Area</h2>
-            <p class="text-lg text-gray-700 leading-relaxed">This is the main content area, now structured between the banner/nav and your custom footer. The navigation features (desktop dropdowns and mobile sidebar) are fully functional.</p>
-            <p class="mt-4 text-sm text-gray-400">Try shrinking your browser window to see the responsive navigation slide out from the left.</p>
-        </div>
-    </main>
-
-
-    <!-- FOOTER (Retained your class: footer) -->
-    <!-- Applied Tailwind classes for dark background and text color -->
-    <footer class="footer bg-emtag-dark text-white pt-10">
-        <div class="footer-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <!-- Horizontal Group (re-applied Tailwind grid classes) -->
-            <div class="footer-horizontal-group grid grid-cols-1 md:grid-cols-3 gap-8 pb-8">
-
-                <!-- ===== CONTACT SECTION ===== -->
-                <div class="footer-contact">
-                    <h3 class="text-lg font-semibold mb-3 text-emtag-accent">Connect With Us</h3>
-
-                    <p class="mb-2 text-sm flex items-center"><i class="fa-solid fa-envelope mr-2 w-4"></i>
-                        <a href="mailto:emtaghub101@gmail.com" class="hover:text-emtag-accent transition"> emtaghub101@gmail.com</a></p>
-
-                    <p class="mb-2 text-sm flex items-center"><i class="fa-brands fa-youtube mr-2 w-4"></i>
-                        <a href="https://youtube.com/@emtaghub101" target="_blank" class="hover:text-emtag-accent transition"> YouTube Channel</a></p>
-
-                    <p class="mb-2 text-sm flex items-center"><i class="fa-brands fa-facebook mr-2 w-4"></i>
-                        <a href="https://facebook.com/emtag.tv" target="_blank" class="hover:text-emtag-accent transition"> Facebook Page</a></p>
-                </div>
-
-                <!-- ===== QUICK LINKS SECTION ===== -->
-                <div class="footer-links flex flex-col space-y-2">
-                    <h3 class="text-lg font-semibold mb-1 text-emtag-accent">Quick Links</h3>
-
-                    <a href="#" class="text-sm hover:text-emtag-accent transition flex items-center"><i class="fa-solid fa-user-shield mr-2 w-4"></i> Privacy Policy</a>
-                    <a href="#" class="text-sm hover:text-emtag-accent transition flex items-center"><i class="fa-solid fa-scale-balanced mr-2 w-4"></i> Terms of Use</a>
-                    <a href="#" class="text-sm hover:text-emtag-accent transition flex items-center"><i class="fa-solid fa-exclamation-circle mr-2 w-4"></i> Disclaimer</a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ===== BOTTOM LINE ===== -->
-        <div class="footer-bottom bg-black/50 py-3 text-center text-xs">
-            © 2025 EMTAGHub101. All rights reserved.
-        </div>
-    </footer>
-
-    <!-- 4. JavaScript Logic and Data (Correctly pointing to the consolidated file) -->
-    <script src="script.js"></script>
 
 </body>
 </html>
