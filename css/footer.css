@@ -87,14 +87,13 @@
   .footer-links {
     flex: 0 0 45%;                  
     text-align: left;
-    font-size: 0.7rem;            /* Smaller text */
+    font-size: 0.6rem;            /* Smaller text */
     line-height: 1.2;
   }
 
   .footer-links a,
   .footer-contact a {
    text-align: left;
-   margin-left: 20px;
    margin-bottom: 2px;
      
   }
@@ -105,6 +104,7 @@
     padding-top: 5px;
   }
 }
+
 
 
 
