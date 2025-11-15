@@ -22,14 +22,31 @@
     color: #3498db;                  /* Subtle blue hover color */
 }
 
+/* ---------------------------------------------------------------------------------- */
+/* FIX: Desktop/Global Icon Alignment (Ensures icon and text stay on the same line) */
+/* ---------------------------------------------------------------------------------- */
+.footer-contact p,
+.footer-links a {
+    display: flex;                  /* Enables Flexbox on the line item (p or a) */
+    align-items: center;            /* Centers icon and text vertically */
+    gap: 6px;                       /* Small space between icon and text */
+    /* Ensure the links section's text is allowed to wrap if needed */
+    white-space: normal;
+}
+
+.footer-contact i,
+.footer-links i {
+    flex-shrink: 0;                 /* Prevents the icon from shrinking on narrow desktop views */
+}
+
 
 /* ----- Flex Container ----- */
 .footer-container {
   display: flex;                 /* Use flex layout */
   justify-content: space-between;/* Spread columns horizontally */
   flex-wrap: wrap;               /* Allow columns to wrap on small screens */
-  gap: 200px;                     /* Reduced gap between footer sections */
-  max-width: autopx;             /* Center content with fixed width limit */
+  gap: 40px;                     /* Reduced gap between footer sections */
+  max-width: 1200px;             /* Center content with fixed width limit */
   margin: auto;                  /* Center the whole footer */
   padding: 0 20px;               /* Added horizontal padding for desktop view */
 }
@@ -43,7 +60,7 @@
     display: flex;                  /* Use flex to align contact and links horizontally */
     width: auto;                    /* Allow group to size based on content/children */
     justify-content: space-between; /* Space out the two inner columns */
-    gap: 200px;                      /* Gap between contact and links columns */
+    gap: 40px;                      /* Gap between contact and links columns */
 }
 
 /* Set balanced desktop sizing for sections (60% / 40% split for balance) */
@@ -114,19 +131,19 @@
 
     /* FIX: Contact section gets 58% for long text (e.g., email) to prevent messy wrapping */
     .footer-contact {
-        flex-basis: 50%;                /* Set to 58% to allow space for content */
+        flex-basis: 58%;                /* Set to 58% to allow space for content */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.6rem;             /* Final reduction of font size for compactness */
+        font-size: 0.75rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
     /* FIX: Links section gets 30% */
     .footer-links {
-        flex-basis: 40%;                /* Set to 30% */
+        flex-basis: 30%;                /* Set to 30% */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.6rem;             /* Final reduction of font size for compactness */
+        font-size: 0.75rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
     
@@ -150,29 +167,11 @@
         margin-bottom: 3px;             /* Sets 3px vertical spacing between individual quick links */
     }
 
-    /* Ensure icons align correctly on mobile and don't wrap text */
+    /* These rules are inherited from the global section now, but kept for certainty */
     .footer-contact p,
     .footer-links a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
         /* Ensure the links section's text is allowed to wrap if needed */
         white-space: normal; 
     }
     
-    /* Ensure icon itself doesn't shrink */
-    .footer-contact i,
-    .footer-links i {
-        flex-shrink: 0; 
-    }
 }
-
-
-
-
-
-
-
-
-
-
