@@ -1,118 +1,103 @@
 /* =====================================================
-   EMTAGHub101 — Modern Hero Banner
-   ===================================================== */
+   EMTAGHub101 — Modern Hero Banner
+   ===================================================== */
 
 /* Wrapper for the entire banner/header area */
 .site-banner {
-  width: auto;
-  background: #0a1a33;
-  padding: 0 20px 0 0; 
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  /* 🛑 ADD THIS LINE: Sets the banner as the anchor for the absolute navigation */
-  position: relative; 
+  width: auto;
+  background: #0a1a33;
+  padding: 0 20px 0 0; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  /* 🛑 ADD THIS LINE: Sets the banner as the anchor for the absolute navigation */
+  position: relative; 
 }
 
 /* Inner container that holds logo + title + tagline */
 .banner-inner {
-  width: 100%; /* Takes up full width of banner */
-  max-width: none; /* Removes width limit so logo sits at left edge */
-  display: flex; /* Places items in a horizontal row */
-  align-items: center; /* Vertically centers logo and text */
-  gap: 15px; /* Adds spacing between logo and text */
+  width: 100%; /* Takes up full width of banner */
+  max-width: none; /* Removes width limit so logo sits at left edge */
+  display: flex; /* Places items in a horizontal row */
+  align-items: center; /* Vertically centers logo and text */
+  gap: 15px; /* Adds spacing between logo and text */
 }
 
 /* Logo styling */
 .banner-logo {
-  height: 100px; /* Controls visual height of the logo */
-  width: auto; /* Maintains aspect ratio */
-  padding: 10px 10px 10px 10px;
-  object-fit: contain; /* Prevents distortion; fits image properly */
-  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4)); /* Neon-style glow effect */
-  border-radius: 10%;
+  height: 100px; /* Controls visual height of the logo */
+  width: auto; /* Maintains aspect ratio */
+  padding: 10px 10px 10px 10px;
+  object-fit: contain; /* Prevents distortion; fits image properly */
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4)); /* Neon-style glow effect */
+  border-radius: 10%;
 }
 
 /* Wrapper for title + tagline */
 .banner-text {
-  display: flex; /* Stack text elements */
-  flex-direction: column; /* Arrange text vertically */
-  justify-content: center; /* Center text vertically inside its space */
-  color: white; /* Makes all text in this wrapper white */
-  height: Center;  /* keeps alignment consistent */
-  margin-top: 10px;
+  display: flex; /* Stack text elements */
+  flex-direction: column; /* Arrange text vertically */
+  justify-content: center; /* Center text vertically inside its space */
+  color: white; /* Makes all text in this wrapper white */
+  height: Center;  /* keeps alignment consistent */
+  margin-top: 10px;
 }
 
 /* Main title */
 .banner-title {
-  font-size: 2.1rem; /* Large title text */
-  font-weight: 700; /* Bold font */
-  letter-spacing: 1px; /* Slight spacing between letters */
-  margin-bottom: 6px; /* Space below title before tagline starts */
+  font-size: 2.1rem; /* Large title text */
+  font-weight: 700; /* Bold font */
+  letter-spacing: 1px; /* Slight spacing between letters */
+  margin-bottom: 6px; /* Space below title before tagline starts */
 }
 
 /* Tagline container */
 .banner-tagline {
-  line-height: 1; /* Slightly tighter line spacing */
+  line-height: 1; /* Slightly tighter line spacing */
 }
 
 /* Second tagline line */
 .tagline-main {
-  font-size: 0.95rem; /* Slightly smaller than main tagline */
-  opacity: 0.92; /* Soft faded text */
-  margin-bottom: 6px; /* Space below title before tagline starts */
+  font-size: 0.95rem; /* Slightly smaller than main tagline */
+  opacity: 0.92; /* Soft faded text */
+  margin-bottom: 6px; /* Space below title before tagline starts */
 }
 
 /* Mobile responsiveness — keep horizontal layout */
 @media (max-width: 600px) {
 
-  .site-banner {
-      max-width: auto;
-    padding: 0 0 0 0; /* Reduce padding */
-  }
+  .site-banner {
+      max-width: auto;
+    padding: 0 0 0 0; /* Reduce padding */
+  }
 
-  .banner-inner {
-    flex-direction: row; /* Keep horizontal layout */
-    align-items: center; /* Keep text vertically centered to logo */
-    justify-content: flex-start;
-    gap: 10px;
-  }
+  .banner-inner {
+    flex-direction: row; /* Keep horizontal layout */
+    align-items: center; /* Keep text vertically centered to logo */
+    justify-content: flex-start;
+    gap: 10px;
+  }
 
-  .banner-logo {
-    height: 60px; /* Scale down logo for mobile */
-    width: auto;
-    padding: 10px 0 10px 40px;
-    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
-  }
+  .banner-logo {
+    height: 60px; /* Scale down logo for mobile */
+    width: auto;
+    padding: 10px 0 10px 40px;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+  }
 
-  .banner-text {
-    margin-left: 5px;
-  }
+  .banner-text {
+    margin-left: 5px;
+  }
 
-  .banner-title {
-    font-size: .6rem; /* Smaller text to fit screen */
-    margin-bottom: 2px;
-  }
+  .banner-title {
+    font-size: .6rem; /* Smaller text to fit screen */
+    margin-bottom: 2px;
+  }
 
-  .banner-main {
-    font-size: 0.3rem;
-    margin-bottom: 1px;
-  }
+  .banner-main {
+    font-size: 0.3rem;
+    margin-bottom: 1px;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
