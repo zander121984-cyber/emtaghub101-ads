@@ -1,72 +1,72 @@
-/* =====================================================
-   NEW: Navigation Menu Positioning and Styling (Further Reduced Size, Non-Bold)
-   ===================================================== */
+/* =========================================================================
+   DESKTOP NAVIGATION (Visible on large screens)
+   ========================================================================= */
 
-/* 1. Positioning the Nav */
+/* 1. Positioning relative to the .site-banner */
 .main-nav {
-  position: absolute;
-  top: 5px; 
-  right: 5px; 
-  z-index: 20;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 20;
 }
 
-/* 2. Styling the Top-Level Links (Desktop Base Size) */
+/* 2. Top-Level Menu Styling */
 .main-nav > ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  font-size: 0.8rem; 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 0.8rem;
 }
 .main-nav li {
-  position: relative;
+    position: relative;
 }
 .main-nav a {
-  display: block;
-  padding: 3px 6px; 
-  text-decoration: none;
-  color: #333;
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 3px; 
-  margin-left: 2px;
-  white-space: nowrap;
-  font-family: Arial, sans-serif; 
-  /* 🛑 CHANGED: Set font-weight to normal/400 (not bold) */
-  font-weight: normal; 
+    display: block;
+    padding: 3px 6px;
+    text-decoration: none;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    margin-left: 2px;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+    font-weight: normal; 
+    transition: background-color 0.2s;
 }
 .main-nav a:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
-/* 3. Styling Sub-Menus (Dropdowns) */
+/* 3. Dropdown Sub-Menus */
 .main-nav ul ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.98); 
-  min-width: 150px;
-  z-index: 30;
-  border: 1px solid #ccc;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-  display: none;
-  font-size: 0.8rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98); 
+    min-width: 150px;
+    z-index: 30;
+    border: 1px solid #ccc;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default, shown on hover */
+    font-size: 0.8rem;
 }
 
 /* Sub-sub-menu positioning (flyout to the right) */
 .main-nav ul ul ul {
-  top: 0;
-  left: 100%;
-  min-width: 130px;
+    top: 0;
+    left: 100%;
+    min-width: 130px;
 }
 
 /* Show sub-menus on hover */
 .main-nav li:hover > ul {
-  display: block;
+    display: block;
 }
 
 /* Sub-menu link appearance */
@@ -76,34 +76,163 @@
     border-radius: 0;
     margin: 0;
     padding: 5px 10px;
-    font-weight: normal; /* Ensured sub-menus are also not bold */
+    font-weight: normal;
 }
 
-/* =====================================================
-   MOBILE OPTIMIZATION (<= 768px)
-   ===================================================== */
-@media (max-width: 768px) {
-    /* Extreme reduction for small screens */
+
+/* =========================================================================
+   MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+   ========================================================================= */
+
+/* Hamburger Icon - Hidden by default on Desktop */
+.hamburger-icon {
+    display: none;
+}
+
+/* Mobile Overlay/Scrim - Hidden by default */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.mobile-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+/* =========================================================================
+   MOBILE NAVIGATION (Off-Canvas Menu)
+   ========================================================================= */
+
+.mobile-menu-container {
+    position: fixed;
+    left: 0;
+    width: 75%;
+    max-width: 300px; /* Max width for better tablet appearance */
+    height: 100%;
+    background-color: #0a1a33;
+    color: white;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    padding-top: 15px;
+}
+.mobile-menu-container.open {
+    transform: translateX(0);
+}
+.mobile-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+
+/* Mobile Menu Links */
+.mobile-menu-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mobile-menu-container li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-menu-container a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.mobile-menu-container a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Accordion / Nested Link Styling */
+.mobile-menu-container ul ul {
+    display: none; /* Controlled by JavaScript */
+    background-color: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.mobile-menu-container ul ul li a {
+    padding-left: 35px;
+    font-size: 0.95rem;
+}
+.mobile-menu-container ul ul ul li a {
+    padding-left: 55px;
+    font-size: 0.9rem;
+}
+
+/* Toggle Indicator (Font Awesome Down Arrow) */
+.toggle-btn::after {
+    content: "\f0d7"; /* Font Awesome Chevron Down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    float: right;
+    transition: transform 0.3s;
+    margin-left: 10px;
+}
+.toggle-btn.open::after {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================================
+   MEDIA QUERIES (Switching from Desktop to Mobile)
+   ========================================================================= */
+
+/* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
+@media (max-width: 1400px) {
+    /* Hide the Desktop Nav */
     .main-nav {
-        top: 2px;
-        right: 2px;
+        display: none;
     }
-    .main-nav > ul {
-        font-size: 0.65rem;
+    
+    /* Show the Hamburger Icon on the left side of the banner */
+    .hamburger-icon {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1.8rem;
+        color: white;
+        cursor: pointer;
+        z-index: 50;
     }
-    .main-nav a {
-        padding: 1px 3px;
-        margin-left: 1px;
-        font-weight: normal; /* Ensured mobile view is not bold */
+    
+    /* Position mobile menu below the header (assuming header height ~80px) */
+    .mobile-menu-container {
+        top: 80px;
+        height: calc(100% - 80px);
     }
-    .main-nav ul ul {
-        min-width: 100px;
-        font-size: 0.7rem;
+}
+
+/* Mobile Phone Breakpoint */
+@media (max-width: 600px) { 
+    /* Adjust for typical smaller mobile banner height */
+    .hamburger-icon {
+        top: 10px;
+        left: 10px;
+        font-size: 1.5rem;
     }
-    .main-nav ul ul ul {
-        min-width: 90px;
-    }
-    .main-nav ul ul a {
-        padding: 3px 6px;
+    
+    /* Adjust menu position/height (assuming mobile banner height ~70px) */
+    .mobile-menu-container {
+        top: 70px;
+        height: calc(100% - 70px);
+        width: 90%;
     }
 }
