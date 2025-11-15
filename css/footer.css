@@ -160,8 +160,8 @@
 
     /* ADJUSTED: Contact section now takes 70% of the horizontal space */
     .footer-contact {
-        flex-basis: 70%;                /* Contact takes 70% width */
-        max-width: 70%; 
+        flex-basis: 65%;                /* Contact takes 70% width */
+        max-width: 65%; 
         text-align: left;
         font-size: 0.75rem;             /* Reduced content font size for contact details */
     }
@@ -185,5 +185,6 @@
         font-size: 0.8rem;
     }
 }
+
 
 
