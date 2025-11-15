@@ -8,67 +8,148 @@
   <link rel="stylesheet" href="css/logo-banner.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <style>
-    /* Basic styling for the main nav container */
-    .main-nav {
-      background-color: #333; /* Dark background for the main bar */
-      font-family: Arial, sans-serif;
+    /* **********************************************
+      * CSS FOR POSITIONING AND DROPDOWN FUNCTIONALITY *
+      **********************************************
+    */
+    .site-banner {
+      /* Ensure the banner is the reference point for absolute positioning */
+      position: relative; 
+      /* You might need to adjust the padding/height of site-banner if the logo/text overlap the nav */
     }
-    /* Style for the top-level list */
+
+    /* 1. Positioning the Nav */
+    .banner-inner {
+      /* If banner-inner is what contains the logo and text, 
+         it also needs to be positioned relative */
+      position: relative;
+    }
+
+    .main-nav {
+      /* Positions the nav in the top right corner */
+      position: absolute;
+      top: 10px; /* Adjust as needed */
+      right: 10px; /* Adjust as needed */
+      z-index: 20; /* Ensure it is above other banner content */
+    }
+
+    /* 2. Styling the Nav Structure */
+    .main-nav {
+      font-family: Arial, sans-serif;
+      /* Background for the top-level links only */
+      background-color: transparent; 
+    }
     .main-nav > ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       display: flex; /* Makes top items horizontal */
       flex-wrap: wrap;
+      justify-content: flex-end; /* Align top links to the right */
     }
-    /* Style for all list items */
     .main-nav li {
-      position: relative; /* Crucial for positioning sub-menus */
+      position: relative;
     }
-    /* Style for all links */
     .main-nav a {
       display: block;
-      padding: 10px 15px;
+      padding: 5px 8px; /* Reduced padding for a tighter fit in the corner */
       text-decoration: none;
-      color: white;
-      white-space: nowrap; /* Keeps link text from wrapping */
+      color: #333; /* Dark text for contrast against the banner background */
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+      border-radius: 4px;
+      margin-left: 5px; /* Space between top-level links */
+      white-space: nowrap;
     }
     .main-nav a:hover {
-      background-color: #555;
+      background-color: #ddd;
     }
 
-    /* Style for all sub-menus (ul inside an li) */
+    /* 3. Styling Sub-Menus */
     .main-nav ul ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
-      position: absolute; /* Takes sub-menu out of normal flow */
-      top: 100%; /* Positions it right below the parent link */
+      position: absolute; 
+      top: 100%; 
       left: 0;
-      background-color: #444; /* Slightly lighter background for sub-menus */
+      background-color: rgba(255, 255, 255, 0.95); /* Nearly opaque white for sub-menus */
       min-width: 200px;
-      z-index: 10;
-      display: none; /* Hides sub-menus by default */
+      z-index: 30;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: none;
     }
 
-    /* Style for sub-sub-menus (ul inside a sub-menu li) */
+    /* Sub-sub-menu positioning (moves to the right) */
     .main-nav ul ul ul {
-      top: 0; /* Positions sub-sub-menu to the side */
+      top: 0; 
       left: 100%;
-      background-color: #555;
+      min-width: 180px;
     }
 
-    /* Show sub-menus when hovering over the parent list item */
+    /* Show sub-menus on hover */
     .main-nav li:hover > ul {
       display: block;
     }
+
+    /* Ensure text within the sub-menus is dark */
+    .main-nav ul ul a {
+        color: #333;
+        background-color: transparent; /* Remove background on sub-menu links */
+        border-radius: 0;
+        margin: 0;
+        padding: 8px 15px;
+    }
+
+    /* Adjust banner text position to avoid overlap if necessary */
+    .banner-text {
+        margin-top: 50px; /* Push the banner text down if the nav is too close */
+    }
+
   </style>
 </head>
 <body>
 
 <header class="site-banner">
   <div class="banner-inner">
-
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li>
+          <a href="#">SAFETY & SECURITY</a>
+          <ul>
+            <li>
+              <a href="#">Safety</a>
+              <ul>
+                <li><a href="#">OSH General Awareness</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Security</a>
+              <ul>
+                <li><a href="#">Physical Security</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">INFORMATION TECHNOLOGY</a>
+          <ul>
+            <li><a href="#">Troubleshooting</a></li>
+            <li><a href="#">Networking</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">DIY & Practical Living</a>
+          <ul>
+            <li><a href="#">DIY Solar Setup</a></li>
+          </ul>
+        </li>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
     <img src="images/logo/EmtagHubLogo.png" alt="EMTAGHub Logo" class="banner-logo" />
 
     <div class="banner-text">
@@ -79,43 +160,6 @@
   </div>
 </header>
 
-<nav class="main-nav">
-  <ul>
-    <li><a href="#">HOME</a></li>
-    <li>
-      <a href="#">SAFETY & SECURITY</a>
-      <ul>
-        <li>
-          <a href="#">Safety</a>
-          <ul>
-            <li><a href="#">OSH General Awareness</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Security</a>
-          <ul>
-            <li><a href="#">Physical Security</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">INFORMATION TECHNOLOGY</a>
-      <ul>
-        <li><a href="#">Troubleshooting</a></li>
-        <li><a href="#">Networking</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">DIY & Practical Living</a>
-      <ul>
-        <li><a href="#">DIY Solar Setup</a></li>
-      </ul>
-    </li>
-    <li><a href="#">ABOUT US</a></li>
-    <li><a href="#">CONTACT US</a></li>
-  </ul>
-</nav>
 <footer class="footer">
   <div class="footer-container">
 
