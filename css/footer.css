@@ -30,14 +30,6 @@
   font-size: 1rem;                  /* Slightly smaller titles */
 }
 
-/* ----- About Section ----- */
-.footer-about {
-  flex: 1 1 280px;                  /* Flexible width, min 280px */
-  max-width: 1000px;                 /* Limit width on large screens */
-  line-height: 1.35;                /* Slightly tighter line spacing */
-  font-size: 0.95rem;               /* Smaller text for compactness */
-}
-
 /* ----- Contact Section ----- */
 .footer-contact {
   flex: 1 1 20px;                  /* Flexible width, smaller minimum */
@@ -111,4 +103,5 @@
     padding-top: 5px;
   }
 }
+
 
