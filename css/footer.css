@@ -89,7 +89,7 @@
 
     /* Footer inner container: Set to 100% width and remove side padding here */
     .footer-container {
-        padding: 0;
+        padding: 10;
         max-width: 100%;
         
         /* On mobile, stack all top-level sections vertically */
@@ -166,3 +166,4 @@
         flex-shrink: 0; 
     }
 }
+
