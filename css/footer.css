@@ -18,7 +18,7 @@
     justify-content: space-between;   /* Distributes space between the columns, pushing them to the edges */
     flex-wrap: wrap;                  /* Allows columns to stack vertically on smaller screens when space runs out */
     gap: 40px;                        /* Sets a horizontal gap of 40px between major footer sections */
-    max-width: 1200px;                /* Limits the maximum width of the content area */
+    max-width: auto;                /* Limits the maximum width of the content area */
     margin: 0 auto;                   /* Centers the container horizontally on the page */
     padding: 10px 20px;               /* Sets 10px padding vertically and 20px padding horizontally inside the container */
 }
@@ -179,6 +179,7 @@
     .footer-links h3 {
         font-size: 1rem;                /* Sets the title size for mobile */
         margin-bottom: 3px;             /* REDUCED SPACE: Minimized vertical space below h3 (title) from 5px to 3px */
+       
     }
     
     /* TIGHTER FONT: Reduced content font size for quick links */
@@ -187,4 +188,5 @@
         font-size: 0.8rem;              /* Sets a small font size for quick links text */
     }
 }
+
 
