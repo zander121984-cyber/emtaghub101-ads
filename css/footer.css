@@ -158,10 +158,18 @@
         padding: 0 5px; 
     }
 
-    .footer-links,
+    /* ADJUSTED: Contact section now takes 70% of the horizontal space */
     .footer-contact {
-        flex-basis: 49%;                /* Each takes roughly half the width */
-        max-width: 49%; 
+        flex-basis: 70%;                /* Contact takes 70% width */
+        max-width: 70%; 
+        text-align: left;
+        font-size: 0.75rem;             /* Reduced content font size for contact details */
+    }
+
+    /* ADJUSTED: Links section now takes 20% of the horizontal space */
+    .footer-links {
+        flex-basis: 20%;                /* Links take 20% width */
+        max-width: 20%;
         text-align: left;
     }
     
@@ -169,11 +177,6 @@
     .footer-contact h3,
     .footer-links h3 {
         font-size: 1rem;
-    }
-    
-    /* TIGHTER FONT: Reduced content font size for contact details */
-    .footer-contact {
-        font-size: 0.75rem; 
     }
     
     /* TIGHTER FONT: Reduced content font size for quick links */
