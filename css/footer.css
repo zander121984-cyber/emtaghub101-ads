@@ -100,7 +100,7 @@
    ===================================== */
 @media (max-width: 600px) {
     .footer { 
-        padding: 20px 15px; /* Adjust wrapper padding */
+        padding: 10px 15px; /* Adjust wrapper padding */
         margin-top: 50px; /* Less space above footer on mobile */
     }
     
@@ -157,4 +157,5 @@
         margin-bottom: 3px;
     }
 }
+
 
