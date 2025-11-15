@@ -93,7 +93,7 @@
 .mobile-overlay {
     display: none;
     position: fixed;
-    top: 20;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -195,18 +195,19 @@
    ========================================================================= */
 
 /* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
-@media (max-width: 1200px) { /* <--- FIXED: Now allows desktop nav on typical laptops */
+@media (max-width: 1200px) { 
     /* Hide the Desktop Nav */
     .main-nav {
         display: none;
     }
     
-    /* Show the Hamburger Icon on the left side of the banner */
+    /* Show the Hamburger Icon, now centered horizontally */
     .hamburger-icon {
         display: block;
         position: absolute;
         top: 20px;
-        left: 20px;
+        left: 50%; 
+        transform: translateX(-50%); /* Centering magic */
         font-size: 1.8rem;
         color: white;
         cursor: pointer;
@@ -225,7 +226,7 @@
     /* Adjust for typical smaller mobile banner height */
     .hamburger-icon {
         top: 10px;
-        left: 10px;
+        /* The horizontal centering (left: 50%; transform: translateX(-50%);) is inherited */
         font-size: 1.5rem;
     }
     
@@ -236,4 +237,3 @@
         width: 90%;
     }
 }
-
