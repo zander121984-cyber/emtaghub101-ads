@@ -162,8 +162,8 @@
     .footer-links,
     .footer-contact {
         /* Each takes up slightly more space to reduce the gap and maximize available width */
-        flex-basis: 60%; 
-        max-width: 60%; 
+        flex-basis: 45%; 
+        max-width: 45%; 
         /* Ensure the titles and content are aligned left within their column */
         text-align: left;
     }
@@ -183,6 +183,7 @@
         margin-bottom: 3px;
     }
 }
+
 
 
 
