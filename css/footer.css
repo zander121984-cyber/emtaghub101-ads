@@ -47,7 +47,7 @@
   flex-wrap: wrap;               /* Allow columns to wrap on small screens */
   gap: 40px;                     /* Gap between footer sections */
   max-width: 1200px;             /* Center content with fixed width limit */
-  margin: 20px;                  /* Center the whole footer */
+  margin: 40px;                  /* Center the whole footer */
   padding: 0 20px;               /* Added horizontal padding for desktop view */
 }
 
@@ -181,5 +181,6 @@
     }
     
 }
+
 
 
