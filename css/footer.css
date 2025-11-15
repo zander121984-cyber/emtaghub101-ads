@@ -55,22 +55,22 @@
         width: 100%;                    /* Ensures the group takes full container width */
         justify-content: space-between; /* Pushes contact and links apart */
         align-items: flex-start;        /* Aligns items to the top */
-        padding: 0 10px;                /* Increased horizontal padding to 10px for buffer */
+        padding: 0 10px;                /* Horizontal padding for buffer */
     }
 
-    /* ADJUSTED: Contact section now takes 55% of the horizontal space (Closer to 50/50 split) */
+    /* CLEANED: Contact section is now 48% for symmetrical look */
     .footer-contact {
-        flex-basis: 55%;                /* Gives Contact 55% of horizontal space */
-        max-width: 55%; 
+        flex-basis: 48%;                /* Gives Contact 48% of horizontal space */
+        max-width: 48%; 
         text-align: left;
-        font-size: 0.75rem;             /* Reduced content font size for contact details for better fit */
+        font-size: 0.8rem;              /* Standardized font size for readability */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
-    /* ADJUSTED: Links section now takes 35% of the horizontal space (Closer to 50/50 split) */
+    /* CLEANED: Links section is now 48% for symmetrical look */
     .footer-links {
-        flex-basis: 35%;                /* Gives Quick Links 35% of horizontal space */
-        max-width: 35%;
+        flex-basis: 48%;                /* Gives Quick Links 48% of horizontal space */
+        max-width: 48%;
         text-align: left;
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
@@ -80,20 +80,20 @@
     .footer-links h3 {
         font-size: 1rem;                /* Sets the title size for mobile */
         margin-top: 0;                  /* CRITICAL FIX: ELIMINATES H3 TOP MARGIN COLLAPSE */
-        margin-bottom: 3px;             /* Minimized vertical space below h3 (title) from 5px to 3px */
+        margin-bottom: 3px;             /* Minimized vertical space below h3 (title) */
     }
     
     /* FIX: Eliminate default top margin on the first paragraph in the contact section */
     .footer-contact p {
         margin-top: 0;                  /* Removes any default top margin from paragraphs */
         margin-bottom: 8px;             /* Retain desired spacing between lines */
-        padding-right: 5px;             /* Added small right padding to ensure text doesn't touch boundary */
+        padding-right: 0;               /* Removed extra padding */
     }
 
     /* TIGHTER FONT: Reduced content font size for quick links */
     .footer-links a {
         margin-bottom: 3px;             /* Sets 3px vertical spacing between individual quick links */
-        font-size: 0.8rem;              /* Sets a small font size for quick links text */
+        font-size: 0.8rem;              /* Standardized font size for readability */
     }
 
     /* Ensure icons align correctly on mobile and don't wrap text */
