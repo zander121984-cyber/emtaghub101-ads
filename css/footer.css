@@ -135,7 +135,7 @@
         /* On mobile, stack all top-level sections vertically */
         flex-direction: column;
         align-items: flex-start; /* Align sections to the left for better readability */
-        gap: 30px; 
+        gap: 50px; 
         text-align: left; 
     }
 
@@ -183,4 +183,5 @@
         margin-bottom: 3px;
     }
 }
+
 
