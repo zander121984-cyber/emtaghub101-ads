@@ -206,7 +206,7 @@
         display: block; /* Makes the hamburger icon visible */
         position: absolute; /* Positions the icon absolutely within the banner */
         top: 50%; /* Moves the top edge of the icon to the vertical center of the banner */
-        left: 50%; /* Moves the left edge of the icon to the horizontal center of the banner */
+        left: 5%; /* Moves the left edge of the icon to the horizontal center of the banner */
         transform: translate(-50%, -50%); /* Shifts the icon back by half its own height and width, achieving perfect center alignment */
         font-size: 1.8rem; /* Sets the size of the icon */
         color: white; /* Sets the color of the icon */
@@ -216,8 +216,8 @@
     
     /* Position mobile menu below the header (Assuming header height ~80px) */
     .mobile-menu-container {
-        top: 80px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
-        height: calc(100% - 80px); /* Calculates the remaining height of the viewport for the menu to fill */
+        top: 100px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
+        height: calc(100% - 100px); /* Calculates the remaining height of the viewport for the menu to fill */
     }
 }
 
@@ -236,3 +236,4 @@
         width: 90%; /* Increases the width of the mobile menu to 90% of the screen for better use of space */
     }
 }
+
