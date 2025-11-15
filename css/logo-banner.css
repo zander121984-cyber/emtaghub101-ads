@@ -64,33 +64,39 @@
 }
 
 /* =====================================
-   📱 Mobile Responsiveness
+   📱 Mobile Responsive Banner
    ===================================== */
 @media (max-width: 600px) {
 
-  /* Stack content vertically on small screens */
+  .site-banner {
+    flex-direction: column;           /* Stack logo + text vertically */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;                        /* Space between stacked elements */
+  }
+
   .banner-inner {
-    flex-direction: column; /* Logo above title */
-    text-align: center; /* Centers text under logo */
+    flex-direction: column;           /* Logo above text */
+    align-items: center;
+    text-align: center;
+    gap: 8px;
   }
 
-  /* Smaller logo for mobile */
   .banner-logo {
-    height: 55px; /* Reduce logo height for small screens */
+    height: 55px;                     /* Smaller logo for mobile */
   }
 
-  /* Adjust title size on mobile */
   .banner-title {
-    font-size: 1.7rem; /* Slightly smaller to fit screens */
+    font-size: 1.7rem;                /* Slightly smaller title */
+    line-height: 1.2;
   }
 
-  /* Adjust main tagline size on mobile */
   .tagline-main {
-    font-size: 1rem; /* Smaller */
+    font-size: 1rem;
   }
 
-  /* Adjust sub-tagline size */
   .tagline-sub {
-    font-size: 0.85rem; /* More compact for mobile */
+    font-size: 0.85rem;
   }
 }
