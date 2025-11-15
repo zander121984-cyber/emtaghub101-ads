@@ -62,35 +62,49 @@
   opacity: 0.92; /* Soft faded text */
   margin-bottom: 6px; /* Space below title before tagline starts */
 }
-/* =====================================
-   📱 Mobile Responsiveness — Keep Horizontal
-   ===================================== */
 @media (max-width: 600px) {
-  .site-banner {
-    justify-content: center;           /* Center content horizontally */
-    gap: 10px;
-  }
 
+  /* Stack logo and text vertically */
   .banner-inner {
-    flex-direction: row;               /* Keep horizontal layout */
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;                   /* Allow wrapping if very narrow */
+    flex-direction: column;        /* Logo above text */
+    align-items: center;           /* Center everything */
+    text-align: center;            /* Center text */
+    gap: 5px;                      /* Reduce space between logo and text */
+    padding: 5px 10px;             /* Less padding for mobile */
   }
 
+  /* Logo adjustments */
   .banner-logo {
-    height: 55px;                      /* Smaller logo to fit screen */
+    height: 40px;                  /* Shrink logo further */
+    width: auto;
+    padding: 0;
+    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
+    border-radius: 10%;
   }
 
+  /* Title adjustments */
   .banner-title {
-    font-size: 1.5rem;                 /* Scale down text */
+    font-size: 1.2rem;             /* Smaller, fits mobile width */
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 3px;
   }
 
+  /* Main tagline */
   .tagline-main {
-    font-size: 0.85rem;
+    font-size: 0.8rem;             /* Compact for mobile */
+    opacity: 0.9;
+    margin-bottom: 2px;
   }
 
+  /* Sub tagline */
   .tagline-sub {
-    font-size: 0.75rem;
+    font-size: 0.65rem;            /* Very compact for mobile */
+    opacity: 0.85;
+  }
+
+  /* Optional: reduce gap below banner */
+  .site-banner {
+    padding: 5px 10px;
   }
 }
