@@ -123,7 +123,7 @@
 
     /* FIX: Links section gets 30% */
     .footer-links {
-        flex-basis: 30%;                /* Set to 30% */
+        flex-basis: 40%;                /* Set to 30% */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
         font-size: 0.75rem;             /* Final reduction of font size for compactness */
@@ -166,6 +166,7 @@
         flex-shrink: 0; 
     }
 }
+
 
 
 
