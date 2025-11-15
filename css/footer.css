@@ -99,6 +99,7 @@
   .footer-links,
   .footer-contact,
   .footer-about {
+     align-items: left;
     max-width: 100%;                /* Make all sections full-width on mobile */
   }
 
@@ -106,3 +107,4 @@
     margin-bottom: 3px;             /* Tighten link spacing on small screens */
   }
 }
+
