@@ -29,7 +29,7 @@
 .banner-logo {
   height: 100px; /* Controls visual height of the logo */
   width: auto; /* Maintains aspect ratio */
-  padding: 10px 10px 10px 10px;
+  padding: 0 0 0 0;
   object-fit: contain; /* Prevents distortion; fits image properly */
   filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4)); /* Neon-style glow effect */
   border-radius: 10%;
@@ -100,6 +100,7 @@
     margin-bottom: 1px;
   }
 }
+
 
 
 
