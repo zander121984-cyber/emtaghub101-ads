@@ -117,7 +117,7 @@
         flex-basis: 50%;                /* Set to 58% to allow space for content */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.75rem;             /* Final reduction of font size for compactness */
+        font-size: 0.6rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
@@ -126,7 +126,7 @@
         flex-basis: 40%;                /* Set to 30% */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.75rem;             /* Final reduction of font size for compactness */
+        font-size: 0.6rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
     
@@ -166,6 +166,7 @@
         flex-shrink: 0; 
     }
 }
+
 
 
 
