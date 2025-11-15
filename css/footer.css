@@ -34,11 +34,42 @@
   padding: 0 20px;               /* Added horizontal padding for desktop view */
 }
 
-/* ... [Rest of desktop styles] ... */
+/* ------------------------------------- */
+/* DESKTOP STYLES (Default) */
+/* ------------------------------------- */
 
-/* =====================================
-   📱 Mobile Responsive Footer (Fixed)
-   ===================================== */
+/* Set desktop sizing for sections */
+.footer-contact,
+.footer-links {
+    flex-basis: auto;              /* Default sizing */
+    max-width: none;               /* Remove mobile max-width constraints */
+    text-align: left;
+}
+
+.footer-contact {
+    /* Large font size for contact details on desktop */
+    font-size: 1em;
+}
+
+.footer-links {
+    /* Style for the link list container */
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #7f8c8d;
+}
+
+/* ------------------------------------- */
+/* MOBILE OPTIMIZATION (Up to 600px) */
+/* ------------------------------------- */
 /* Styles applied when the screen width is 600px or less (mobile) */
 @media (max-width: 600px) {
 
@@ -67,7 +98,7 @@
         width: 100%;                    /* Ensures the group takes full container width */
         justify-content: space-between; /* Pushes contact and links apart */
         align-items: flex-start;        /* Aligns items to the top */
-        padding: 0 10px;                /* ADJUSTED: Increased horizontal padding to 10px for a larger buffer (Margin adjustment) */
+        padding: 0 10px;                /* ADJUSTED: Set side padding to 10px for buffer (Left/Right Margin Fix) */
         box-sizing: border-box;         /* CRITICAL FIX: Ensures padding is included *within* the 100% width, eliminating horizontal scroll */
     }
 
@@ -75,7 +106,7 @@
     .footer-contact {
         flex-basis: 58%;                /* Set to 58% to allow space for content */
         text-align: left;
-        font-size: 0.75rem;             /* ADJUSTED: Further reduced content font size (Font size too big fix) */
+        font-size: 0.75rem;             /* ADJUSTED: Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
@@ -83,7 +114,7 @@
     .footer-links {
         flex-basis: 30%;                /* Set to 30% */
         text-align: left;
-        font-size: 0.75rem;             /* ADJUSTED: Further reduced content font size (Font size too big fix) */
+        font-size: 0.75rem;             /* ADJUSTED: Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
     
