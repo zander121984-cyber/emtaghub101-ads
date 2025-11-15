@@ -140,7 +140,7 @@
         flex-basis: 58%;                /* Set to 58% to allow space for content */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.75rem;             /* Final reduction of font size for compactness */
+        font-size: 0.6rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
 
@@ -149,14 +149,14 @@
         flex-basis: 30%;                /* Set to 30% */
         max-width: none;                /* Ensure max-width is removed for mobile */
         text-align: left;
-        font-size: 0.75rem;             /* Final reduction of font size for compactness */
+        font-size: 0.6rem;             /* Final reduction of font size for compactness */
         padding-top: 0;                 /* Eliminates vertical padding *above* the h3 title. */
     }
     
     /* TIGHTER FONT & MARGINS: Title font size and margin below the title on mobile */
     .footer-contact h3,
     .footer-links h3 {
-        font-size: .9rem;                /* Sets the title size for mobile */
+        font-size: .8rem;                /* Sets the title size for mobile */
         margin-top: 0;                  /* CRITICAL FIX: ELIMINATES H3 TOP MARGIN COLLAPSE */
         margin-bottom: 3px;             /* Minimized vertical space below h3 (title) */
     }
@@ -181,3 +181,4 @@
     }
     
 }
+
