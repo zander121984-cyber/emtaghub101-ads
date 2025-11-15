@@ -1,116 +1,238 @@
-/* =====================================================
-   EMTAGHub101 — Modern Hero Banner
-   ===================================================== */
+/* =========================================================================
+   DESKTOP NAVIGATION (Visible on large screens)
+   ========================================================================= */
 
-/* Wrapper for the entire banner/header area */
-.site-banner {
-  width: auto;
-  background: #0a1a33;
-  padding: 0 20px 0 0; 
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  /* 🛑 ADD THIS LINE: Sets the banner as the anchor for the absolute navigation */
-  position: relative; 
+/* 1. Positioning relative to the .site-banner */
+.main-nav {
+    position: absolute; /* Allows positioning relative to the nearest positioned ancestor (the header banner) */
+    top: 5px; /* Sets the distance from the top edge of the banner */
+    right: 5px; /* Sets the distance from the right edge of the banner */
+    z-index: 20; /* Ensures the navigation is layered above other standard elements on the page */
 }
 
-/* Inner container that holds logo + title + tagline */
-.banner-inner {
-  width: 100%; /* Takes up full width of banner */
-  max-width: none; /* Removes width limit so logo sits at left edge */
-  display: flex; /* Places items in a horizontal row */
-  align-items: center; /* Vertically centers logo and text */
-  gap: 15px; /* Adds spacing between logo and text */
+/* 2. Top-Level Menu Styling */
+.main-nav > ul {
+    list-style-type: none; /* Removes the default bullet points from the list */
+    margin: 0; /* Removes default outside spacing */
+    padding: 0; /* Removes default inside spacing */
+    display: flex; /* Enables flex layout for inline horizontal alignment of menu items */
+    flex-wrap: wrap; /* Allows menu items to wrap to the next line if the screen is too narrow */
+    justify-content: flex-end; /* Aligns the menu items to the right side */
+    font-size: 0.8rem; /* Sets a slightly smaller font size for the desktop menu */
+}
+.main-nav li {
+    position: relative; /* Essential for positioning the dropdown sub-menus relative to their parent item */
+}
+.main-nav a {
+    display: block; /* Makes the entire padding area clickable */
+    padding: 3px 6px; /* Adds space around the link text (top/bottom and left/right) */
+    text-decoration: none; /* Removes the default underline from links */
+    color: #333; /* Sets the text color to dark gray */
+    background-color: rgba(255, 255, 255, 0.85); /* Sets a semi-transparent white background */
+    border-radius: 3px; /* Slightly rounds the corners of the background box */
+    margin-left: 2px; /* Adds a small horizontal space between each main menu item */
+    white-space: nowrap; /* Prevents the link text from wrapping onto multiple lines */
+    font-family: Arial, sans-serif; /* Specifies the font style */
+    font-weight: normal; /* Ensures the text is not bold */
+    transition: background-color 0.2s; /* Smoothly changes the background color over 0.2 seconds on hover */
+}
+.main-nav a:hover {
+    background-color: #ddd; /* Changes the background to a lighter gray when the mouse hovers over the link */
 }
 
-/* Logo styling */
-.banner-logo {
-  height: 100px; /* Controls visual height of the logo */
-  width: auto; /* Maintains aspect ratio */
-  padding: 10px 10px 10px 10px;
-  object-fit: contain; /* Prevents distortion; fits image properly */
-  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4)); /* Neon-style glow effect */
-  border-radius: 10%;
+/* 3. Dropdown Sub-Menus */
+.main-nav ul ul {
+    list-style-type: none; /* Removes bullets from sub-menus */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    position: absolute; /* Positions the sub-menu relative to its parent <li> */
+    top: 100%; /* Places the sub-menu directly below the parent link */
+    left: 0; /* Aligns the left edge of the sub-menu with the left edge of the parent link */
+    background-color: rgba(255, 255, 255, 0.98); /* Sets a nearly opaque white background for the dropdown */
+    min-width: 150px; /* Ensures the dropdown has a minimum legible width */
+    z-index: 30; /* Ensures the dropdown layers above the main navigation */
+    border: 1px solid #ccc; /* Adds a light gray border around the dropdown box */
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1); /* Applies a subtle shadow for depth */
+    display: none; /* Hides the dropdown menu by default (it will be shown on hover) */
+    font-size: 0.8rem; /* Sets the font size for sub-menu items */
 }
 
-/* Wrapper for title + tagline */
-.banner-text {
-  display: flex; /* Stack text elements */
-  flex-direction: column; /* Arrange text vertically */
-  justify-content: center; /* Center text vertically inside its space */
-  color: white; /* Makes all text in this wrapper white */
-  height: Center;  /* keeps alignment consistent */
-  margin-top: 10px;
+/* Sub-sub-menu positioning (flyout to the right) */
+.main-nav ul ul ul {
+    top: 0; /* Aligns the top of the sub-sub-menu with the top of its parent sub-menu link */
+    left: 100%; /* Places the sub-sub-menu (flyout) immediately to the right of its parent sub-menu */
+    min-width: 130px; /* Sets a slightly narrower minimum width for the flyout menu */
 }
 
-/* Main title */
-.banner-title {
-  font-size: 2.1rem; /* Large title text */
-  font-weight: 700; /* Bold font */
-  letter-spacing: 1px; /* Slight spacing between letters */
-  margin-bottom: 6px; /* Space below title before tagline starts */
+/* Show sub-menus on hover */
+.main-nav li:hover > ul {
+    display: block; /* Changes the display property to make the dropdown visible when hovering over the parent list item */
 }
 
-/* Tagline container */
-.banner-tagline {
-  line-height: 1; /* Slightly tighter line spacing */
-}
-
-/* Second tagline line */
-.tagline-main {
-  font-size: 0.95rem; /* Slightly smaller than main tagline */
-  opacity: 0.92; /* Soft faded text */
-  margin-bottom: 6px; /* Space below title before tagline starts */
-}
-
-/* Mobile responsiveness — keep horizontal layout */
-@media (max-width: 600px) {
-
-  .site-banner {
-    padding: 0 10px; /* Reduce padding */
-  }
-
-  .banner-inner {
-    flex-direction: row; /* Keep horizontal layout */
-    align-items: center; /* Keep text vertically centered to logo */
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .banner-logo {
-    height: 60px; /* Scale down logo for mobile */
-    width: auto;
-    padding: 10px 0 10px 40px;
-    filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
-  }
-
-  .banner-text {
-    margin-left: 5px;
-  }
-
-  .banner-title {
-    font-size: .6rem; /* Smaller text to fit screen */
-    margin-bottom: 2px;
-  }
-
-  .banner-main {
-    font-size: 0.3rem;
-    margin-bottom: 1px;
-  }
+/* Sub-menu link appearance */
+.main-nav ul ul a {
+    color: #333; /* Sets the link color to dark gray */
+    background-color: transparent; /* Ensures the sub-menu links don't have a background color */
+    border-radius: 0; /* Removes any rounded corners */
+    margin: 0; /* Removes the horizontal margin used in the main menu links */
+    padding: 5px 10px; /* Adds generous padding inside the link */
+    font-weight: normal; /* Ensures the text is not bold */
 }
 
 
+/* =========================================================================
+   MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+   ========================================================================= */
+
+/* Hamburger Icon - Hidden by default on Desktop */
+.hamburger-icon {
+    display: none; /* Hides the icon by default, it will be made visible in media queries (mobile view) */
+}
+
+/* Mobile Overlay/Scrim - Hidden by default */
+.mobile-overlay {
+    display: none; /* Hides the overlay by default */
+    position: fixed; /* Fixes the overlay to the viewport so it covers the entire screen */
+    top: 0; /* Aligns to the top of the viewport */
+    left: 0; /* Aligns to the left of the viewport */
+    width: 100%; /* Makes the overlay fill the entire width of the screen */
+    height: 100%; /* Makes the overlay fill the entire height of the screen */
+    background: rgba(0, 0, 0, 0.5); /* Sets a semi-transparent dark background (the scrim effect) */
+    z-index: 99; /* Positions it below the actual menu (z-index 100) but above all content */
+    transition: opacity 0.3s ease; /* Smoothly transitions the opacity property */
+    opacity: 0; /* Starts fully transparent (hidden when display is block but not yet open) */
+}
+.mobile-overlay.open {
+    display: block; /* Overrides 'display: none' when the 'open' class is added by JavaScript */
+    opacity: 1; /* Makes the overlay fully visible when the 'open' class is present */
+}
+
+/* =========================================================================
+   MOBILE NAVIGATION (Off-Canvas Menu)
+   ========================================================================= */
+
+.mobile-menu-container {
+    position: fixed; /* Fixes the menu to the viewport */
+    left: 0; /* Starts the menu position at the far left edge of the screen */
+    width: 75%; /* Sets the menu width to 75% of the screen */
+    max-width: 300px; /* Limits the menu size for better viewing on tablets/large phones */
+    height: 100%; /* Initially set to 100% of the viewport height (adjusted in media queries) */
+    background-color: #0a1a33; /* Sets the dark blue background color */
+    color: white; /* Sets the default text color to white */
+    z-index: 100; /* Ensures the menu is on top of everything else (including the scrim) */
+    transform: translateX(-100%); /* Pushes the menu entirely off-screen to the left (hidden state) */
+    transition: transform 0.3s ease-in-out; /* Smoothly slides the menu in and out */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); /* Adds a shadow on the right edge of the menu */
+    overflow-y: auto; /* Allows vertical scrolling if the menu content exceeds the screen height */
+    /* Padding was removed here for the zero-gap adjustment to ensure the menu starts immediately below the header */
+}
+.mobile-menu-container.open {
+    transform: translateX(0); /* Slides the menu back into view (its visible state) */
+}
+.mobile-close-btn {
+    position: absolute; /* Allows manual positioning inside the menu container */
+    top: 15px; /* Positions the close button 15px from the top */
+    right: 15px; /* Positions the close button 15px from the right */
+    font-size: 1.5rem; /* Sets the size of the 'X' icon */
+    cursor: pointer; /* Changes the mouse cursor to a pointer to indicate interactivity */
+    color: white; /* Sets the icon color to white */
+    padding: 5px; /* Adds padding around the icon for an easier touch target */
+}
+
+/* Mobile Menu Links */
+.mobile-menu-container ul {
+    list-style: none; /* Removes list bullets */
+    padding: 0; /* Removes default list padding */
+    margin: 0; /* Removes default list margin */
+}
+.mobile-menu-container li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Adds a subtle white separator line below each list item */
+}
+.mobile-menu-container a {
+    display: block; /* Ensures the link fills the width and padding is applied correctly */
+    text-decoration: none; /* Removes underline */
+    color: white; /* Sets link text color */
+    padding: 12px 15px; /* Adds ample padding for easy tapping on touch screens */
+    font-size: 1rem; /* Standard readable font size */
+    cursor: pointer; /* Sets cursor to pointer */
+    transition: background-color 0.2s; /* Smooth background transition on hover/tap */
+}
+.mobile-menu-container a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Sets a slight background change on hover/tap */
+}
+
+/* Accordion / Nested Link Styling */
+.mobile-menu-container ul ul {
+    display: none; /* Hides sub-menus by default (controlled by JS accordion logic) */
+    background-color: rgba(0, 0, 0, 0.15); /* Sets a darker background color for nested sub-menus */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Adds a subtle top border for separation */
+}
+.mobile-menu-container ul ul li a {
+    padding-left: 35px; /* Indents the nested link text further to the right */
+    font-size: 0.95rem; /* Slightly smaller font size for the nested items */
+}
+.mobile-menu-container ul ul ul li a {
+    padding-left: 55px; /* Indents the third level link text even further */
+    font-size: 0.9rem; /* Smallest font size for the deepest level links */
+}
+
+/* Toggle Indicator (Font Awesome Down Arrow) */
+.toggle-btn::after {
+    content: "\f0d7"; /* Inserts the Font Awesome Chevron Down icon */
+    font-family: "Font Awesome 6 Free"; /* Specifies the Font Awesome font family */
+    font-weight: 900; /* Required for solid icons in Font Awesome */
+    float: right; /* Aligns the icon to the right side of the link */
+    transition: transform 0.3s; /* Smoothly rotates the icon */
+    margin-left: 10px; /* Adds space between the link text and the icon */
+}
+.toggle-btn.open::after {
+    transform: rotate(180deg); /* Rotates the icon 180 degrees when the sub-menu is open */
+}
 
 
+/* =========================================================================
+   MEDIA QUERIES (Switching from Desktop to Mobile)
+   ========================================================================= */
 
+/* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
+@media (max-width: 1200px) { /* Applies styles when the viewport is 1200px or less */
+    /* Hide the Desktop Nav */
+    .main-nav {
+        display: none; /* Hides the desktop navigation menu */
+    }
+    
+    /* Show the Hamburger Icon, now centered horizontally AND vertically */
+    .hamburger-icon {
+        display: block; /* Makes the hamburger icon visible */
+        position: absolute; /* Positions the icon absolutely within the banner */
+        top: 50%; /* Moves the top edge of the icon to the vertical center of the banner */
+        left: 50%; /* Moves the left edge of the icon to the horizontal center of the banner */
+        transform: translate(-50%, -50%); /* Shifts the icon back by half its own height and width, achieving perfect center alignment */
+        font-size: 1.8rem; /* Sets the size of the icon */
+        color: white; /* Sets the color of the icon */
+        cursor: pointer; /* Indicates the icon is clickable */
+        z-index: 50; /* Ensures the icon is above the banner content */
+    }
+    
+    /* Position mobile menu below the header (Assuming header height ~80px) */
+    .mobile-menu-container {
+        top: 80px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
+        height: calc(100% - 80px); /* Calculates the remaining height of the viewport for the menu to fill */
+    }
+}
 
-
-
-
-
-
-
-
-
+/* Mobile Phone Breakpoint */
+@media (max-width: 600px) { /* Applies styles when the viewport is 600px or less */
+    /* Adjust for typical smaller mobile banner height */
+    .hamburger-icon {
+        /* Centering is inherited, only update font size */
+        font-size: 1.5rem; /* Reduces the size of the icon slightly for smaller screens */
+    }
+    
+    /* Adjust menu position/height (Assuming header height ~70px on mobile) */
+    .mobile-menu-container {
+        top: 70px; /* Adjusts the menu start position to 70px down (for smaller mobile banners) */
+        height: calc(100% - 70px); /* Calculates the remaining height based on the new top position */
+        width: 90%; /* Increases the width of the mobile menu to 90% of the screen for better use of space */
+    }
+}
