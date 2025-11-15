@@ -46,19 +46,26 @@
     min-width: 150px;
 }
 
-/* FIX 1: Use Flexbox on the <p> tag to ensure the icon and text are aligned horizontally */
+/* FIX 1: Use Flexbox on the <p> tag, reduce gap, and ensure icon alignment */
 .footer-contact p {
     display: flex;
     align-items: center; /* Vertically center icon and text */
-    gap: 8px; /* Space between icon and text */
+    gap: 6px; /* Reduced space between icon and text */
     margin-bottom: 8px;
 }
 
-/* FIX 2: Remove display: block from the link (a) so it can sit inline with the icon */
+/* Ensure the icon doesn't shrink */
+.footer-contact p i {
+    flex-shrink: 0;
+}
+
+/* FIX 2: Prevent the contact link text (email/url) from wrapping */
 .footer-contact a {
     color: #38bdf8;                   /* Light cyan for links */
     text-decoration: none;            /* Remove underline */
-    /* Removed display: block; which was forcing the text to drop below the icon */
+    white-space: nowrap; /* Prevents the text from wrapping onto a new line */
+    overflow: hidden; /* Ensures no horizontal scroll if it still overflows */
+    text-overflow: ellipsis; /* Optional: adds '...' if content is too long */
 }
 
 .footer-contact a:hover {
@@ -73,7 +80,7 @@
     min-width: 150px;
 }
 
-/* FIX 3: Also apply Flexbox to the quick links to ensure icon and text are aligned */
+/* FIX 3: Also apply Flexbox to the quick links and reduce gap */
 .footer-links a {
     color: #9ca3af;                   /* Muted gray text */
     margin-bottom: 5px;               /* Reduced spacing between links */
@@ -83,7 +90,12 @@
     /* Apply Flexbox to align icon and link text */
     display: flex; 
     align-items: center;
-    gap: 8px;
+    gap: 6px; /* Reduced space between icon and text */
+}
+
+/* Ensure the icon doesn't shrink */
+.footer-links a i {
+    flex-shrink: 0;
 }
 
 .footer-links a:hover {
