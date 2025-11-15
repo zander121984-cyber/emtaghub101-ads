@@ -4,14 +4,16 @@
 
 /* Wrapper for the entire banner/header area */
 .site-banner {
-  width: auto; /* Makes banner span the full width of the screen */
+  width: auto;
   background: #0a1a33;
-  padding: 0 20px 0 0; /* Adds right padding; left padding removed so logo touches edge */
-  display: flex; /* Enables flexbox for layout alignment */
-  justify-content: flex-start; /* Aligns all content to LEFT side */
-  align-items: center; /* Vertically centers items inside banner */
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35); /* Soft shadow below banner */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18); /* Light bottom border */
+  padding: 0 20px 0 0; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  /* 🛑 ADD THIS LINE: Sets the banner as the anchor for the absolute navigation */
+  position: relative; 
 }
 
 /* Inner container that holds logo + title + tagline */
@@ -98,6 +100,7 @@
     margin-bottom: 1px;
   }
 }
+
 
 
 
