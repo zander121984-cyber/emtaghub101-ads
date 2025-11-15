@@ -128,7 +128,7 @@
    ===================================== */
 @media (max-width: 600px) {
     .footer { 
-        padding: 10px 15px;             /* Keeps tight padding and better side margins on mobile */
+        padding: 5px 15px;             /* Keeps tight padding and better side margins on mobile */
         margin-top: 50px;               /* Reduces space above the footer on mobile */
     }
     
@@ -185,6 +185,7 @@
         font-size: 0.8rem;
     }
 }
+
 
 
 
