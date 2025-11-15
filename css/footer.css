@@ -4,6 +4,7 @@
 
 /* ----- Footer Wrapper (.footer) ----- */
 .footer { 
+     max-width: auto;  
     background: #0a1a33;              /* Sets the primary background color to a Dark elegant blue */
     color: #e5e7eb;                   /* Sets the default text color to a Soft gray for all contained elements */
     padding: 10px 3px;                 /* Sets 10px padding vertically (top/bottom) and 3px horizontally (left/right) */
@@ -188,5 +189,6 @@
         font-size: 0.8rem;              /* Sets a small font size for quick links text */
     }
 }
+
 
 
