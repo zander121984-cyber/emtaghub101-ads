@@ -174,9 +174,9 @@
         font-size: 1.1rem;
     }
     
-    /* FIX: Reduced font size further to 0.8em to prevent overlap */
+    /* Added to save space on mobile and prevent overlap */
     .footer-contact {
-        font-size: 0.8em; 
+        font-size: 0.9em; 
     }
     
     .footer-links a {
