@@ -133,15 +133,14 @@
     .footer-container {
         flex-direction: column;         /* Overrides desktop rule: forces main items to stack vertically */
         align-items: flex-start;        /* Aligns stacked content to the left edge */
-        gap: 15px;                      /* Sets vertical gap (20px) between stacked sections */
+        gap: 10px;                      /* Sets vertical gap (20px) between stacked sections */
         text-align: left;               /* Ensures all text inside is aligned left */
     }
 
     /* Reset flex behavior for sections that should take full width */
     .footer-contact,
     .footer-links,
-    .footer-about {
-       padding: 10px 0 10px 0; 
+    .footer-about { 
        width: 100%;                    /* Forces the elements to take up the full width initially */
         max-width: none;                /* Removes any maximum width constraints */
         flex: none;                     /* Disables growth/shrinkage rules */
@@ -150,6 +149,7 @@
     /* FIX: This wrapper forces contact and links back to horizontal alignment */
     .footer-horizontal-group {
         display: flex;                  /* Enables Flexbox to control the horizontal sections */
+        padding: 10px 0 10px 0; 
         flex-direction: row;            /* Forces side-by-side alignment for contact and links */
         width: 100%;                    /* Ensures the group takes full container width */
         justify-content: space-between; /* Pushes contact and links apart */
@@ -187,3 +187,4 @@
         font-size: 0.8rem;              /* Sets a small font size for quick links text */
     }
 }
+
