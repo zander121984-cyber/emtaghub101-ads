@@ -26,7 +26,7 @@ html, body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
     z-index: 90;
-    /* 🚨 ADJUSTED: Default height for PC/Desktop (120px) */
+    /* PC/Desktop Height: 120px */
     height: 120px; 
 }
 
@@ -36,13 +36,13 @@ html, body {
     max-width: none;
     display: flex;
     align-items: center;
-    /* Default gap (will be overridden by media query for small screens) */
+    /* Default gap (used here for PC layout) */
     gap: 15px; 
 }
 
 /* Logo styling (Desktop Default) */
 .banner-logo {
-    /* 🚨 ADJUSTED: Smaller height for PC view (100px) */
+    /* PC Logo Height: 100px */
     height: 100px; 
     width: auto;
     padding: 10px 10px 10px 10px;
@@ -62,7 +62,7 @@ html, body {
 
 /* Main title */
 .banner-title {
-    /* 🚨 ADJUSTED: Font size to match new PC scale */
+    /* PC Title Size */
     font-size: 1.9rem; 
     font-weight: 700;
     letter-spacing: 1px;
@@ -71,7 +71,7 @@ html, body {
 
 /* Second tagline line */
 .banner-sub-title {
-    /* 🚨 ADJUSTED: Font size to match new PC scale */
+    /* PC Subtitle Size */
     font-size: 1rem; 
     opacity: 0.92;
     margin-bottom: 6px;
@@ -90,7 +90,6 @@ html, body {
     z-index: 20;
     display: block; 
 }
-/* ... rest of navigation styles remain the same ... */
 .main-nav > ul { list-style-type: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; font-size: 0.8rem; }
 .main-nav li { position: relative; }
 .main-nav a { display: block; padding: 3px 6px; text-decoration: none; color: #333; background-color: rgba(255, 255, 255, 0.85); border-radius: 3px; margin-left: 2px; white-space: nowrap; font-family: Arial, sans-serif; font-weight: normal; transition: background-color 0.2s; }
@@ -109,7 +108,6 @@ html, body {
 .hamburger-icon {
     display: none;
 }
-/* ... rest of mobile UI styles remain the same ... */
 .mobile-overlay { display: none; position: fixed; top: 50px; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 99; transition: opacity 0.3s ease; opacity: 0; }
 .mobile-overlay.open { display: block; opacity: 1; }
 
@@ -117,7 +115,6 @@ html, body {
 /* =========================================================================
    MOBILE NAVIGATION (Off-Canvas Menu)
    ========================================================================= */
-/* ... Off-canvas menu styles remain the same, top/height fixed in media queries ... */
 .mobile-menu-container { position: fixed; left: 0; width: 75%; max-width: 300px; height: 100%; background-color: #0a1a33; color: white; z-index: 100; transform: translateX(-100%); transition: transform 0.3s ease-in-out; box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); overflow-y: auto; }
 .mobile-menu-container.open { transform: translateX(0); }
 .mobile-close-btn { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; cursor: pointer; color: white; padding: 5px; }
@@ -135,7 +132,6 @@ html, body {
 /* =====================================================
    🌐 EMTAGHub101 — Footer Styles (Desktop Defaults)
    ===================================================== */
-/* ... Footer styles remain the same ... */
 .footer { background: #0a1a33; color: #e5e7eb; padding: 10px 0; margin-top: 50px; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25); }
 .footer a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
 .footer a:hover { color: #3498db; }
@@ -161,42 +157,42 @@ html, body {
         display: none;
     }
 
-    /* 🚨 ADJUSTED: Banner height to fit larger elements */
+    /* MV DESKTOP/TABLET: Banner height 90px */
     .site-banner {
         height: 90px;
-        /* 🚨 NEW SPACING: 10px from the left edge */
-        padding: 0 0 0 10px; 
+        /* 🚨 ADJUSTED: 5px from the left edge */
+        padding: 0 0 0 5px; 
     }
     
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 FIXED GAP: Gap between hamburger/logo/text is 10px */
-        gap: 10px;
+        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 5px */
+        gap: 5px;
     }
 
-    /* 🚨 FIX: Shows the hamburger, but keeps it INLINE with the logo/text */
+    /* Shows the hamburger, inline flow */
     .hamburger-icon {
         display: block;
         position: static; 
-        /* 🚨 ADJUSTED: Larger font size for tablet */
+        /* Larger font size for tablet */
         font-size: 2.2rem; 
         margin-right: 0; /* Gap controlled by .banner-inner gap */
         cursor: pointer;
         color: white;
     }
 
-    /* 🚨 ADJUSTED: Larger logo size for tablets/laptops */
+    /* MV DESKTOP/TABLET: Larger logo size 70px */
     .banner-logo {
         height: 70px; 
-        padding: 10px 0;
+        padding: 0;
     }
 
-    /* 🚨 FIX: Ensure 40px space on the right edge */
+    /* Ensure 40px space on the right edge */
     .banner-text {
         margin-right: 40px; 
     }
 
-    /* Positioning mobile menu/overlay based on NEW 90px fixed header */
+    /* Positioning mobile menu/overlay based on 90px fixed header */
     .mobile-overlay {
         top: 90px;
         height: calc(100% - 90px);
@@ -214,30 +210,31 @@ html, body {
 
 /* Mobile Phone Breakpoint (max-width: 600px) */
 @media (max-width: 600px) {
-    /* 🚨 ADJUSTED: Banner height for mobile compactness */
+    /* MOBILE: Banner height 80px */
     .site-banner {
         height: 80px;
-        /* 🚨 NEW SPACING: 10px from the left edge */
-        padding: 0 0 0 10px;
+        /* 🚨 ADJUSTED: 5px from the left edge */
+        padding: 0 0 0 5px;
     }
 
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 FIXED GAP: Gap between hamburger/logo/text is 10px */
-        gap: 10px;
+        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 5px */
+        gap: 5px;
     }
 
-    /* 🚨 FIX: Smallest logo size, still horizontally aligned */
+    /* MOBILE: Larger logo size 60px */
     .banner-logo {
         height: 60px;
         padding: 5px 0 5px 0;
     }
 
-    /* 🚨 FIX: Smallest desired font sizes */
+    /* Mobile Title Size */
     .banner-title {
         font-size: 0.6rem;
         margin-bottom: 2px;
     }
+    /* Mobile Subtitle Size */
     .banner-sub-title {
         font-size: 0.3rem;
         margin-bottom: 1px;
@@ -251,11 +248,11 @@ html, body {
     .banner-text {
         margin-left: 0;
         min-width: 100px;
-        /* 🚨 FIX: Ensure 40px space on the right edge */
+        /* Ensure 40px space on the right edge */
         margin-right: 40px; 
     }
 
-    /* Positioning mobile menu/overlay based on NEW 80px fixed header */
+    /* Positioning mobile menu/overlay based on 80px fixed header */
     .mobile-overlay {
         top: 80px;
         height: calc(100% - 80px);
@@ -311,4 +308,3 @@ html, body {
         margin-bottom: 3px;
     }
 }
-
