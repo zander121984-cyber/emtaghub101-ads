@@ -17,8 +17,8 @@ html, body {
 .site-banner {
     width: auto;
     background: #0a1a33;
-    /* Reset left padding here, it will be controlled inside media queries */
-    padding: 0 20px 0 0; 
+    /* 🚀 ADJUSTED BASE: 10px from the left edge (Fixes 'Desktop site' view on mobile) */
+    padding: 0 20px 0 10px; 
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -36,8 +36,8 @@ html, body {
     max-width: none;
     display: flex;
     align-items: center;
-    /* Default gap (used here for PC layout) */
-    gap: 15px; 
+    /* 🚀 ADJUSTED BASE: Default gap tightened from 15px to 10px */
+    gap: 10px; 
 }
 
 /* Logo styling (Desktop Default) */
@@ -58,6 +58,8 @@ html, body {
     justify-content: center;
     color: white;
     margin-top: 0;
+    /* 🚀 ADJUSTED BASE: Added 5px left margin for separation (Logo to Text) */
+    margin-left: 5px; 
 }
 
 /* Main title */
@@ -160,13 +162,13 @@ html, body {
     /* MV DESKTOP/TABLET: Banner height 90px */
     .site-banner {
         height: 90px;
-        /* 🚨 ADJUSTED: 10px from the left edge */
+        /* 10px from the left edge */
         padding: 0 0 0 10px; 
     }
     
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 10px */
+        /* Gap between hamburger/logo/text is 10px */
         gap: 10px;
     }
 
@@ -176,7 +178,7 @@ html, body {
         position: static; 
         /* Larger font size for tablet */
         font-size: 2.2rem; 
-        margin-right: 0; /* Gap controlled by .banner-inner gap */
+        margin-right: 0; 
         cursor: pointer;
         color: white;
     }
@@ -187,8 +189,9 @@ html, body {
         padding: 0;
     }
 
-    /* Ensure 40px space on the right edge */
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
     .banner-text {
+        margin-left: 5px; 
         margin-right: 40px; 
     }
 
@@ -213,13 +216,13 @@ html, body {
     /* MOBILE: Banner height 80px */
     .site-banner {
         height: 80px;
-        /* 🚨 ADJUSTED: 10px from the left edge */
+        /* 10px from the left edge */
         padding: 0 0 0 10px;
     }
 
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 10px */
+        /* Gap between hamburger/logo/text is 10px */
         gap: 10px;
     }
 
@@ -243,12 +246,13 @@ html, body {
     /* Compact Hamburger */
     .hamburger-icon {
         font-size: 1.5rem;
-        margin-right: 0; /* Gap controlled by .banner-inner gap */
+        margin-right: 0; 
     }
+    
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
     .banner-text {
-        margin-left: 0;
+        margin-left: 5px; 
         min-width: 100px;
-        /* Ensure 40px space on the right edge */
         margin-right: 40px; 
     }
 
