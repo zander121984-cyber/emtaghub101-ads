@@ -99,10 +99,9 @@ html, body {
     font-size: 0.8rem; 
 }
 
-/* ❌ FIXED — Removed pointer-events: none; */
 .main-nav li { 
     position: relative; 
-    pointer-events: auto;  /* now clickable */
+    pointer-events: auto;
 }
 
 .main-nav a { 
@@ -497,5 +496,16 @@ html, body {
 
     .footer-links a {
         margin-bottom: 3px;
+    }
+}
+
+
+/* =====================================================
+   DESKTOP FIX — Prevent overlay from blocking clicks
+   ===================================================== */
+@media (min-width: 1201px) {
+    .mobile-overlay {
+        display: none !important;
+        pointer-events: none !important;
     }
 }
