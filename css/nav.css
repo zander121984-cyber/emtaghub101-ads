@@ -1,63 +1,17 @@
 /* =========================================================================
-  MOBILE UI ELEMENTS (Shared between mobile and desktop views)
-  ========================================================================= */
+   *** CRITICAL FIX: HEADER POSITIONING (Add your actual header class here) ***
+   ========================================================================= */
 
-/* Hamburger Icon - Hidden by default on Desktop */
-.hamburger-icon {
-    display: none; /* Hides the icon by default, it will be made visible in media queries (mobile view) */
+/* You MUST apply position: relative to the element that wraps the entire
+   header/banner content (e.g., .site-header, .header-wrapper)
+   for the absolutely positioned .main-nav to work correctly. */
+.YOUR-HEADER-CONTAINER { /* <--- CHANGE THIS TO YOUR ACTUAL HEADER CLASS */
+    position: relative; 
+    /* Add background, height, etc., for your banner here */
+    z-index: 90; /* Ensures the header is below the mobile menu (z-index 100) but above content */
 }
-
-/* ... (rest of the MOBILE UI ELEMENTS section remains the same) ... */
 
 /* =========================================================================
-  MEDIA QUERIES (Switching from Desktop to Mobile)
-  ========================================================================= */
-
-/* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
-@media (max-width: 1200px) { /* Applies styles when the viewport is 1200px or less */
-    /* Hide the Desktop Nav */
-    .main-nav {
-        display: none; /* Hides the desktop navigation menu */
-    }
-    
-    /* Show the Hamburger Icon, now placed BELOW the header banner and centered */
-    .hamburger-icon {
-        display: block; /* Makes the hamburger icon visible */
-        position: static; /* <-- CHANGED: Removes absolute positioning */
-        /* Overrides previous absolute positioning properties: */
-        top: auto; 
-        left: auto;
-        transform: none; 
-
-        /* Positioning below the header and centering: */
-        margin: 10px auto; /* Adds a 10px top/bottom margin for spacing and centers the element */
-        width: fit-content; /* Allows auto margins to center the icon */
-        
-        font-size: 1.8rem;
-        color: white; 
-        cursor: pointer; 
-        z-index: 50; 
-    }
-    
-    /* Position mobile menu below the new hamburger position 
-       (Assuming header height ~80px + hamburger margin/height ~10px. Adjusted to 90px total offset.) */
-    .mobile-menu-container {
-        top: 90px; /* <-- ADJUSTED: Increased to account for the banner + the space taken by the hamburger icon */
-        height: calc(100% - 90px); /* Calculates the remaining height of the viewport */
-    }
-    
-    /* Mobile Overlay top position must also be adjusted to start below the header (80px) */
-    .mobile-overlay {
-        top: 80px; /* Aligns to the bottom of the header banner */
-        height: calc(100% - 80px);
-    }
-}
-
-/* Mobile Phone Breakpoint */
-@media (max-width: 600px) { /* Applies styles when the viewport is 600px or less */
-    /* Adjust for typical smaller mobile banner height */
-    .hamburger-icon {
-        font-size: 1.5rem; /* =========================================================================
     DESKTOP NAVIGATION (Visible on large screens)
     ========================================================================= */
 
@@ -152,7 +106,7 @@
 .mobile-overlay {
     display: none; /* Hides the overlay by default */
     position: fixed; /* Fixes the overlay to the viewport so it covers the entire screen */
-    top: 50px; /* Aligns to the top of the viewport */
+    top: 50px; /* Default starting position (will be overridden in media queries) */
     left: 0; /* Aligns to the left of the viewport */
     width: 100%; /* Makes the overlay fill the entire width of the screen */
     height: 100%; /* Makes the overlay fill the entire height of the screen */
@@ -274,15 +228,16 @@
         width: fit-content; /* NEW: Allows auto margins to center the icon */
         
         font-size: 1.8rem;
-        color: white; /* You may need to adjust this color if the area below the banner is not dark */
+        color: white; /* Adjust this color if the area below your banner is not dark */
         cursor: pointer; 
         z-index: 50; 
     }
     
-    /* Position mobile overlay below the header (Assuming header height ~80px) */
+    /* Position mobile overlay below the header (Assuming fixed header height ~80px) */
     .mobile-overlay {
-        top: 80px; /* Aligns to the bottom of the header banner */
+        top: 80px; /* Aligns to the bottom of the fixed header banner */
         height: calc(100% - 80px); /* Calculates the remaining height */
+        z-index: 99; /* Ensure it's below the menu */
     }
 
     /* Position mobile menu below the header (80px) PLUS the space of the hamburger icon (10px) */
@@ -300,7 +255,7 @@
         margin: 5px auto; /* <-- ADJUSTED: Reduced margin for smaller screens, but still centered */
     }
 
-    /* Position mobile overlay below the header (Assuming header height ~70px) */
+    /* Position mobile overlay below the header (Assuming fixed header height ~70px) */
     .mobile-overlay {
         top: 70px; /* Based on typical smaller mobile banner height */
         height: calc(100% - 70px);
@@ -311,22 +266,5 @@
         top: 75px; /* <-- ADJUSTED: New start position (70px header + 5px margin/icon height) */
         height: calc(100% - 75px); /* Calculates the remaining height based on the new top position */
         width: 90%; 
-    }
-}
-        margin: 5px auto; /* <-- ADJUSTED: Reduced margin for smaller screens */
-    }
-    
-    /* Adjust menu position/height 
-       (Assuming header height ~70px on mobile + hamburger margin/height ~5px. Adjusted to 75px total offset.) */
-    .mobile-menu-container {
-        top: 75px; /* <-- ADJUSTED: New start position for the menu */
-        height: calc(100% - 75px); /* Calculates the remaining height based on the new top position */
-        width: 90%; 
-    }
-    
-    /* Mobile Overlay top position must also be adjusted to start below the header (70px) */
-    .mobile-overlay {
-        top: 70px; /* Based on typical smaller mobile banner height */
-        height: calc(100% - 70px);
     }
 }
