@@ -120,9 +120,10 @@ html, body {
     font-family: Arial, sans-serif; 
     font-weight: normal; 
     transition: background-color 0.2s; 
-    /* 💥 FINAL CLICK FIX: Force stacking context on the links themselves */
+    /* 💥 CRITICAL FIX: Force stacking context and ensure clickability */
     position: relative;
     z-index: 902; 
+    pointer-events: auto !important; 
 }
 
 .main-nav a:hover { 
@@ -183,17 +184,19 @@ html, body {
     width: 100%; 
     height: 100%; 
     background: rgba(0, 0, 0, 0.5); 
-    /* FIX: Lowest Z-index (0) when closed for safety */
+    /* FIX: Lowest Z-index (0) and disable pointer events when closed */
     z-index: 0; 
+    pointer-events: none;
     transition: opacity 0.3s ease; 
     opacity: 0; 
 }
 
-/* Z-index is only high when the overlay is open */
+/* Z-index and pointer events are only high when the overlay is open */
 .mobile-overlay.open { 
     display: block; 
     opacity: 1; 
     z-index: 199; 
+    pointer-events: auto;
 }
 
 
@@ -214,10 +217,13 @@ html, body {
     transition: transform 0.3s ease-in-out; 
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); 
     overflow-y: auto; 
+    /* FIX: Disable pointer events when closed */
+    pointer-events: none; 
 }
 
 .mobile-menu-container.open { 
     transform: translateX(0); 
+    pointer-events: auto; /* Enable pointer events when open */
 }
 
 .mobile-close-btn { 
