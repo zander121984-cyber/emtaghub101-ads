@@ -18,7 +18,6 @@ html, body {
 .site-banner {
     width: auto;
     background: #0a1a33;
-    /* 10px from the left edge */
     padding: 0 20px 0 10px; 
     display: flex;
     justify-content: flex-start;
@@ -26,8 +25,8 @@ html, body {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
-    /* Base Z-index for the banner */
-    z-index: 90; 
+    /* FIX: Highest base Z-index to dominate the viewport. */
+    z-index: 105; 
     /* PC/Desktop Height: 120px */
     height: 120px; 
 }
@@ -60,15 +59,14 @@ html, body {
     color: white;
     margin-top: 0;
     margin-left: 5px; 
-    /* ⭐ FIX: Ensures text grows to take available space */
+    /* FIX: Ensures text grows to take available space beside navigation */
     flex-grow: 1; 
-    /* ⭐ FIX: Prevents content from overflowing container */
+    /* FIX: Prevents content from overflowing */
     min-width: 0; 
 }
 
 /* Main title */
 .banner-title {
-    /* PC Title Size */
     font-size: 1.9rem; 
     font-weight: 700;
     letter-spacing: 1px;
@@ -77,8 +75,460 @@ html, body {
 
 /* Second tagline line */
 .banner-sub-title {
-    /* PC Subtitle Size */
     font-size: 1rem; 
     opacity: 0.92;
     margin-bottom: 6px;
+}
+
+
+/* =========================================================================
+   DESKTOP NAVIGATION (Visible on large screens)
+   ========================================================================= */
+
+/* 1. Positioning relative to the .site-banner */
+.main-nav {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    /* FIX: Higher than banner (105) for controls */
+    z-index: 106; 
+    display: block; 
+}
+
+.main-nav > ul { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: flex-end; 
+    font-size: 0.8rem; 
+}
+
+.main-nav li { 
+    position: relative; 
+}
+
+.main-nav a { 
+    display: block; 
+    padding: 3px 6px; 
+    text-decoration: none; 
+    color: #333; 
+    background-color: rgba(255, 255, 255, 0.85); 
+    border-radius: 3px; 
+    margin-left: 2px; 
+    white-space: nowrap; 
+    font-family: Arial, sans-serif; 
+    font-weight: normal; 
+    transition: background-color 0.2s; 
+}
+
+.main-nav a:hover { 
+    background-color: #ddd; 
+}
+
+.main-nav ul ul { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    background-color: rgba(255, 255, 255, 0.98); 
+    min-width: 150px; 
+    /* FIX: Highest Z-index for clickable dropdowns */
+    z-index: 107; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+    display: none; 
+    font-size: 0.8rem; 
+}
+
+.main-nav ul ul ul { 
+    top: 0; 
+    left: 100%; 
+    min-width: 130px; 
+}
+
+.main-nav li:hover > ul { 
+    display: block; 
+}
+
+.main-nav ul ul a { 
+    color: #333; 
+    background-color: transparent; 
+    border-radius: 0; 
+    margin: 0; 
+    padding: 5px 10px; 
+    font-weight: normal; 
+}
+
+
+/* =========================================================================
+   MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+   ========================================================================= */
+
+/* Hamburger Icon - Hidden by default on Desktop */
+.hamburger-icon {
+    display: none;
+}
+
+.mobile-overlay { 
+    display: none; 
+    position: fixed; 
+    top: 50px; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.5); 
+    /* High Z-index for overlay */
+    z-index: 199; 
+    transition: opacity 0.3s ease; 
+    opacity: 0; 
+}
+
+.mobile-overlay.open { 
+    display: block; 
+    opacity: 1; 
+}
+
+
+/* =========================================================================
+   MOBILE NAVIGATION (Off-Canvas Menu)
+   ========================================================================= */
+.mobile-menu-container { 
+    position: fixed; 
+    left: 0; 
+    width: 75%; 
+    max-width: 300px; 
+    height: 100%; 
+    background-color: #0a1a33; 
+    color: white; 
+    /* Highest Z-index for the sliding menu itself */
+    z-index: 200; 
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-in-out; 
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); 
+    overflow-y: auto; 
+}
+
+.mobile-menu-container.open { 
+    transform: translateX(0); 
+}
+
+.mobile-close-btn { 
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: white; 
+    padding: 5px; 
+}
+
+.mobile-menu-container ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.mobile-menu-container li { 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.mobile-menu-container a { 
+    display: block; 
+    text-decoration: none; 
+    color: white; 
+    padding: 12px 15px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.2s; 
+}
+
+.mobile-menu-container a:hover { 
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.mobile-menu-container ul ul { 
+    display: none; 
+    background-color: rgba(0, 0, 0, 0.15); 
+    border-top: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.mobile-menu-container ul ul li a { 
+    padding-left: 35px; 
+    font-size: 0.95rem; 
+}
+
+.mobile-menu-container ul ul ul li a { 
+    padding-left: 55px; 
+    font-size: 0.9rem; 
+}
+
+.toggle-btn::after { 
+    content: "\f0d7"; 
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900; 
+    float: right; 
+    transition: transform 0.3s; 
+    margin-left: 10px; 
+}
+
+.toggle-btn.open::after { 
+    transform: rotate(180deg); 
+}
+
+
+/* =====================================================
+   🌐 EMTAGHub101 — Footer Styles (Desktop Defaults)
+   ===================================================== */
+.footer { 
+    background: #0a1a33; 
+    color: #e5e7eb; 
+    padding: 10px 0; 
+    margin-top: 50px; 
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25); 
+}
+
+.footer a { 
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.2s ease; 
+}
+
+.footer a:hover { 
+    color: #3498db; 
+}
+
+.footer-contact p, 
+.footer-links a { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+    white-space: normal; 
+}
+
+.footer-contact i, 
+.footer-links i { 
+    flex-shrink: 0; 
+}
+
+.footer-container { 
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    gap: 40px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.footer-horizontal-group { 
+    display: flex; 
+    width: auto; 
+    justify-content: center; 
+    gap: 40px; 
+    flex-grow: 1; 
+}
+
+.footer-contact { 
+    flex-grow: 1.5; 
+    flex-basis: auto; 
+    text-align: left; 
+    font-size: 1em; 
+}
+
+.footer-links { 
+    flex-grow: 1; 
+    flex-basis: auto; 
+    display: flex; 
+    flex-direction: column; 
+    font-size: 1em; 
+    text-align: left; 
+}
+
+.footer-links a { 
+    margin-bottom: 8px; 
+}
+
+.footer-bottom { 
+    text-align: center; 
+    padding: 10px 20px 0; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    margin-top: 10px; 
+    font-size: 0.85em; 
+    color: #7f8c8d; 
+    width: 100%; 
+}
+
+
+/* =========================================================================
+   MEDIA QUERIES (Switching from Desktop to Mobile)
+   ========================================================================= */
+
+/* Breakpoint for Tablets/Small Desktops (max-width: 1200px) */
+@media (max-width: 1200px) {
+
+    /* HIDE THE DESKTOP NAVIGATION */
+    .main-nav {
+        display: none;
+    }
+
+    /* MV DESKTOP/TABLET: Banner height 90px */
+    .site-banner {
+        height: 90px;
+        padding: 0 0 0 10px; 
+    }
+    
+    /* Inner banner spacing controls */
+    .banner-inner {
+        gap: 10px;
+    }
+
+    /* Shows the hamburger, inline flow */
+    .hamburger-icon {
+        display: block;
+        position: static; 
+        font-size: 2.2rem; 
+        margin-right: 0; 
+        cursor: pointer;
+        color: white;
+    }
+
+    /* MV DESKTOP/TABLET: Larger logo size 70px */
+    .banner-logo {
+        height: 70px; 
+        padding: 0;
+    }
+
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
+    .banner-text {
+        margin-left: 5px; 
+        margin-right: 40px; 
+    }
+
+    /* Positioning mobile menu/overlay based on 90px fixed header */
+    .mobile-overlay {
+        top: 90px;
+        height: calc(100% - 90px);
+    }
+
+    .mobile-menu-container {
+        top: 90px;
+        height: calc(100% - 90px);
+    }
+
+    /* Footer Adjustment for Tablet View */
+    .footer-container {
+        gap: 20px;
+    }
+}
+
+/* Mobile Phone Breakpoint (max-width: 600px) */
+@media (max-width: 600px) {
+    /* MOBILE: Banner height 80px */
+    .site-banner {
+        height: 80px;
+        padding: 0 0 0 8px;
+    }
+
+    /* Inner banner spacing controls */
+    .banner-inner {
+        gap: 8px;
+    }
+
+    /* MOBILE: Larger logo size 60px */
+    .banner-logo {
+        height: 60px;
+        padding: 5px 0;
+    }
+
+    /* Mobile Title Size */
+    .banner-title {
+        font-size: 0.6rem;
+        margin-bottom: 2px;
+    }
+
+    /* Mobile Subtitle Size */
+    .banner-sub-title {
+        font-size: 0.3rem;
+        margin-bottom: 1px;
+    }
+    
+    /* Compact Hamburger */
+    .hamburger-icon {
+        font-size: 1.5rem;
+        margin-right: 0; 
+    }
+    
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
+    .banner-text {
+        margin-left: 5px; 
+        min-width: 100px;
+        margin-right: 40px; 
+    }
+
+    /* Positioning mobile menu/overlay based on 80px fixed header */
+    .mobile-overlay {
+        top: 80px;
+        height: calc(100% - 80px);
+    }
+
+    .mobile-menu-container {
+        top: 80px;
+        height: calc(100% - 80px);
+        width: 90%;
+    }
+
+    /* Footer Optimization */
+    .footer {
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .footer-container {
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-horizontal-group {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 10px;
+        box-sizing: border-box;
+        gap: 0;
+    }
+
+    .footer-contact,
+    .footer-links {
+        flex-basis: auto;
+        max-width: none;
+        text-align: left;
+        font-size: 0.75rem;
+        padding-top: 10px;
+    }
+
+    .footer-contact h3,
+    .footer-links h3 {
+        font-size: 0.9rem;
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+
+    .footer-contact p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        padding-right: 0;
+    }
+
+    .footer-links a {
+        margin-bottom: 3px;
+    }
 }
