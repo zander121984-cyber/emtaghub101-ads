@@ -31,7 +31,7 @@ html, body {
     position: relative;
     z-index: 90;
     /* Default height for PC/Desktop */
-    height: 80px; 
+    height: 90px; 
 }
 
 /* Inner container that holds hamburger, logo, title, and tagline */
@@ -481,6 +481,7 @@ html, body {
         margin-bottom: 3px;
     }
 }
+
 
 
 
