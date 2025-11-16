@@ -1,6 +1,65 @@
 /* =========================================================================
-   DESKTOP NAVIGATION (Visible on large screens)
-   ========================================================================= */
+  MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+  ========================================================================= */
+
+/* Hamburger Icon - Hidden by default on Desktop */
+.hamburger-icon {
+    display: none; /* Hides the icon by default, it will be made visible in media queries (mobile view) */
+}
+
+/* ... (rest of the MOBILE UI ELEMENTS section remains the same) ... */
+
+/* =========================================================================
+  MEDIA QUERIES (Switching from Desktop to Mobile)
+  ========================================================================= */
+
+/* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
+@media (max-width: 1200px) { /* Applies styles when the viewport is 1200px or less */
+    /* Hide the Desktop Nav */
+    .main-nav {
+        display: none; /* Hides the desktop navigation menu */
+    }
+    
+    /* Show the Hamburger Icon, now placed BELOW the header banner and centered */
+    .hamburger-icon {
+        display: block; /* Makes the hamburger icon visible */
+        position: static; /* <-- CHANGED: Removes absolute positioning */
+        /* Overrides previous absolute positioning properties: */
+        top: auto; 
+        left: auto;
+        transform: none; 
+
+        /* Positioning below the header and centering: */
+        margin: 10px auto; /* Adds a 10px top/bottom margin for spacing and centers the element */
+        width: fit-content; /* Allows auto margins to center the icon */
+        
+        font-size: 1.8rem;
+        color: white; 
+        cursor: pointer; 
+        z-index: 50; 
+    }
+    
+    /* Position mobile menu below the new hamburger position 
+       (Assuming header height ~80px + hamburger margin/height ~10px. Adjusted to 90px total offset.) */
+    .mobile-menu-container {
+        top: 90px; /* <-- ADJUSTED: Increased to account for the banner + the space taken by the hamburger icon */
+        height: calc(100% - 90px); /* Calculates the remaining height of the viewport */
+    }
+    
+    /* Mobile Overlay top position must also be adjusted to start below the header (80px) */
+    .mobile-overlay {
+        top: 80px; /* Aligns to the bottom of the header banner */
+        height: calc(100% - 80px);
+    }
+}
+
+/* Mobile Phone Breakpoint */
+@media (max-width: 600px) { /* Applies styles when the viewport is 600px or less */
+    /* Adjust for typical smaller mobile banner height */
+    .hamburger-icon {
+        font-size: 1.5rem; /* =========================================================================
+    DESKTOP NAVIGATION (Visible on large screens)
+    ========================================================================= */
 
 /* 1. Positioning relative to the .site-banner */
 .main-nav {
@@ -81,8 +140,8 @@
 
 
 /* =========================================================================
-   MOBILE UI ELEMENTS (Shared between mobile and desktop views)
-   ========================================================================= */
+    MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+    ========================================================================= */
 
 /* Hamburger Icon - Hidden by default on Desktop */
 .hamburger-icon {
@@ -108,8 +167,8 @@
 }
 
 /* =========================================================================
-   MOBILE NAVIGATION (Off-Canvas Menu)
-   ========================================================================= */
+    MOBILE NAVIGATION (Off-Canvas Menu)
+    ========================================================================= */
 
 .mobile-menu-container {
     position: fixed; /* Fixes the menu to the viewport */
@@ -191,8 +250,8 @@
 
 
 /* =========================================================================
-   MEDIA QUERIES (Switching from Desktop to Mobile)
-   ========================================================================= */
+    MEDIA QUERIES (Switching from Desktop to Mobile)
+    ========================================================================= */
 
 /* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
 @media (max-width: 1200px) { /* Applies styles when the viewport is 1200px or less */
@@ -201,23 +260,35 @@
         display: none; /* Hides the desktop navigation menu */
     }
     
-    /* Show the Hamburger Icon, now centered horizontally AND vertically */
+    /* Show the Hamburger Icon, now placed BELOW the header banner and centered */
     .hamburger-icon {
         display: block; /* Makes the hamburger icon visible */
-        position: absolute; /* Positions the icon absolutely within the banner */
-        top: 50%; /* Moves the top edge of the icon to the vertical center of the banner */
-        left: 5%; /* Moves the left edge of the icon to the horizontal center of the banner */
-        transform: translate(-50%, -50%); /* Shifts the icon back by half its own height and width, achieving perfect center alignment */
-        font-size: 1.8rem; /* Sets the size of the icon */
-        color: white; /* Sets the color of the icon */
-        cursor: pointer; /* Indicates the icon is clickable */
-        z-index: 50; /* Ensures the icon is above the banner content */
+        position: static; /* <-- CHANGED: Removes absolute positioning relative to the banner */
+        /* Overrides previous centering properties: */
+        top: auto; 
+        left: auto;
+        transform: none; 
+
+        /* Positioning below the header and centering: */
+        margin: 10px auto; /* NEW: Adds 10px spacing and centers the element horizontally */
+        width: fit-content; /* NEW: Allows auto margins to center the icon */
+        
+        font-size: 1.8rem;
+        color: white; /* You may need to adjust this color if the area below the banner is not dark */
+        cursor: pointer; 
+        z-index: 50; 
     }
     
-    /* Position mobile menu below the header (Assuming header height ~80px) */
+    /* Position mobile overlay below the header (Assuming header height ~80px) */
+    .mobile-overlay {
+        top: 80px; /* Aligns to the bottom of the header banner */
+        height: calc(100% - 80px); /* Calculates the remaining height */
+    }
+
+    /* Position mobile menu below the header (80px) PLUS the space of the hamburger icon (10px) */
     .mobile-menu-container {
-        top: 80px; /* Sets the top of the menu to start exactly 80px down from the top of the viewport (zero gap below header) */
-        height: calc(100% - 80px); /* Calculates the remaining height of the viewport for the menu to fill */
+        top: 90px; /* <-- ADJUSTED: New start position (80px header + 10px margin/icon height) */
+        height: calc(100% - 90px); /* Calculates the remaining height of the viewport */
     }
 }
 
@@ -225,18 +296,37 @@
 @media (max-width: 600px) { /* Applies styles when the viewport is 600px or less */
     /* Adjust for typical smaller mobile banner height */
     .hamburger-icon {
-        /* Centering is inherited, only update font size */
-        font-size: 1.5rem; /* Reduces the size of the icon slightly for smaller screens */
+        font-size: 1.5rem; 
+        margin: 5px auto; /* <-- ADJUSTED: Reduced margin for smaller screens, but still centered */
+    }
+
+    /* Position mobile overlay below the header (Assuming header height ~70px) */
+    .mobile-overlay {
+        top: 70px; /* Based on typical smaller mobile banner height */
+        height: calc(100% - 70px);
     }
     
-    /* Adjust menu position/height (Assuming header height ~70px on mobile) */
+    /* Adjust menu position/height (Header ~70px PLUS hamburger space ~5px) */
     .mobile-menu-container {
-        top: 100px; /* Adjusts the menu start position to 70px down (for smaller mobile banners) */
-        height: calc(100% - 100px); /* Calculates the remaining height based on the new top position */
-        width: 90%; /* Increases the width of the mobile menu to 90% of the screen for better use of space */
+        top: 75px; /* <-- ADJUSTED: New start position (70px header + 5px margin/icon height) */
+        height: calc(100% - 75px); /* Calculates the remaining height based on the new top position */
+        width: 90%; 
     }
 }
-
-
-
-
+        margin: 5px auto; /* <-- ADJUSTED: Reduced margin for smaller screens */
+    }
+    
+    /* Adjust menu position/height 
+       (Assuming header height ~70px on mobile + hamburger margin/height ~5px. Adjusted to 75px total offset.) */
+    .mobile-menu-container {
+        top: 75px; /* <-- ADJUSTED: New start position for the menu */
+        height: calc(100% - 75px); /* Calculates the remaining height based on the new top position */
+        width: 90%; 
+    }
+    
+    /* Mobile Overlay top position must also be adjusted to start below the header (70px) */
+    .mobile-overlay {
+        top: 70px; /* Based on typical smaller mobile banner height */
+        height: calc(100% - 70px);
+    }
+}
