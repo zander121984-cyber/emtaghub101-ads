@@ -3,7 +3,7 @@
    ===================================================== */
 
 /* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
-/* ⚠️ REMOVED GLOBAL POINTER-EVENTS: none FROM *{} ⚠️ */
+/* The dangerous global `* { pointer-events: none; }` is removed to fix mobile clicking. */
 * {
     box-sizing: border-box; 
 }
@@ -85,7 +85,7 @@ html, body {
     position: absolute;
     top: 5px;
     right: 5px;
-    /* ULTIMATE Z-INDEX: Max value */
+    /* ULTIMATE Z-INDEX: Max value for wrapper */
     z-index: 2147483647; 
     display: block; 
     pointer-events: auto; 
@@ -103,6 +103,8 @@ html, body {
 
 .main-nav li { 
     position: relative; 
+    /* 💥 CRITICAL SUB-MENU FIX: Prevents LI from blocking its UL children */
+    pointer-events: none;
 }
 
 .main-nav a { 
@@ -117,7 +119,7 @@ html, body {
     font-family: Arial, sans-serif; 
     font-weight: normal; 
     transition: background-color 0.2s; 
-    /* ULTIMATE Z-INDEX and Pointer Events */
+    /* ULTIMATE Z-INDEX and Pointer Events for actual links */
     position: relative;
     z-index: 2147483647; 
     pointer-events: auto; 
@@ -142,6 +144,8 @@ html, body {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
     display: none; 
     font-size: 0.8rem; 
+    /* Sub-menu container must be clickable */
+    pointer-events: auto;
 }
 
 .main-nav ul ul ul { 
@@ -172,7 +176,6 @@ html, body {
 /* Hamburger Icon - Hidden by default on Desktop */
 .hamburger-icon {
     display: none;
-    /* Ensure the icon itself can be clicked */
     pointer-events: auto; 
     z-index: 2147483647; 
 }
