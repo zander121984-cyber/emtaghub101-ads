@@ -217,13 +217,13 @@ html, body {
     .site-banner {
         height: 80px;
         /* 10px from the left edge */
-        padding: 0 0 0 10px;
+        padding: 0 0 0 8px;
     }
 
     /* Inner banner spacing controls */
     .banner-inner {
         /* Gap between hamburger/logo/text is 10px */
-        gap: 10px;
+        gap: 8px;
     }
 
     /* MOBILE: Larger logo size 60px */
@@ -312,3 +312,4 @@ html, body {
         margin-bottom: 3px;
     }
 }
+
