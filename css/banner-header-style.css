@@ -1,0 +1,69 @@
+/* =====================================================
+   EMTAGHub101 — BANNER (HEADER) STYLES
+   ===================================================== */
+
+/* Wrapper for the entire banner/header area */
+.site-banner {
+    width: auto;
+    background: #0a1a33;
+    /* 🚀 ADJUSTED BASE: 10px from the left edge (Fixes 'Desktop site' view on mobile) */
+    padding: 0 20px 0 10px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    z-index: 90;
+    /* PC/Desktop Height: 120px */
+    height: 120px; 
+}
+
+/* Inner container that holds hamburger, logo, title, and tagline */
+.banner-inner {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    align-items: center;
+    /* 🚀 ADJUSTED BASE: Default gap tightened from 15px to 10px */
+    gap: 10px; 
+}
+
+/* Logo styling (Desktop Default) */
+.banner-logo {
+    /* PC Logo Height: 100px */
+    height: 100px; 
+    width: auto;
+    padding: 10px 10px 10px 10px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
+    border-radius: 10%;
+}
+
+/* Wrapper for title + tagline */
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    margin-top: 0;
+    /* 🚀 ADJUSTED BASE: Added 5px left margin for separation (Logo to Text) */
+    margin-left: 5px; 
+}
+
+/* Main title */
+.banner-title {
+    /* PC Title Size */
+    font-size: 1.9rem; 
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* Second tagline line */
+.banner-sub-title {
+    /* PC Subtitle Size */
+    font-size: 1rem; 
+    opacity: 0.92;
+    margin-bottom: 6px;
+}

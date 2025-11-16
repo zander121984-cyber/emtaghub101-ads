@@ -1,0 +1,14 @@
+/* =====================================================
+   EMTAGHub101 — UNIVERSAL RESET & BASE DEFAULTS
+   ===================================================== */
+/* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+/* --- BOX-MODEL FIX --- */
+* {
+    box-sizing: border-box; 
+}

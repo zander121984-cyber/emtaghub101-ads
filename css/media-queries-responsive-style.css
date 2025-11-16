@@ -1,0 +1,165 @@
+/* =========================================================================
+   MEDIA QUERIES (Switching from Desktop to Mobile)
+   ========================================================================= */
+
+/* Breakpoint for Tablets/Small Desktops (max-width: 1200px) */
+@media (max-width: 1200px) {
+
+    /* HIDE THE DESKTOP NAVIGATION */
+    .main-nav {
+        display: none;
+    }
+
+    /* MV DESKTOP/TABLET: Banner height 90px */
+    .site-banner {
+        height: 90px;
+        /* 10px from the left edge */
+        padding: 0 0 0 10px; 
+    }
+    
+    /* Inner banner spacing controls */
+    .banner-inner {
+        /* Gap between hamburger/logo/text is 10px */
+        gap: 10px;
+    }
+
+    /* Shows the hamburger, inline flow */
+    .hamburger-icon {
+        display: block;
+        position: static; 
+        /* Larger font size for tablet */
+        font-size: 2.2rem; 
+        margin-right: 0; 
+        cursor: pointer;
+        color: white;
+    }
+
+    /* MV DESKTOP/TABLET: Larger logo size 70px */
+    .banner-logo {
+        height: 70px; 
+        padding: 0;
+    }
+
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
+    .banner-text {
+        margin-left: 5px; 
+        margin-right: 40px; 
+    }
+
+    /* Positioning mobile menu/overlay based on 90px fixed header */
+    .mobile-overlay {
+        top: 90px;
+        height: calc(100% - 90px);
+    }
+    .mobile-menu-container {
+        top: 90px;
+        height: calc(100% - 90px);
+    }
+
+    /* Footer Adjustment for Tablet View */
+    .footer-container {
+        gap: 20px;
+    }
+}
+
+/* Mobile Phone Breakpoint (max-width: 600px) */
+@media (max-width: 600px) {
+    /* MOBILE: Banner height 80px */
+    .site-banner {
+        height: 80px;
+        /* 10px from the left edge */
+        padding: 0 0 0 8px;
+    }
+
+    /* Inner banner spacing controls */
+    .banner-inner {
+        /* Gap between hamburger/logo/text is 10px */
+        gap: 8px;
+    }
+
+    /* MOBILE: Larger logo size 60px */
+    .banner-logo {
+        height: 60px;
+        padding: 5px 0 5px 0;
+    }
+
+    /* Mobile Title Size */
+    .banner-title {
+        font-size: 0.6rem;
+        margin-bottom: 2px;
+    }
+    /* Mobile Subtitle Size */
+    .banner-sub-title {
+        font-size: 0.3rem;
+        margin-bottom: 1px;
+    }
+    
+    /* Compact Hamburger */
+    .hamburger-icon {
+        font-size: 1.5rem;
+        margin-right: 0; 
+    }
+    
+    /* FIX: Ensures 10px flex gap + 5px margin = 15px separation */
+    .banner-text {
+        margin-left: 5px; 
+        min-width: 100px;
+        margin-right: 40px; 
+    }
+
+    /* Positioning mobile menu/overlay based on 80px fixed header */
+    .mobile-overlay {
+        top: 80px;
+        height: calc(100% - 80px);
+    }
+    .mobile-menu-container {
+        top: 80px;
+        height: calc(100% - 80px);
+        width: 90%;
+    }
+
+    /* Footer Optimization */
+    .footer {
+        padding: 0;
+        margin-top: 20px;
+    }
+    .footer-container {
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+    .footer-horizontal-group {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 10px;
+        box-sizing: border-box;
+        gap: 0;
+    }
+    .footer-contact,
+    .footer-links {
+        flex-basis: auto;
+        max-width: none;
+        text-align: left;
+        font-size: 0.75rem;
+        padding-top: 10px;
+    }
+    .footer-contact h3,
+    .footer-links h3 {
+        font-size: 0.9rem;
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+    .footer-contact p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        padding-right: 0;
+    }
+    .footer-links a {
+        margin-bottom: 3px;
+    }
+}
