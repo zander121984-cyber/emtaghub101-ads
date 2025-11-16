@@ -160,14 +160,14 @@ html, body {
     /* MV DESKTOP/TABLET: Banner height 90px */
     .site-banner {
         height: 90px;
-        /* 🚨 ADJUSTED: 5px from the left edge */
-        padding: 0 0 0 5px; 
+        /* 🚨 ADJUSTED: 2px from the left edge */
+        padding: 0 0 0 2px; 
     }
     
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 5px */
-        gap: 5px;
+        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 2px */
+        gap: 2px;
     }
 
     /* Shows the hamburger, inline flow */
@@ -213,14 +213,14 @@ html, body {
     /* MOBILE: Banner height 80px */
     .site-banner {
         height: 80px;
-        /* 🚨 ADJUSTED: 5px from the left edge */
-        padding: 0 0 0 5px;
+        /* 🚨 ADJUSTED: 2px from the left edge */
+        padding: 0 0 0 2px;
     }
 
     /* Inner banner spacing controls */
     .banner-inner {
-        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 5px */
-        gap: 5px;
+        /* 🚨 ADJUSTED: Gap between hamburger/logo/text is 2px */
+        gap: 2px;
     }
 
     /* MOBILE: Larger logo size 60px */
