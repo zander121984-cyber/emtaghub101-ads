@@ -1,22 +1,18 @@
 /* =====================================================
-   💥 CRITICAL GLOBAL FIX: Disable mouse events on everything by default
-   This is the ultimate fix for invisible overlays blocking clicks.
+   EMTAGHub101 — Modern Hero Banner (Desktop Defaults)
    ===================================================== */
+
+/* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
+/* ⚠️ REMOVED GLOBAL POINTER-EVENTS: none FROM *{} ⚠️ */
 * {
-    pointer-events: none;
     box-sizing: border-box; 
 }
 
-/* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
 html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; 
 }
-
-/* =====================================================
-   EMTAGHub101 — Modern Hero Banner (Desktop Defaults)
-   ===================================================== */
 
 /* Wrapper for the entire banner/header area */
 .site-banner {
@@ -89,10 +85,10 @@ html, body {
     position: absolute;
     top: 5px;
     right: 5px;
-    /* 💥 ULTIMATE Z-INDEX: Use the largest possible integer value */
+    /* ULTIMATE Z-INDEX: Max value */
     z-index: 2147483647; 
     display: block; 
-    pointer-events: auto; /* Allow interaction with the wrapper */
+    pointer-events: auto; 
 }
 
 .main-nav > ul { 
@@ -121,10 +117,10 @@ html, body {
     font-family: Arial, sans-serif; 
     font-weight: normal; 
     transition: background-color 0.2s; 
-    /* 💥 ULTIMATE Z-INDEX: Use the largest possible integer value */
+    /* ULTIMATE Z-INDEX and Pointer Events */
     position: relative;
     z-index: 2147483647; 
-    pointer-events: auto !important; 
+    pointer-events: auto; 
 }
 
 .main-nav a:hover { 
@@ -140,7 +136,7 @@ html, body {
     left: 0; 
     background-color: rgba(255, 255, 255, 0.98); 
     min-width: 150px; 
-    /* 💥 ULTIMATE Z-INDEX: Use the largest possible integer value */
+    /* ULTIMATE Z-INDEX for dropdowns */
     z-index: 2147483647; 
     border: 1px solid #ccc; 
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
@@ -165,6 +161,7 @@ html, body {
     margin: 0; 
     padding: 5px 10px; 
     font-weight: normal; 
+    pointer-events: auto; /* Ensure dropdown links are clickable */
 }
 
 
@@ -175,6 +172,9 @@ html, body {
 /* Hamburger Icon - Hidden by default on Desktop */
 .hamburger-icon {
     display: none;
+    /* Ensure the icon itself can be clicked */
+    pointer-events: auto; 
+    z-index: 2147483647; 
 }
 
 .mobile-overlay { 
@@ -185,7 +185,7 @@ html, body {
     width: 100%; 
     height: 100%; 
     background: rgba(0, 0, 0, 0.5); 
-    /* Low Z-index and disable pointer events when closed */
+    /* Disable pointer events when closed */
     z-index: 0; 
     pointer-events: none;
     transition: opacity 0.3s ease; 
@@ -235,6 +235,7 @@ html, body {
     cursor: pointer; 
     color: white; 
     padding: 5px; 
+    pointer-events: auto; /* Close button must be clickable */
 }
 
 .mobile-menu-container ul { 
@@ -255,6 +256,7 @@ html, body {
     font-size: 1rem; 
     cursor: pointer; 
     transition: background-color 0.2s; 
+    pointer-events: auto; /* Mobile menu links must be clickable */
 }
 
 .mobile-menu-container a:hover { 
