@@ -29,8 +29,8 @@ html, body {
     /* CRITICAL: Sets the banner as the anchor for absolute elements (.main-nav, mobile menu) */
     position: relative;
     z-index: 90;
-    /* 🚨 INCREASED: Default height for PC/Desktop */
-    height: 105px; 
+    /* 🚨 INCREASED: Default height for PC/Desktop (200px) */
+    height: 200px; 
 }
 
 /* Inner container that holds hamburger, logo, title, and tagline */
@@ -44,8 +44,8 @@ html, body {
 
 /* Logo styling (Desktop Default) */
 .banner-logo {
-    /* 🚨 INCREASED: New, larger height for PC view */
-    height: 90px; 
+    /* 🚨 INCREASED: New, larger height for PC view (180px) */
+    height: 180px; 
     width: auto;
     padding: 10px 10px 10px 10px;
     object-fit: contain;
@@ -64,15 +64,17 @@ html, body {
 
 /* Main title */
 .banner-title {
-    font-size: 1.85rem;
+    /* 🚨 INCREASED: Font size to match large logo scale */
+    font-size: 2.5rem; 
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 /* Second tagline line */
 .banner-sub-title {
-    font-size: 0.95rem;
+    /* 🚨 INCREASED: Font size to match large logo scale */
+    font-size: 1.2rem; 
     opacity: 0.92;
     margin-bottom: 6px;
 }
@@ -375,14 +377,14 @@ html, body {
         height: 55px; 
     }
 
-    /* 🚨 ADJUSTED: Positioning mobile menu/overlay based on NEW 105px fixed header */
+    /* 🚨 ADJUSTED: Positioning mobile menu/overlay based on NEW 200px fixed header */
     .mobile-overlay {
-        top: 105px;
-        height: calc(100% - 105px);
+        top: 200px;
+        height: calc(100% - 200px);
     }
     .mobile-menu-container {
-        top: 105px;
-        height: calc(100% - 105px);
+        top: 200px;
+        height: calc(100% - 200px);
     }
 
     /* Footer Adjustment for Tablet View */
@@ -393,7 +395,7 @@ html, body {
 
 /* Mobile Phone Breakpoint (max-width: 600px) */
 @media (max-width: 600px) {
-    /* 🚨 INCREASED: Reduce banner height for mobile compactness */
+    /* 🚨 ADJUSTED: Reduce banner height for mobile compactness */
     .site-banner {
         height: 75px;
         padding: 0 10px;
@@ -425,7 +427,7 @@ html, body {
         min-width: 100px;
     }
 
-    /* 🚨 ADJUSTED: Positioning mobile menu/overlay based on NEW 75px fixed header */
+    /* Positioning mobile menu/overlay based on 75px fixed header */
     .mobile-overlay {
         top: 75px;
         height: calc(100% - 75px);
