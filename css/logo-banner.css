@@ -18,7 +18,7 @@ html, body {
 .site-banner {
     width: auto;
     background: #0a1a33;
-    /* 🚀 ADJUSTED BASE: 10px from the left edge */
+    /* 10px from the left edge */
     padding: 0 20px 0 10px; 
     display: flex;
     justify-content: flex-start;
@@ -26,7 +26,8 @@ html, body {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
-    z-index: 90;
+    /* Base Z-index for the banner */
+    z-index: 90; 
     /* PC/Desktop Height: 120px */
     height: 120px; 
 }
@@ -37,7 +38,6 @@ html, body {
     max-width: none;
     display: flex;
     align-items: center;
-    /* 🚀 ADJUSTED BASE: Default gap tightened from 15px to 10px */
     gap: 10px; 
 }
 
@@ -59,8 +59,11 @@ html, body {
     justify-content: center;
     color: white;
     margin-top: 0;
-    /* 🚀 ADJUSTED BASE: Added 5px left margin for separation (Logo to Text) */
     margin-left: 5px; 
+    /* ⭐ FIX: Ensures text grows to take available space */
+    flex-grow: 1; 
+    /* ⭐ FIX: Prevents content from overflowing container */
+    min-width: 0; 
 }
 
 /* Main title */
