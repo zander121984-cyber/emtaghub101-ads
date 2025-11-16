@@ -63,7 +63,7 @@ html, body {
 /* Main title */
 .banner-title {
     /* 🚨 ADJUSTED: Font size to match new PC scale */
-    font-size: 2.1rem; 
+    font-size: 1.9rem; 
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 6px;
@@ -72,7 +72,7 @@ html, body {
 /* Second tagline line */
 .banner-sub-title {
     /* 🚨 ADJUSTED: Font size to match new PC scale */
-    font-size: 1.05rem; 
+    font-size: 1rem; 
     opacity: 0.92;
     margin-bottom: 6px;
 }
@@ -229,7 +229,7 @@ html, body {
 
     /* 🚨 FIX: Smallest logo size, still horizontally aligned */
     .banner-logo {
-        height: 45px;
+        height: 60px;
         padding: 5px 0 5px 0;
     }
 
@@ -311,3 +311,4 @@ html, body {
         margin-bottom: 3px;
     }
 }
+
