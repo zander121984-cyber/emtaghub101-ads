@@ -198,12 +198,12 @@
     }
 
     .banner-title {
-        font-size: .7rem; /* Adjusted for readability */
+        font-size: .6rem; /* Adjusted for readability */
         margin-bottom: 2px;
     }
 
     .tagline-main {
-        font-size: 0.4rem; /* Adjusted for readability */
+        font-size: 0.3rem; /* Adjusted for readability */
         margin-bottom: 1px;
     }
 
@@ -226,5 +226,6 @@
         width: 90%; 
     }
 }
+
 
 
