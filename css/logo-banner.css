@@ -1,236 +1,478 @@
 /* =====================================================
-   EMTAGHub101 — Modern Hero Banner
-   ===================================================== */
+   EMTAGHub101 — Modern Hero Banner (Desktop Defaults)
+   ===================================================== */
 
 /* Wrapper for the entire banner/header area */
 .site-banner {
-    width: auto;
-    background: #0a1a33;
-    padding: 0 20px 0 0; 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center; 
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    /* CRITICAL: Sets the banner as the anchor for absolute elements (.main-nav, mobile logo fix) */
-    position: relative; 
-    z-index: 90; /* High Z-index to be below the menu (100) but above content */
+    width: auto;
+    background: #0a1a33;
+    padding: 0 20px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    /* CRITICAL: Sets the banner as the anchor for absolute elements */
+    position: relative;
+    z-index: 90;
+    height: 80px; /* Added fixed height for reliable mobile positioning */
 }
 
 /* Inner container that holds logo + title + tagline */
 .banner-inner {
-    width: 100%; /* Takes up full width of banner */
-    max-width: none;
-    display: flex;
-    align-items: center; 
-    gap: 15px; 
+    width: 100%;
+    max-width: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 /* Logo styling (Desktop Default) */
 .banner-logo {
-    height: 60px;  /* <-- Desktop default height */
-    width: auto; 
-    padding: 10px 10px 10px 10px;
-    object-fit: contain; 
-    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4)); 
-    border-radius: 10%;
+    height: 60px; /* <-- DESKTOP/DEFAULT HEIGHT */
+    width: auto;
+    padding: 10px 10px 10px 10px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
+    border-radius: 10%;
 }
 
 /* Wrapper for title + tagline */
 .banner-text {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    color: white; 
-    height: Center; 
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    /* Removed redundant 'height: Center;' */
+    margin-top: 0; /* Changed from 10px to 0 for better vertical centering */
 }
 
 /* Main title */
 .banner-title {
-    font-size: 2.1rem; 
-    font-weight: 700; 
-    letter-spacing: 1px; 
-    margin-bottom: 6px; 
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
 }
 
 /* Tagline container */
 .banner-tagline {
-    line-height: 1; 
+    line-height: 1;
 }
 
 /* Second tagline line */
 .banner-sub-title {
-    font-size: 0.95rem; 
-    opacity: 0.92; 
-    margin-bottom: 6px; 
+    font-size: 0.95rem;
+    opacity: 0.92;
+    margin-bottom: 6px;
 }
 
 
 /* =========================================================================
-   DESKTOP NAVIGATION (Visible on large screens)
-   ========================================================================= */
+   DESKTOP NAVIGATION (Visible on large screens)
+   ========================================================================= */
 
 /* 1. Positioning relative to the .site-banner */
 .main-nav {
-    position: absolute; /* Allows positioning relative to the nearest positioned ancestor (the header banner) */
-    top: 5px; /* Sets the distance from the top edge of the banner */
-    right: 5px; /* Sets the distance from the right edge of the banner */
-    z-index: 20; /* Ensures the navigation is layered above other standard elements on the page */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 20;
 }
 
-/* 2. Top-Level Menu Styling (omitted for brevity, assume original rules are here) */
-.main-nav > ul { list-style-type: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; font-size: 0.8rem; }
-.main-nav li { position: relative; }
-.main-nav a { display: block; padding: 3px 6px; text-decoration: none; color: #333; background-color: rgba(255, 255, 255, 0.85); border-radius: 3px; margin-left: 2px; white-space: nowrap; font-family: Arial, sans-serif; font-weight: normal; transition: background-color 0.2s; }
-.main-nav a:hover { background-color: #ddd; }
+/* 2. Top-Level Menu Styling */
+.main-nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    font-size: 0.8rem;
+}
+.main-nav li {
+    position: relative;
+}
+.main-nav a {
+    display: block;
+    padding: 3px 6px;
+    text-decoration: none;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    margin-left: 2px;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    transition: background-color 0.2s;
+}
+.main-nav a:hover {
+    background-color: #ddd;
+}
 
-/* 3. Dropdown Sub-Menus (omitted for brevity, assume original rules are here) */
-.main-nav ul ul { list-style-type: none; margin: 0; padding: 0; position: absolute; top: 100%; left: 0; background-color: rgba(255, 255, 255, 0.98); min-width: 150px; z-index: 30; border: 1px solid #ccc; box-shadow: 0 3px 5px rgba(0,0,0,0.1); display: none; font-size: 0.8rem; }
-.main-nav ul ul ul { top: 0; left: 100%; min-width: 130px; }
-.main-nav li:hover > ul { display: block; }
-.main-nav ul ul a { color: #333; background-color: transparent; border-radius: 0; margin: 0; padding: 5px 10px; font-weight: normal; }
+/* 3. Dropdown Sub-Menus */
+.main-nav ul ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    min-width: 150px;
+    z-index: 30;
+    border: 1px solid #ccc;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    display: none;
+    font-size: 0.8rem;
+}
+
+/* Sub-sub-menu positioning (flyout to the right) */
+.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    min-width: 130px;
+}
+
+/* Show sub-menus on hover */
+.main-nav li:hover > ul {
+    display: block;
+}
+
+/* Sub-menu link appearance */
+.main-nav ul ul a {
+    color: #333;
+    background-color: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 5px 10px;
+    font-weight: normal;
+}
 
 
 /* =========================================================================
-   MOBILE UI ELEMENTS
-   ========================================================================= */
+   MOBILE UI ELEMENTS (Shared between mobile and desktop views)
+   ========================================================================= */
 
 /* Hamburger Icon - Hidden by default on Desktop */
 .hamburger-icon {
-    display: none; 
+    display: none;
 }
 
-/* Mobile Overlay/Scrim (omitted for brevity, assume original rules are here) */
-.mobile-overlay { display: none; position: fixed; top: 50px; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 99; transition: opacity 0.3s ease; opacity: 0; }
-.mobile-overlay.open { display: block; opacity: 1; }
+/* Mobile Overlay/Scrim */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.mobile-overlay.open {
+    display: block;
+    opacity: 1;
+}
 
 /* =========================================================================
-   MOBILE NAVIGATION (Off-Canvas Menu) (omitted for brevity, assume original rules are here)
-   ========================================================================= */
-.mobile-menu-container { position: fixed; left: 0; width: 75%; max-width: 300px; height: 100%; background-color: #0a1a33; color: white; z-index: 100; transform: translateX(-100%); transition: transform 0.3s ease-in-out; box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); overflow-y: auto; }
-.mobile-menu-container.open { transform: translateX(0); }
-.mobile-close-btn { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; cursor: pointer; color: white; padding: 5px; }
+   MOBILE NAVIGATION (Off-Canvas Menu)
+   ========================================================================= */
 
-/* ... Rest of mobile menu styles ... */
-.mobile-menu-container ul { list-style: none; padding: 0; margin: 0; }
-.mobile-menu-container li { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-.mobile-menu-container a { display: block; text-decoration: none; color: white; padding: 12px 15px; font-size: 1rem; cursor: pointer; transition: background-color 0.2s; }
-.mobile-menu-container a:hover { background-color: rgba(255, 255, 255, 0.1); }
-.mobile-menu-container ul ul { display: none; background-color: rgba(0, 0, 0, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.05); }
-.mobile-menu-container ul ul li a { padding-left: 35px; font-size: 0.95rem; }
-.mobile-menu-container ul ul ul li a { padding-left: 55px; font-size: 0.9rem; }
-.toggle-btn::after { content: "\f0d7"; font-family: "Font Awesome 6 Free"; font-weight: 900; float: right; transition: transform 0.3s; margin-left: 10px; }
-.toggle-btn.open::after { transform: rotate(180deg); }
+.mobile-menu-container {
+    position: fixed;
+    left: 0;
+    width: 75%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #0a1a33;
+    color: white;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+.mobile-menu-container.open {
+    transform: translateX(0);
+}
+.mobile-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+
+/* Mobile Menu Links */
+.mobile-menu-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mobile-menu-container li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-menu-container a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.mobile-menu-container a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Accordion / Nested Link Styling */
+.mobile-menu-container ul ul {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.mobile-menu-container ul ul li a {
+    padding-left: 35px;
+    font-size: 0.95rem;
+}
+.mobile-menu-container ul ul ul li a {
+    padding-left: 55px;
+    font-size: 0.9rem;
+}
+
+/* Toggle Indicator (Font Awesome Down Arrow) */
+.toggle-btn::after {
+    content: "\f0d7";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    float: right;
+    transition: transform 0.3s;
+    margin-left: 10px;
+}
+.toggle-btn.open::after {
+    transform: rotate(180deg);
+}
+
+
+/* =====================================================
+   🌐 EMTAGHub101 — Footer Styles (Desktop Defaults)
+   ===================================================== */
+
+.footer {
+    background: #0a1a33;
+    color: #e5e7eb;
+    padding: 10px 0;
+    margin-top: 50px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: #3498db;
+}
+
+.footer-contact p,
+.footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: normal;
+}
+
+.footer-contact i,
+.footer-links i {
+    flex-shrink: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40; /* This should be 'margin: 0 auto;' or 'margin: 40px auto;' for centering */
+    padding: 0 20px;
+}
+
+.footer-horizontal-group {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    gap: 40px;
+    flex-grow: 1;
+}
+
+.footer-contact {
+    flex-grow: 1.5;
+    flex-basis: auto;
+    text-align: left;
+    font-size: 1em;
+}
+
+.footer-links {
+    flex-grow: 1;
+    flex-basis: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    text-align: left;
+}
+
+.footer-links a {
+    margin-bottom: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #7f8c8d;
+    width: 100%;
+}
 
 
 /* =========================================================================
-   MEDIA QUERIES (Switching from Desktop to Mobile)
-   ========================================================================= */
+   MEDIA QUERIES (Switching from Desktop to Mobile) - MOVED TO END FOR SPECIFICITY
+   ========================================================================= */
 
-/* Breakpoint for Tablets/Small Desktops: Hide desktop nav and show hamburger */
-@media (max-width: 1200px) { 
-    /* Hide the Desktop Nav */
-    .main-nav {
-        display: none; 
-    }
-
-    /* 🚨 FIX 1/3: Reduce logo size for tablets and small laptops */
+/* Breakpoint for Tablets/Small Desktops (max-width: 1200px) */
+@media (max-width: 1200px) {
+    /* 1. Logo Size Fix for Laptop/MV Desktop Mode */
     .banner-logo {
-        height: 55px;
+        height: 55px; /* Adjusting logo size for smaller screens/tablets */
     }
-    
-    /* Show the Hamburger Icon, now placed BELOW the header banner and centered */
-    .hamburger-icon {
-        display: block; 
-        position: static; /* Forces it into the normal document flow below the header */
-        top: auto; 
-        left: auto;
-        transform: none; 
+    
+    /* 2. Navigation Control */
+    .main-nav {
+        display: none;
+    }
+    .hamburger-icon {
+        display: block;
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 10px auto;
+        width: fit-content;
+        font-size: 1.8rem;
+        color: white;
+        cursor: pointer;
+        z-index: 50;
+    }
 
-        /* Positioning below the header and centering: */
-        margin: 10px auto; 
-        width: fit-content; 
-        
-        font-size: 1.8rem;
-        color: white; /* NOTE: This color will only show if the background below the banner is also dark */
-        cursor: pointer; 
-        z-index: 50; 
-    }
-    
-    /* Position mobile overlay below the header (Assuming fixed header height ~80px) */
-    .mobile-overlay {
-        top: 80px; 
-        height: calc(100% - 80px); 
-    }
-
-    /* Position mobile menu below the header (80px) PLUS the space of the hamburger icon (10px) */
-    .mobile-menu-container {
-        top: 90px; 
-        height: calc(100% - 90px); 
-    }
+    /* 3. Positioning mobile menu/overlay based on 80px fixed header + 10px margin */
+    .mobile-overlay {
+        top: 80px;
+        height: calc(100% - 80px);
+    }
+    .mobile-menu-container {
+        top: 90px;
+        height: calc(100% - 90px);
+    }
+    
+    /* 4. Footer Adjustment for Tablet View (Optional) */
+    .footer-container {
+        gap: 20px;
+    }
 }
 
-/* Mobile Phone Breakpoint */
-@media (max-width: 600px) { 
-    
-    /* 💥 FIX: Ensure logo position is fixed within the banner when hamburger is below */
-    .banner-inner {
-        width: 100%;
-        /* If the logo/text is still moving, uncomment and adjust the following: */
-        /* position: absolute;
-        top: 0;
-        left: 0; */
-    }
+/* Mobile Phone Breakpoint (max-width: 600px) */
+@media (max-width: 600px) {
+    /* 1. CRITICAL Logo Size Fix for Phones */
+    .banner-logo {
+        height: 45px; /* Smallest size for narrow mobile view */
+        padding: 5px 0 5px 0; /* Reduced vertical padding */
+    }
 
-    .site-banner {
-        padding: 0 10px; /* Reduce padding */
-        /* Make sure the banner height is defined or static on mobile */
-        height: 80px; /* Example fixed height */
-    }
+    /* 2. Header and Text Adjustments */
+    .site-banner {
+        padding: 0 10px;
+        height: 70px; /* Reduced banner height for mobile compactness */
+    }
+    .banner-title {
+        font-size: 0.6rem; /* Smallest desired font size */
+        margin-bottom: 2px;
+    }
+    .banner-sub-title {
+        font-size: 0.3rem; /* Smallest desired font size */
+        margin-bottom: 1px;
+    }
+    .banner-text {
+        margin-left: 5px;
+        min-width: 100px;
+    }
+    
+    /* 3. Mobile UI Adjustments */
+    .hamburger-icon {
+        font-size: 1.5rem;
+        margin: 5px auto;
+    }
 
-    .banner-logo {
-        /* 🚨 FIX 2/3: Smallest logo size for mobile screens (overrides 1200px) */
-        height: 45px; 
-        width: auto;
-        padding: 10px 0 10px 0; /* Logo left alignment fix retained */
-        filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
-    }
-
-    .banner-text {
-        margin-left: 5px;
-        /* Prevent text from collapsing due to hamburger placement */
-        min-width: 100px; 
-    }
-
-    .banner-title {
-        /* REVERTED TO YOUR INTENDED FONT SIZE */
-        font-size: .6rem; 
-        margin-bottom: 2px;
-    }
-
-    .banner-sub-title {
-        /* REVERTED TO YOUR INTENDED FONT SIZE */
-        font-size: 0.3rem; 
-        margin-bottom: 1px;
-    }
-
-    /* Adjust Hamburger appearance and centering */
-    .hamburger-icon {
-        font-size: 1.5rem; 
-        margin: 5px auto; 
-    }
-
-    /* Position mobile overlay below the header (Assuming fixed header height ~70px) */
-    .mobile-overlay {
-        top: 70px; 
-        height: calc(100% - 70px);
-    }
-    
-    /* Adjust menu position/height (Header ~70px PLUS hamburger space ~5px) */
-    .mobile-menu-container {
-        top: 75px; 
-        height: calc(100% - 75px); 
-        width: 90%; 
-    }
+    /* 4. Positioning mobile menu/overlay based on 70px fixed header + 5px margin */
+    .mobile-overlay {
+        top: 70px;
+        height: calc(100% - 70px);
+    }
+    .mobile-menu-container {
+        top: 75px;
+        height: calc(100% - 75px);
+        width: 90%;
+    }
+    
+    /* 5. Footer Optimization */
+    .footer {
+        padding: 0;
+        margin-top: 20px;
+    }
+    .footer-container {
+        padding: 10px 0; /* Added back minimal top/bottom padding */
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+    .footer-horizontal-group {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 10px;
+        box-sizing: border-box;
+        gap: 0;
+    }
+    .footer-contact,
+    .footer-links {
+        flex-basis: auto; /* Allow sizing based on content, not fixed percentages */
+        max-width: none;
+        text-align: left;
+        font-size: 0.75rem;
+        padding-top: 10px;
+    }
+    .footer-contact h3,
+    .footer-links h3 {
+        font-size: 0.9rem;
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+    .footer-contact p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        padding-right: 0;
+    }
+    .footer-links a {
+        margin-bottom: 3px;
+    }
 }
