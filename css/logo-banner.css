@@ -28,7 +28,7 @@
 
 /* Logo styling (Desktop Default) */
 .banner-logo {
-    height: 60px;  /* <-- Desktop height */
+    height: 60px;  /* <-- Desktop default height */
     width: auto; 
     padding: 10px 10px 10px 10px;
     object-fit: contain; 
@@ -134,6 +134,11 @@
     .main-nav {
         display: none; 
     }
+
+    /* 🚨 FIX 1/3: Reduce logo size for tablets and small laptops */
+    .banner-logo {
+        height: 55px;
+    }
     
     /* Show the Hamburger Icon, now placed BELOW the header banner and centered */
     .hamburger-icon {
@@ -185,8 +190,8 @@
     }
 
     .banner-logo {
-        /* FIXED: Set height for mobile screens to override desktop 60px */
-        height: 50px; 
+        /* 🚨 FIX 2/3: Smallest logo size for mobile screens (overrides 1200px) */
+        height: 45px; 
         width: auto;
         padding: 10px 0 10px 0; /* Logo left alignment fix retained */
         filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.4));
@@ -199,13 +204,13 @@
     }
 
     .banner-title {
-        /* YOUR INTENDED FONT SIZE */
+        /* REVERTED TO YOUR INTENDED FONT SIZE */
         font-size: .6rem; 
         margin-bottom: 2px;
     }
 
     .banner-sub-title {
-        /* YOUR INTENDED FONT SIZE (Note: changed from .tagline-main to .banner-sub-title based on your current code) */
+        /* REVERTED TO YOUR INTENDED FONT SIZE */
         font-size: 0.3rem; 
         margin-bottom: 1px;
     }
