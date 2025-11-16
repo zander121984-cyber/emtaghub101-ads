@@ -14,6 +14,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   /* 🛑 ADD THIS LINE: Sets the banner as the anchor for the absolute navigation */
   position: relative; 
+   z-index:90;
 }
 
 /* Inner container that holds logo + title + tagline */
@@ -100,6 +101,7 @@
     margin-bottom: 1px;
   }
 }
+
 
 
 
