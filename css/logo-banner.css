@@ -1,44 +1,43 @@
 /* =====================================================
-   EMTAGHub101 — Modern Hero Banner (Desktop Defaults)
+   EMTAGHub101 — Modern Hero Banner & Full Layout
    ===================================================== */
 
-/* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
+/* --- UNIVERSAL RESET --- */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: Arial, sans-serif;
 }
 
-/* Wrapper for the entire banner/header area */
+/* =====================================================
+   SITE BANNER / HEADER
+   ===================================================== */
 .site-banner {
     width: 100%;
     background: #0a1a33;
-    padding: 0 20px 0 10px;
+    padding: 0 20px 0 10px; 
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    position: relative; /* Ensure stacking context */
-    z-index: 1; /* Banner content below nav */
-    height: 120px;
-    overflow: visible; /* Allow dropdowns to show */
+    position: relative;
+    z-index: 1; /* Banner base */
+    height: 120px; 
+    overflow: visible;
 }
 
-/* Inner container that holds hamburger, logo, title, and tagline */
 .banner-inner {
     width: 100%;
-    max-width: none;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Logo styling (Desktop Default) */
 .banner-logo {
     height: 100px;
     width: auto;
@@ -46,21 +45,22 @@ html, body {
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
     border-radius: 10%;
+    position: relative;
+    z-index: 1; /* keep logo below desktop nav */
 }
 
-/* Wrapper for title + tagline */
 .banner-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
-    margin-top: 0;
     margin-left: 5px;
     flex-grow: 1;
     min-width: 0;
+    position: relative;
+    z-index: 1; /* text below nav */
 }
 
-/* Main title */
 .banner-title {
     font-size: 1.9rem;
     font-weight: 700;
@@ -68,11 +68,260 @@ html, body {
     margin-bottom: 6px;
 }
 
-/* Second tagline line */
 .banner-sub-title {
     font-size: 1rem;
     opacity: 0.92;
     margin-bottom: 6px;
 }
 
+/* =====================================================
+   DESKTOP NAVIGATION (PC/Laptop)
+   ===================================================== */
+.main-nav {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: block;
+    z-index: 10000; /* ensures nav is clickable above logo/text */
+    pointer-events: auto;
+}
 
+.main-nav > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.main-nav li {
+    position: relative;
+}
+
+.main-nav a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+    position: relative;
+    pointer-events: auto;
+    z-index: 10001; /* above everything */
+}
+
+.main-nav a:hover {
+    background-color: #ddd;
+}
+
+/* Submenu */
+.main-nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    min-width: 150px;
+    border: 1px solid #ccc;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10002;
+}
+
+.main-nav ul ul ul {
+    top: 0;
+    left: 100%;
+    min-width: 130px;
+}
+
+.main-nav li:hover > ul {
+    display: block;
+}
+
+.main-nav ul ul a {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 5px 10px;
+}
+
+/* =====================================================
+   HAMBURGER ICON & MOBILE MENU
+   ===================================================== */
+.hamburger-icon {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    z-index: 2147483647;
+}
+
+.mobile-menu-container {
+    position: fixed;
+    left: 0;
+    width: 75%;
+    max-width: 300px;
+    height: 100%;
+    top: 0;
+    background-color: #0a1a33;
+    color: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 200;
+    overflow-y: auto;
+    pointer-events: none;
+}
+
+.mobile-menu-container.open {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.mobile-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mobile-menu-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu-container li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-container a {
+    display: block;
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+}
+
+.mobile-menu-container a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-container ul ul {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu-container ul ul li a {
+    padding-left: 35px;
+}
+
+.mobile-menu-container ul ul ul li a {
+    padding-left: 55px;
+}
+
+.toggle-btn::after {
+    content: "\f0d7";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    float: right;
+    transition: transform 0.3s;
+}
+
+.toggle-btn.open::after {
+    transform: rotate(180deg);
+}
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 199;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.mobile-overlay.open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.footer {
+    background: #0a1a33;
+    color: #e5e7eb;
+    padding: 10px 20px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-horizontal-group {
+    display: flex;
+    gap: 40px;
+    flex-grow: 1;
+}
+
+.footer-contact, .footer-links {
+    font-size: 1em;
+    text-align: left;
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 10px;
+    padding: 10px 0;
+    font-size: 0.85em;
+    color: #7f8c8d;
+}
+
+/* =====================================================
+   MEDIA QUERIES
+   ===================================================== */
+@media (max-width: 1200px) {
+    .main-nav {
+        display: none;
+    }
+    .hamburger-icon {
+        display: block;
+    }
+    .banner-logo { height: 70px; }
+    .site-banner { height: 90px; }
+    .mobile-menu-container { top: 90px; height: calc(100% - 90px); }
+    .mobile-overlay { top: 90px; height: calc(100% - 90px); }
+}
+
+@media (max-width: 600px) {
+    .site-banner { height: 80px; padding: 0 10px; }
+    .banner-logo { height: 60px; }
+    .banner-title { font-size: 0.9rem; }
+    .banner-sub-title { font-size: 0.75rem; }
+    .mobile-menu-container { width: 90%; top: 80px; height: calc(100% - 80px); }
+    .mobile-overlay { top: 80px; height: calc(100% - 80px); }
+    .footer-container { flex-direction: column; align-items: center; text-align: center; }
+    .footer-contact, .footer-links { font-size: 0.75rem; padding-top: 10px; }
+}
