@@ -172,6 +172,12 @@ html, body {
     z-index: 2147483647; 
 }
 
+/* ✅ INSERTED FIX — MAKE HAMBURGER ALWAYS CLICKABLE */
+.hamburger-icon {
+    position: relative !important;
+    z-index: 99999 !important;
+}
+
 .mobile-overlay { 
     display: none; 
     position: fixed; 
@@ -368,6 +374,11 @@ html, body {
 
     .main-nav {
         display: none;
+    }
+
+    /* ✅ INSERTED FIX — PREVENT DESKTOP NAV FROM BLOCKING */
+    .main-nav {
+        pointer-events: none !important;
     }
 
     .site-banner {
