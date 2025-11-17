@@ -75,91 +75,6 @@ html, body {
     margin-bottom: 6px;
 }
 
-/* =========================================================================
-   DESKTOP NAVIGATION (Visible on large screens)
-   ========================================================================= */
-
-.main-nav {
-    position: absolute; 
-    top: 50%; /* Vertically center nav in banner */
-    right: 20px;
-    transform: translateY(-50%);
-    z-index: 9999; /* Above banner content */
-    pointer-events: auto;
-    display: block;
-}
-
-.main-nav > ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    font-size: 0.8rem;
-}
-
-.main-nav li {
-    position: relative;
-    pointer-events: auto;
-}
-
-.main-nav a {
-    display: block;
-    padding: 3px 6px;
-    text-decoration: none;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 3px;
-    margin-left: 2px;
-    white-space: nowrap;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
-    transition: background-color 0.2s;
-    position: relative;
-    z-index: 2001; /* Ensure links are above everything */
-}
-
-.main-nav a:hover {
-    background-color: #ddd;
-}
-
-.main-nav ul ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.98);
-    min-width: 150px;
-    z-index: 10000; /* Above banner and logo */
-    border: 1px solid #ccc;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    display: none;
-    font-size: 0.8rem;
-    pointer-events: auto;
-}
-
-.main-nav ul ul ul {
-    top: 0;
-    left: 100%;
-    min-width: 130px;
-}
-
-.main-nav li:hover > ul {
-    display: block;
-}
-
-.main-nav ul ul a {
-    color: #333;
-    background-color: transparent;
-    border-radius: 0;
-    margin: 0;
-    padding: 5px 10px;
-    font-weight: normal;
-    pointer-events: auto;
-}
 
 /* =========================================================================
    MOBILE NAVIGATION & FOOTER STYLES (UNCHANGED)
@@ -227,4 +142,5 @@ html, body {
     pointer-events: auto;
 }
 
-/* Rest of mobile submenu & toggle button styles remain unchanged */
+
+
