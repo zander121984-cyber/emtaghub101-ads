@@ -1,107 +1,95 @@
 /* =====================================================
-   EMTAGHub101 — Modern Hero Banner (Desktop Defaults)
+   EMTAGHub101 — Full Styles (Desktop + Mobile)
    ===================================================== */
 
 /* --- UNIVERSAL RESET FOR BROWSER DEFAULTS --- */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; 
+    font-family: Arial, sans-serif;
 }
 
-/* Wrapper for the entire banner/header area */
+/* =====================================================
+   HERO BANNER / HEADER
+   ===================================================== */
+
 .site-banner {
-    width: auto;
+    width: 100%;
     background: #0a1a33;
-    padding: 0 20px 0 10px;
+    padding: 0 20px 0 10px; 
     display: flex;
     justify-content: flex-start;
     align-items: center;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
-    z-index: 1; /* Banner elements below nav */
-    height: 120px;
+    z-index: 1000;
+    height: 120px; 
     overflow: visible;
 }
 
-/* Inner container that holds hamburger, logo, title, and tagline */
 .banner-inner {
     width: 100%;
-    max-width: none;
     display: flex;
     align-items: center;
-    gap: 10px;
-    position: relative;
-    z-index: 1;
+    gap: 10px; 
 }
 
-/* Logo styling (Desktop Default) */
 .banner-logo {
-    height: 100px;
+    height: 100px; 
     width: auto;
     padding: 10px;
     object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
     border-radius: 10%;
-    z-index: 1;
-    position: relative;
 }
 
-/* Wrapper for title + tagline */
 .banner-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
-    margin-top: 0;
-    margin-left: 5px;
-    flex-grow: 1;
-    min-width: 0;
-    z-index: 1;
-    position: relative;
+    margin-left: 5px; 
+    flex-grow: 1; 
+    min-width: 0; 
 }
 
-/* Main title */
 .banner-title {
-    font-size: 1.9rem;
+    font-size: 1.9rem; 
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 6px;
 }
 
-/* Second tagline line */
 .banner-sub-title {
-    font-size: 1rem;
+    font-size: 1rem; 
     opacity: 0.92;
     margin-bottom: 6px;
 }
 
-/* =========================================================================
-   DESKTOP NAVIGATION (Visible on large screens)
-   ========================================================================= */
+/* =====================================================
+   DESKTOP NAVIGATION (PC / Laptop)
+   ===================================================== */
+
 .main-nav {
     position: absolute;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+    z-index: 9999; /* ✅ Fix: ensures desktop nav is above banner/logo */
     display: block;
-    z-index: 999999 !important; /* Above everything */
-    pointer-events: auto !important; /* Fully clickable */
 }
 
 .main-nav > ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    list-style: none;
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    font-size: 0.8rem;
 }
 
 .main-nav li {
@@ -110,19 +98,15 @@ html, body {
 
 .main-nav a {
     display: block;
-    padding: 3px 6px;
+    padding: 5px 10px;
     text-decoration: none;
     color: #333;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 3px;
-    margin-left: 2px;
     white-space: nowrap;
-    font-family: Arial, sans-serif;
     font-weight: normal;
     transition: background-color 0.2s;
-    position: relative;
-    z-index: 2001;
-    pointer-events: auto;
+    z-index: 10000; /* Ensure links are above everything */
 }
 
 .main-nav a:hover {
@@ -130,18 +114,14 @@ html, body {
 }
 
 .main-nav ul ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background-color: rgba(255, 255, 255, 0.98);
     min-width: 150px;
-    z-index: 10000;
     border: 1px solid #ccc;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    display: none;
     font-size: 0.8rem;
 }
 
@@ -159,56 +139,34 @@ html, body {
     color: #333;
     background-color: transparent;
     border-radius: 0;
-    margin: 0;
     padding: 5px 10px;
-    font-weight: normal;
 }
 
-/* =========================================================================
-   MOBILE NAVIGATION & HAMBURGER
-   ========================================================================= */
+/* =====================================================
+   MOBILE NAVIGATION (Hamburger + Off-Canvas)
+   ===================================================== */
+
 .hamburger-icon {
     display: none;
-    cursor: pointer;
     font-size: 2rem;
     color: white;
-    z-index: 999999;
-    position: relative;
-}
-
-.mobile-overlay {
-    display: none;
-    position: fixed;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 198;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-}
-
-.mobile-overlay.open {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
+    cursor: pointer;
+    z-index: 2147483647;
 }
 
 .mobile-menu-container {
     position: fixed;
     left: 0;
+    top: 120px;
     width: 75%;
     max-width: 300px;
-    height: 100%;
+    height: calc(100% - 120px);
     background-color: #0a1a33;
     color: white;
-    z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
+    z-index: 200;
     pointer-events: none;
 }
 
@@ -224,7 +182,7 @@ html, body {
     font-size: 1.5rem;
     cursor: pointer;
     color: white;
-    padding: 5px;
+    pointer-events: auto;
 }
 
 .mobile-menu-container ul {
@@ -244,7 +202,6 @@ html, body {
     padding: 12px 15px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
 .mobile-menu-container a:hover {
@@ -257,32 +214,43 @@ html, body {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.mobile-menu-container ul ul li a {
-    padding-left: 35px;
-    font-size: 0.95rem;
-}
-
-.mobile-menu-container ul ul ul li a {
-    padding-left: 55px;
-    font-size: 0.9rem;
-}
-
 .toggle-btn::after {
     content: "\f0d7";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     float: right;
-    transition: transform 0.3s;
     margin-left: 10px;
+    transition: transform 0.3s;
 }
 
 .toggle-btn.open::after {
     transform: rotate(180deg);
 }
 
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 120px);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* =====================================================
    FOOTER STYLES
    ===================================================== */
+
 .footer {
     background: #0a1a33;
     color: #e5e7eb;
@@ -294,18 +262,10 @@ html, body {
 .footer a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 .footer a:hover {
     color: #3498db;
-}
-
-.footer-contact p,
-.footer-links a {
-    display: flex;
-    align-items: center;
-    gap: 6px;
 }
 
 .footer-container {
@@ -351,139 +311,26 @@ html, body {
     margin-top: 10px;
     font-size: 0.85em;
     color: #7f8c8d;
-    width: 100%;
 }
 
-/* =========================================================================
+/* =====================================================
    MEDIA QUERIES
-   ========================================================================= */
+   ===================================================== */
+
 @media (max-width: 1200px) {
-    .main-nav {
-        display: none;
-        pointer-events: none !important;
-    }
-
-    .site-banner {
-        height: 90px;
-        padding: 0 0 0 10px;
-    }
-
-    .banner-inner {
-        gap: 10px;
-    }
-
-    .hamburger-icon {
-        display: block;
-        font-size: 2.2rem;
-        color: white;
-    }
-
-    .banner-logo {
-        height: 70px;
-        padding: 0;
-    }
-
-    .banner-text {
-        margin-left: 5px;
-        margin-right: 40px;
-    }
-
-    .mobile-overlay {
-        top: 90px;
-        height: calc(100% - 90px);
-    }
-
-    .mobile-menu-container {
-        top: 90px;
-        height: calc(100% - 90px);
-    }
+    .main-nav { display: none; }
+    .hamburger-icon { display: block; }
+    .site-banner { height: 90px; }
+    .mobile-menu-container { top: 90px; height: calc(100% - 90px); }
+    .mobile-overlay { top: 90px; height: calc(100% - 90px); }
 }
 
 @media (max-width: 600px) {
-    .site-banner {
-        height: 80px;
-        padding: 0 0 0 8px;
-    }
-
-    .banner-inner {
-        gap: 8px;
-    }
-
-    .banner-logo {
-        height: 60px;
-        padding: 5px 0;
-    }
-
-    .banner-title {
-        font-size: 0.6rem;
-        margin-bottom: 2px;
-    }
-
-    .banner-sub-title {
-        font-size: 0.3rem;
-        margin-bottom: 1px;
-    }
-
-    .hamburger-icon {
-        font-size: 1.5rem;
-    }
-
-    .banner-text {
-        margin-left: 5px;
-        min-width: 100px;
-        margin-right: 40px;
-    }
-
-    .mobile-overlay {
-        top: 80px;
-        height: calc(100% - 80px);
-    }
-
-    .mobile-menu-container {
-        top: 80px;
-        height: calc(100% - 80px);
-        width: 90%;
-    }
-
-    .footer {
-        padding: 0;
-        margin-top: 20px;
-    }
-
-    .footer-container {
-        padding: 10px 0;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .footer-horizontal-group {
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0 10px;
-        gap: 0;
-    }
-
-    .footer-contact,
-    .footer-links {
-        font-size: 0.75rem;
-        padding-top: 10px;
-    }
-
-    .footer-contact h3,
-    .footer-links h3 {
-        font-size: 0.9rem;
-        margin-bottom: 3px;
-    }
-
-    .footer-contact p {
-        margin-bottom: 8px;
-    }
-
-    .footer-links a {
-        margin-bottom: 3px;
-    }
+    .site-banner { height: 80px; }
+    .banner-logo { height: 60px; }
+    .banner-title { font-size: 0.6rem; }
+    .banner-sub-title { font-size: 0.3rem; }
+    .mobile-menu-container { width: 90%; top: 80px; height: calc(100% - 80px); }
+    .mobile-overlay { top: 80px; height: calc(100% - 80px); }
+    .footer-container { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
 }
